@@ -1,0 +1,18 @@
+export default {
+    logIn: 'Войти',
+    logBottomLable: 'Мы очень рады видеть вас снова!',
+    numberLable: 'Номер телефона',
+    password: 'Пароль',
+    wrongNumber: 'Неправильный номер',
+    passwordInputPleaceholder: 'Введите пароль',
+    help: "У вас нет аккаунта?",
+    helpButton: 'Pегистр',
+    forgotPassword: 'Забыл мой пароль?',
+    secur8: 'Должно быть не менее 8 символов',
+    securePasswordEnglish: 'Используйте английские шрифты',
+    secureAtLeastUpperCase: 'По крайней мере одна заглавная буква',
+    secureAtLeastNumber: 'Хотя бы одна цифра',
+    secureWeeknes1: 'Слабый',
+    secureWeeknes2: 'Середина',
+    secureWeeknes3: 'Сильный',
+}

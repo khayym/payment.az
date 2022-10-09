@@ -5,7 +5,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import Router from './src/navigation/router';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-
+import './src/constants/IMLocalize';
+import { ContextApiProvider } from './src/store/context/ContextApi';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,12 +29,13 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-
   return (
     <SafeAreaProvider onLayout={onLayoutRootView} style={{ flex: 1, backgroundColor: '#fff' }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <StatusBar style="auto" />
-        <Router />
+        <ContextApiProvider>
+          <StatusBar style="auto" />
+          <Router />
+        </ContextApiProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );

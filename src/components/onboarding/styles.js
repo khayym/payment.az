@@ -30,7 +30,7 @@ export const onBoardingStyles = StyleSheet.create({
 
     },
     flatView: {
-        height: Dimensions.get('window').height / 2
+        height: Dimensions.get('window').height / 2,
     },
     buttonWrapper: {
         minHeight: 48,

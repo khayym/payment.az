@@ -1,0 +1,18 @@
+export default {
+    logIn: 'Daxil ol',
+    logBottomLable: 'Sizi yenidən görməyə çox şadıq!',
+    numberLable: 'Telefon nömrəsi',
+    wrongNumber: 'Yanlış nömrə',
+    password: 'Şifrə',
+    passwordInputPleaceholder: 'Şifrəni daxil edin',
+    help: 'Hesabınız yoxdur?',
+    helpButton: 'Qeydiyyat',
+    forgotPassword: 'Şifrəmi unutmuşam?',
+    secur8: 'Ən azı 8 simvol olmalıdır',
+    securePasswordEnglish: 'İngilis şriftlərindən istifadə edin',
+    secureAtLeastUpperCase: 'Ən azı bir böyük hərf',
+    secureAtLeastNumber: 'Ən azı bir rəqəm',
+    secureWeeknes1: 'Zəif',
+    secureWeeknes2: 'Orta',
+    secureWeeknes3: 'Güclü',
+}

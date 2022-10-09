@@ -14,9 +14,7 @@ export const secondary = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#038BFF',
         height: 32,
-        width: 72,
         borderRadius: 8,
-        maxHeight: 48,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
@@ -24,6 +22,9 @@ export const secondary = StyleSheet.create({
     text: {
         color: '#038BFF',
         fontFamily: 'Euclid-regular',
+        alignSelf: 'center',
         fontSize: 14,
+        paddingHorizontal: 21,
+        // paddingVertical: ,
     }
 })
