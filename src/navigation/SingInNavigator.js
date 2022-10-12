@@ -10,8 +10,6 @@ const SignInScreenNavigator = () => {
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="SignInUp" component={SignInUp} />
             <Stack.Screen name="SingRegisterRouter" component={SingInLayout} />
-            {/* <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="ForgotPassword" component={FotgotPassword} /> */}
         </Stack.Navigator>
     );
 };

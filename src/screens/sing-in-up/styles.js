@@ -6,7 +6,10 @@ export const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 48,
         justifyContent: 'center',
-
+    },
+    safeArea: {
+        backgroundColor: '#fff',
+        flex: 1,
     },
     text: {
         textAlign: 'center',

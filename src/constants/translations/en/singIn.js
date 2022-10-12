@@ -15,4 +15,7 @@ export default {
     secureWeeknes1: 'Weak',
     secureWeeknes2: 'Medium',
     secureWeeknes3: 'Strong',
+    forgotPasswordScreenHeader: 'I forgot my password',
+    forgotPasswordScreenText: 'Enter your number to reset your password',
+    forgotScreenSend: 'Send'
 }

@@ -11,7 +11,7 @@ const Router = () => {
 
     return (
         <NavigationContainer>
-            {<Stack.Navigator>
+            <Stack.Navigator>
                 {
                     login ?
                         <Stack.Screen
@@ -24,7 +24,7 @@ const Router = () => {
                             options={{ headerShown: false }}
                         />
                 }
-            </Stack.Navigator>}
+            </Stack.Navigator>
         </NavigationContainer>
     )
 }

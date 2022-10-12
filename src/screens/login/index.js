@@ -33,45 +33,42 @@ export const LogIn = () => {
     }
 
     return (
-        <View style={styles.layout}>
-            {/* <LanguageSelector /> */}
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.container}>
-                    <View style={styles.header}>
-                        <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
-                    </View>
-                    <View style={styles.inputs}>
-                        <PhoneInput
-                            setNumber={setNumber}
-                            number={number}
-                            label={t('singIn:numberLable')}
-                            errorLabel={t('singIn:wrongNumber')}
-                        // error
-                        />
-                        <PasswordInput
-                            text={text}
-                            setText={setText}
-                            custom={{ marginTop: 24 }}
-                            label={t('singIn:password')}
-                            rightLabel
-                            rightLabelText={t('singIn:forgotPassword')}
-                            rightLabelCallback={() => setIndex(2)}
-                            ready={ready}
-                            setReady={setReady}
-                        // withSecure
-                        />
-                        <View style={{ height: 48, marginTop: 48, }}>
-                            <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
-                        </View>
-                    </View>
-                    <FooterText
-                        callback={() => setIndex(1)}
-                        text={t('singIn:help')}
-                        blur={t('singIn:helpButton')}
-                    />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.layout} >
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
                 </View>
-            </TouchableWithoutFeedback>
-        </View>
+                <View style={styles.inputs}>
+                    <PhoneInput
+                        setNumber={setNumber}
+                        number={number}
+                        label={t('singIn:numberLable')}
+                        errorLabel={t('singIn:wrongNumber')}
+                    // error
+                    />
+                    <PasswordInput
+                        text={text}
+                        setText={setText}
+                        custom={{ marginTop: 24 }}
+                        label={t('singIn:password')}
+                        rightLabel
+                        rightLabelText={t('singIn:forgotPassword')}
+                        rightLabelCallback={() => setIndex(2)}
+                        ready={ready}
+                        setReady={setReady}
+                    // withSecure
+                    />
+                    <View style={{ height: 48, marginTop: 48, }}>
+                        <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
+                    </View>
+                </View>
+                <FooterText
+                    callback={() => setIndex(1)}
+                    text={t('singIn:help')}
+                    blur={t('singIn:helpButton')}
+                />
+            </View>
+        </TouchableWithoutFeedback >
     )
 }
 

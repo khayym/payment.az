@@ -37,10 +37,12 @@ export const styles = StyleSheet.create({
         // height: 40,
         marginLeft: 12,
         flex: 1,
+        height: '100%',
         // padding: 10,
         fontSize: 12,
         color: '#000000',
-        fontFamily: 'Euclid-light'
+        fontFamily: 'Euclid-light',
+
     },
     arrow: {
         // width: 24,

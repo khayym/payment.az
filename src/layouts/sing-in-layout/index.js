@@ -1,5 +1,5 @@
+import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import { View, TouchableOpacity } from 'react-native'
 import BackIcon from '../../../assets/icons/back.svg'
 import { styles } from './styles';
 import { SceneMap, TabView } from 'react-native-tab-view';
@@ -17,11 +17,8 @@ const renderScene = SceneMap({
 });
 
 
-
 const SingInLayout = ({ route: { params } }) => {
     const { pop } = useNavigation();
-    // const [index, setIndex] = useState(0);
-    // const layout = useWindowDimensions();
 
     const { index, setIndex } = useContextApi();
 
@@ -58,7 +55,7 @@ const SingInLayout = ({ route: { params } }) => {
                     onIndexChange={setIndex}
                 />
             </View>
-        </View>
+        </View >
     )
 }
 

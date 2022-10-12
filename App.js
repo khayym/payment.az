@@ -10,7 +10,7 @@ import { ContextApiProvider } from './src/store/context/ContextApi';
 
 SplashScreen.preventAutoHideAsync();
 
-
+// const headerHeight = useHeaderHeight();
 export default function App() {
   const [fontsLoaded] = useFonts({
     'Euclid-light': require('./assets/font/Euclid-Circular-A-Light.ttf'),
@@ -21,6 +21,7 @@ export default function App() {
   });
 
   const onLayoutRootView = useCallback(async () => {
+
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -30,8 +31,8 @@ export default function App() {
     return null;
   }
   return (
-    <SafeAreaProvider onLayout={onLayoutRootView} style={{ flex: 1, backgroundColor: '#fff' }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <SafeAreaView style={{ flex: 1 }}>
         <ContextApiProvider>
           <StatusBar style="auto" />
           <Router />

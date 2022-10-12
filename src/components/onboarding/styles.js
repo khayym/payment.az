@@ -26,8 +26,7 @@ export const onBoardingStyles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         paddingVertical: 46,
-        backgroundColor: '#fff'
-
+        backgroundColor: '#fff',
     },
     flatView: {
         height: Dimensions.get('window').height / 2,
