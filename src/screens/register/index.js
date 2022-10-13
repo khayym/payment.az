@@ -34,6 +34,7 @@ const Register = () => {
             renderScene={renderScene}
             onIndexChange={setRegisterIndex}
             renderTabBar={() => null}
+            swipeEnabled={false}
             lazy
         />
     )

@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
     },
     iconContainer: {
         width: 40,
-        padding: 5,
+        paddingVertical: 5,
     },
 })

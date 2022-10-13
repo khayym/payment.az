@@ -6,6 +6,8 @@ import Button from '../../../components/button'
 import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
+import { REGISTER_API } from '@env';
+import axios from 'axios';
 
 const Registration = () => {
     const { t } = useTranslation()
@@ -13,19 +15,26 @@ const Registration = () => {
     const [send, setSend] = useState(false);
     const [wait, setWait] = useState(false);
 
-    const { setRegisterIndex } = useContextApi()
-
-    const buttonHandler = () => {
-        setWait(true)
-        Keyboard.dismiss()
-        setTimeout(() => {
-            setSend(true)
-            setWait(false);
-            Keyboard.dismiss
-            setRegisterIndex(2)
-        }, 1500)
+    const headers = {
+        'Content-Type': 'application/json',
+        "accept": "application/json",
 
     }
+
+    const { setRegisterIndex } = useContextApi()
+    const buttonHandler = async () => {
+        const data = { phone: "994" + number }
+        setWait(true)
+        try {
+            const req = await axios.post(REGISTER_API, data);
+            req.status == 200 ? setRegisterIndex(1) : console.log('---');
+        } catch (error) {
+            console.log(Object.keys(error), error.message);
+        }
+        setWait(false);
+    }
+
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>

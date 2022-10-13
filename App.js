@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import Router from './src/navigation/router';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/constants/IMLocalize';
 import { ContextApiProvider } from './src/store/context/ContextApi';
 
@@ -32,12 +32,10 @@ export default function App() {
   }
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ContextApiProvider>
-          <StatusBar style="auto" />
-          <Router />
-        </ContextApiProvider>
-      </SafeAreaView>
+      <ContextApiProvider>
+        <StatusBar style="auto" />
+        <Router />
+      </ContextApiProvider>
     </SafeAreaProvider>
   );
 }

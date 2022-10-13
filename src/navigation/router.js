@@ -11,13 +11,12 @@ const Router = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
                 {
                     login ?
                         <Stack.Screen
                             name="TabNavigator"
                             component={TabNavigator}
-                            options={{ headerShown: false }}
                         /> : <Stack.Screen
                             name="SignInNavigator"
                             component={SignInScreenNavigator}

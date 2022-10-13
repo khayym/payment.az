@@ -1,4 +1,4 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { useState } from 'react'
 import { passwordGenereateStyle as styles } from '../styles';
 import Texts from '../../../components/text/'
@@ -7,6 +7,8 @@ import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
 import { PasswordInput } from '../../../components/password-input';
+import { CREATE_USER } from '@env';
+import axios from 'axios';
 
 const PasswordGenerate = () => {
     const { t } = useTranslation()
@@ -16,15 +18,27 @@ const PasswordGenerate = () => {
 
     const { setLogin } = useContextApi();
 
-    const buttonHandler = () => {
+    const buttonHandler = async () => {
         setWait(true)
-        Keyboard.dismiss()
-        setTimeout(() => {
-            // setSend(true)
-            setWait(false);
-            Keyboard.dismiss
-            setLogin(true)
-        }, 1500)
+        const data = {
+            password: text,
+            password_confirm: text
+        }
+        try {
+            const request = await axios.post(CREATE_USER, data)
+            console.log(request)
+        } catch (err) {
+            console.log(err);
+        }
+        // request.status ? setLogin(true) : console.log('not olgin')
+        // Keyboard.dismiss()
+        // setTimeout(() => {
+        //     // setSend(true)
+        setWait(false);
+        setLogin(true)
+        //     Keyboard.dismiss
+        // setLogin(true)
+        // }, 1500)
     }
 
     return (

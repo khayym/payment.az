@@ -13,7 +13,7 @@ import { useContextApi } from '../../store/context/ContextApi';
 const renderScene = SceneMap({
     login: LogIn,
     register: Register,
-    forgotPassword: FotgotPassword
+    forgotPassword: FotgotPassword,
 });
 
 

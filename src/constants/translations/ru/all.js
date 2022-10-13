@@ -4,4 +4,8 @@ export const register = {
     continue: 'Продолжать',
     createPassword: 'Создайте пароль',
     admit: 'Подтверди это',
+    admitCode: 'Код подтверждения',
+    smtpmessage: 'введите код, полученный на ваш мобильный номер',
+    smtpNotSendMessage: 'Код не получен?',
+    tryAgain: 'Отправь еще раз'
 }

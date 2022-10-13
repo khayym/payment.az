@@ -25,11 +25,13 @@ export const onBoardingStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        paddingVertical: 46,
+        paddingVertical: 24,
         backgroundColor: '#fff',
     },
     flatView: {
-        height: Dimensions.get('window').height / 2,
+        // height: Dimensions.get('window').height / 2,
+        // flex: 1,
+
     },
     buttonWrapper: {
         minHeight: 48,
@@ -40,6 +42,6 @@ export const onBoardingStyles = StyleSheet.create({
 })
 
 export const indicatorStyles = StyleSheet.create({
-    container: { flexDirection: 'row', justifyContent: 'center' },
+    container: { flexDirection: 'row', justifyContent: 'center', marginTop: 40, },
     dot: { width: 8, height: 8, borderRadius: 50, marginHorizontal: 3 }
 })
