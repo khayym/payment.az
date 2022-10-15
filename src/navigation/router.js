@@ -1,27 +1,29 @@
-import { NavigationContainer } from '@react-navigation/native'
+import DrawerNavigation from './DrawerNavigation';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from 'react';
+import CurtomHeader from '../components/header';
 import { useContextApi } from '../store/context/ContextApi';
 import SignInScreenNavigator from './SingInNavigator';
-import TabNavigator from './TabNavigation';
 const Stack = createNativeStackNavigator();
 
-const Router = () => {
 
+const Router = () => {
     const { login } = useContextApi();
+    const [name, setName] = useState(null);
+    const navigationRef = useNavigationContainerRef();
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <NavigationContainer
+            ref={navigationRef}
+            onReady={() => setName(navigationRef.getCurrentRoute().name)}
+            onStateChange={() => setName(navigationRef.getCurrentRoute().name)}
+        >
+            <Stack.Navigator>
                 {
-                    login ?
-                        <Stack.Screen
-                            name="TabNavigator"
-                            component={TabNavigator}
-                        /> : <Stack.Screen
-                            name="SignInNavigator"
-                            component={SignInScreenNavigator}
-                            options={{ headerShown: false }}
-                        />
+                    !login ?
+                        <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CurtomHeader name={name} /> }} />
+                        : <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
                 }
             </Stack.Navigator>
         </NavigationContainer>

@@ -7,7 +7,8 @@ import Router from './src/navigation/router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/constants/IMLocalize';
 import { ContextApiProvider } from './src/store/context/ContextApi';
-
+import { Provider } from 'react-redux';
+import { store } from './src/store/redux'
 SplashScreen.preventAutoHideAsync();
 
 // const headerHeight = useHeaderHeight();
@@ -30,12 +31,16 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+
+
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
-      <ContextApiProvider>
-        <StatusBar style="auto" />
-        <Router />
-      </ContextApiProvider>
+      <Provider store={store}>
+        <ContextApiProvider>
+          <StatusBar style="auto" />
+          <Router />
+        </ContextApiProvider>
+      </Provider>
     </SafeAreaProvider>
   );
 }

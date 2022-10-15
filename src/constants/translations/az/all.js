@@ -9,3 +9,15 @@ export const register = {
     smtpNotSendMessage: 'Kod gəlməyib?',
     tryAgain: 'Yenidən göndər'
 }
+
+export const tab = {
+    main: 'Əsas',
+    payment: 'Ödənişlər',
+    qr: 'QR Pay',
+    balance: 'Balansım',
+    account: 'Hesabım'
+}
+
+export const secondsScreenName = {
+    NotficationScreen: 'Bildirişlər'
+}

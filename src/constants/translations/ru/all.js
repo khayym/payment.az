@@ -9,3 +9,15 @@ export const register = {
     smtpNotSendMessage: 'Код не получен?',
     tryAgain: 'Отправь еще раз'
 }
+
+export const tab = {
+    main: 'Главный',
+    payment: 'Платежи',
+    qr: 'QR Pay',
+    balance: 'Баланс',
+    account: 'Счет'
+}
+
+export const secondsScreenName = {
+    NotficationScreen: 'Уведомления'
+}

@@ -7,6 +7,7 @@ export const ContextApiProvider = ({ children }) => {
     const [login, setLogin] = useState(false);
     const [registerIndex, setRegisterIndex] = useState(0);
 
+
     return (
         <ContextApi.Provider value={{ index, setIndex, login, setLogin, registerIndex, setRegisterIndex }}>
             {children}
