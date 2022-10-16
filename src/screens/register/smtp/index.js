@@ -12,6 +12,7 @@ import Texts from '../../../components/text/'
 import { VERIFY_OTP } from '@env';
 import axios from 'axios';
 import { useContextApi } from '../../../store/context/ContextApi';
+import { theme } from '../../../theme/theme';
 
 
 const SMTP = () => {
@@ -25,14 +26,17 @@ const SMTP = () => {
         setValue,
     });
     const { setRegisterIndex } = useContextApi()
+    const [error, setError] = useState({ code: null, message: null })
 
     const sendOtp = async () => {
+        setError({ code: null, message: null })
         setWait(true)
         try {
             const sendOpt = await axios.post(VERIFY_OTP, { otp: value });
-            sendOpt.status ? setRegisterIndex(2) : console.log('-><--');
+            sendOpt.status ? setRegisterIndex(2) : setError({ error: 400, message: 'Somethign went wrong' });
         } catch (error) {
-            console.log(Object.keys(error), error.message);
+            error.response.status == 400 && setError({ code: 401, message: 'Wrong opt' })
+            setValue('')
         }
         setWait(false);
     }
@@ -41,7 +45,7 @@ const SMTP = () => {
     return (
         <View style={styles.container}>
             {/* <LanguageSelector /> */}
-            <Texts child={`****** 77 55 ${t('register:smtpmessage')}`}>{t('register:admitCode')}</Texts>
+            <Texts Texts child={`****** 77 55 ${t('register:smtpmessage')}`}> {t('register:admitCode')}</Texts >
             <CodeField
                 ref={ref}
                 {...props}
@@ -54,12 +58,13 @@ const SMTP = () => {
                 renderCell={({ index, symbol, isFocused }) => (
                     <Text
                         key={index}
-                        style={[styles.cell, isFocused && styles.focusCell]}
+                        style={[styles.cell, isFocused && styles.focusCell, error.code !== null && { borderColor: 'red', color: 'red' }]}
                         onLayout={getCellOnLayoutHandler(index)}>
                         {symbol || (isFocused ? <Cursor /> : null)}
                     </Text>
                 )}
             />
+            {error.code == 401 && <Text style={styles.wrongOpt}>{t('register:wrongOpt')}</Text>}
             <View style={styles.textRoot}>
                 <Text style={styles.text}>{t('register:smtpNotSendMessage')}</Text>
                 <Pressable onPress={() => console.log('----')}>
@@ -69,7 +74,7 @@ const SMTP = () => {
             <View style={styles.buttonView}>
                 <Button text={t('register:admit')} callBack={sendOtp} disable={value.length !== 4 || wait} wait={wait} />
             </View>
-        </View>
+        </View >
     )
 }
 
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F7F9FC',
         borderColor: '#E4E9F2',
         textAlign: 'center',
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[500],
     },
     focusCell: {
         borderColor: '#038BFF'
@@ -120,13 +125,16 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#2E3A59',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 14,
     },
     blueText: {
         color: '#0095FF',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 14,
         marginLeft: 7,
+    },
+    wrongOpt: {
+        alignSelf: 'center', marginTop: 10, color: 'red'
     }
 });

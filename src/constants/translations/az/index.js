@@ -2,7 +2,7 @@
 import common from './common';
 import welcome from './welcome';
 import singIn from './singIn';
-import { register, tab, secondsScreenName } from './all'
+import { register, tab, secondsScreenName, drawerOptions, home } from './all'
 
 export default {
     common,
@@ -10,5 +10,7 @@ export default {
     singIn,
     register,
     tab,
-    secsNames: secondsScreenName
+    secsNames: secondsScreenName,
+    drawer: drawerOptions,
+    home,
 };

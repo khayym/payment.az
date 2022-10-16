@@ -1,4 +1,5 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const itemStyles = StyleSheet.create({
     container: {
@@ -8,13 +9,13 @@ export const itemStyles = StyleSheet.create({
     },
     text: {
         fontSize: 24,
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[500],
         marginTop: 40,
         marginBottom: 12,
     },
     description: {
         fontSize: 14,
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         color: '#767676',
         textAlign: 'center'
     },

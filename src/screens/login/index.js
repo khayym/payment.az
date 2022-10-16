@@ -1,35 +1,40 @@
-import { View, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { View, Keyboard, TouchableWithoutFeedback, Text } from 'react-native'
 import Texts from '../../components/text/'
 import { PhoneInput } from '../../components/phone-input'
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LanguageSelector } from '../../components/language-selector'
 import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
 import { useContextApi } from '../../store/context/ContextApi';
-
+import { LOGIN } from '@env';
+import axios from 'axios';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
     const [number, setNumber] = useState('');
     const [ready, setReady] = useState(false);
     const [wait, setWait] = useState(false)
+    const [error, setError] = useState({ code: null, message: null });
     const { t } = useTranslation()
     const { setIndex, setLogin } = useContextApi();
 
-    const loginHandler = () => {
+    const loginHandler = async () => {
         setWait(true)
-        setTimeout(() => {
-            if (number == '558447755' && text == 'Test12345') return setLogin(true)
-            else {
-                setText('')
-                setNumber('')
-                setWait(false)
-            }
-        }, 1500)
+        const data = { phone: "994" + number, password: text }
+        try {
+            const req = await axios.post(LOGIN, data);
+            req.status == 200 ? setLogin(true) : setError({ code: 400, message: t('register:error') })
+        } catch (error) {
+            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('register:alreadyHave') });
+            else if (error.code == 400) setError({ code: 400, message: t('register:error') })
+        }
 
+        // setText('')
+        // setNumber('')
+        // console.log(data)
+        setWait(false)
     }
 
     return (
@@ -58,6 +63,7 @@ export const LogIn = () => {
                         setReady={setReady}
                     // withSecure
                     />
+                    <Text>{error.message}</Text>
                     <View style={{ height: 48, marginTop: 48, }}>
                         <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
                     </View>

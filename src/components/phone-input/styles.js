@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const styles = StyleSheet.create({
     container: {
@@ -7,19 +8,19 @@ export const styles = StyleSheet.create({
     },
     error: {
         color: '#222B45',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
         marginTop: 8,
         color: '#FF3D71'
     },
     prefix: {
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
         marginRight: 5,
     },
     lable: {
         color: '#222B45',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
     },
     inputContainer: {
@@ -41,7 +42,7 @@ export const styles = StyleSheet.create({
         // padding: 10,
         fontSize: 12,
         color: '#000000',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
 
     },
     arrow: {

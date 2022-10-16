@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-
+import { theme } from '../../theme/theme';
 export const primary = StyleSheet.create({
     container: {
         borderWidth: 1,
@@ -13,7 +13,7 @@ export const primary = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[600],
         fontSize: 16,
     },
     disabled: {
@@ -34,7 +34,7 @@ export const secondary = StyleSheet.create({
     },
     text: {
         color: '#038BFF',
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[600],
         fontSize: 16,
     }
 })

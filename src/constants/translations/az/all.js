@@ -7,7 +7,10 @@ export const register = {
     admitCode: 'Təsdiqləmə kodu',
     smtpmessage: 'mobil nömrəsinə gələn kodu daxil edin',
     smtpNotSendMessage: 'Kod gəlməyib?',
-    tryAgain: 'Yenidən göndər'
+    tryAgain: 'Yenidən göndər',
+    alreadyHave: 'Bu nömrə artıq qeydiyatdan keçmişdir',
+    error: 'Nəsə xəta baş verdi. Zəhmət olmasa yenidən cəhd edin',
+    wrongOpt: 'Daxil etdiyiniz təsdiq kodu yalnışdır.',
 }
 
 export const tab = {
@@ -15,9 +18,34 @@ export const tab = {
     payment: 'Ödənişlər',
     qr: 'QR Pay',
     balance: 'Balansım',
-    account: 'Hesabım'
+    account: 'Hesabım',
 }
 
 export const secondsScreenName = {
-    NotficationScreen: 'Bildirişlər'
+    NotficationScreen: 'Bildirişlər',
+    MobileOperators: 'Mobil operatorlar'
+}
+
+export const drawerOptions = {
+    light: 'İşıq sərfiyyatı',
+    support: 'Texniki dəstək',
+    settings: 'Parametrlər',
+    info: 'Tətbiq məlumatı',
+    debts: 'Borclar',
+    history: 'Ödəniş tarixçəsi'
+}
+
+export const home = {
+    bouns: 'Bonuslarım',
+    balance: 'Balansım',
+    searchPleasceholder: 'Xidmətin adını daxil edin...',
+    mobileOp: 'Mobil operatorlar',
+    comunal: 'Konumal ödənişlər',
+    mobilePayment: 'Telefon ödənişləri',
+    internet: 'Internet ödənişləri',
+    goverment: 'Dövlət ödənişləri',
+    bank: 'Bank ödənişləri',
+    education: 'Təhsil ödənişləri',
+    tv: 'Tv ödənişləri',
+    other: 'Digər ödənişlər',
 }

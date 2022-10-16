@@ -17,8 +17,8 @@ export default function App() {
     'Euclid-light': require('./assets/font/Euclid-Circular-A-Light.ttf'),
     'Euclid-medium': require('./assets/font/Euclid-Circular-A-Medium.ttf'),
     'Euclid-regular': require('./assets/font/Euclid-Circular-A-Regular.ttf'),
-    'Euclid-semiBold': require('./assets/font/Euclid-Circular-A-SemiBold.ttf'),
-    'Euclid-bold': require('./assets/font/Euclid-Circular-A-Bold.ttf'),
+    // 'Euclid-semiBold': require('./assets/font/Euclid-Circular-A-SemiBold.ttf'),
+    // 'Euclid-bold': require('./assets/font/Euclid-Circular-A-Bold.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {

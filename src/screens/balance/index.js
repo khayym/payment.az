@@ -1,10 +1,14 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import Button from '../../components/button'
+import InfoBox from '../../components/info-box'
+import { styles } from './styles';
 
 
 export const BalanceScreen = () => {
     return (
-        <View>
-            <Text>BalanceScreen</Text>
+        <View style={styles.container}>
+            <InfoBox />
+            <Button text='Banasi artir' />
         </View>
     )
 }

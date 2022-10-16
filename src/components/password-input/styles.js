@@ -1,16 +1,17 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const styles = StyleSheet.create({
     container: {
     },
     lable: {
         color: '#222B45',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
     },
     endLabel: {
         color: '#0095FF',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
     },
     lableView: {
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
         // padding: 10,
         fontSize: 12,
         color: '#000',
-        fontFamily: 'Euclid-light'
+        fontFamily: theme.font[400]
     },
     arrow: {
         // width: 24,
@@ -64,12 +65,12 @@ export const secureStyles = StyleSheet.create({
     },
     text: {
         flex: 1, paddingLeft: 5,
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 14,
         color: '#222B45'
     },
     wick: {
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         fontSize: 12,
         color: '#000'
     },

@@ -1,23 +1,44 @@
 import { StyleSheet } from "react-native";
+import { theme } from '../../theme/theme';
 
 export const styles = StyleSheet.create({
     controller: {
         container: {
-            // borderWidth: 1,
             flex: 1,
-            // borderColor: 'blue',
         }
     },
+
+    // ----------
+
     main: {
         container: {
-            // backgroundColor: 'yellow',
             flexDirection: 'row',
             flex: 1,
             alignItems: 'center',
             justifyContent: 'space-between'
         },
     },
-    second: {},
+
+    //-----------
+
+
+    second: {
+        container: {
+
+            flex: 1,
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+        },
+        text: {
+            fontSize: 16,
+            fontFamily: theme.font[500]
+        }
+    },
+
+    // ----------
+
+
     header: {
         container: {
             height: 56,

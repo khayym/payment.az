@@ -33,3 +33,9 @@ export const passwordRequires = [
         title: 'singIn:secureAtLeastNumber',
     },
 ]
+
+export const LANGUAGES = [
+    { code: 'en', label: 'English' },
+    { code: 'az', label: 'Azerbaijan' },
+    { code: 'ru', label: 'Russian' }
+];

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const styles = StyleSheet.create({
     container: {
@@ -8,14 +9,14 @@ export const styles = StyleSheet.create({
     main: {
         color: '#222B45',
         fontSize: 24,
-        fontFamily: 'Euclid-medium',
+        fontFamily: theme.font[500],
         textAlign: 'center'
     },
     child: {
         marginTop: 8,
         color: '#767676',
         fontSize: 14,
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         textAlign: 'center'
     },
     footer: {
@@ -27,11 +28,11 @@ export const styles = StyleSheet.create({
     footerText: {
         color: '#222B45',
         fontSize: 14,
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
     },
     blur: {
         color: '#038BFF',
         fontSize: 14,
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[500],
     }
 })

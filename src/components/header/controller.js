@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native'
-import React from 'react'
 import { MainHead } from './main'
 import { SecondHead } from './second'
 import { styles as controllerStyles } from './styles';

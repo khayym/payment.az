@@ -26,3 +26,5 @@ export const tabOptions = {
     tabBarHideOnKeyboard: true,
     headerShown: false
 }
+
+export const drawerOptins = { drawerType: 'front', drawerStyle: { width: '75%' }, headerShown: false }

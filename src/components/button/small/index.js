@@ -1,4 +1,5 @@
 import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { theme } from '../../../theme/theme';
 
 export const SmallButton = ({ text, callBack, disable }) => {
     return (
@@ -21,7 +22,7 @@ export const secondary = StyleSheet.create({
     },
     text: {
         color: '#038BFF',
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[600],
         alignSelf: 'center',
         fontSize: 14,
         paddingHorizontal: 21,

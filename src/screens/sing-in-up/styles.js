@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const styles = StyleSheet.create({
     container: {
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        fontFamily: 'Euclid-light',
+        fontFamily: theme.font[400],
         color: '#767676',
         fontSize: 14
     },
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         marginTop: 40,
         marginBottom: 16,
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[500],
     },
     buttons: {
         borderColor: 'blue',
@@ -32,7 +33,7 @@ export const styles = StyleSheet.create({
     },
     help: {
         color: '#0095FF',
-        fontFamily: 'Euclid-regular',
+        fontFamily: theme.font[500],
         fontSize: 12,
         position: 'absolute',
         bottom: 10,

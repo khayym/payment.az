@@ -1,4 +1,4 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useState } from 'react'
 import { registerStyles as styles } from '../styles';
 import Texts from '../../../components/text/'
@@ -12,7 +12,10 @@ import axios from 'axios';
 const Registration = () => {
     const { t } = useTranslation()
     const [number, setNumber] = useState('');
-    const [send, setSend] = useState(false);
+    const [error, setError] = useState({
+        code: null,
+        message: null
+    });
     const [wait, setWait] = useState(false);
 
     const headers = {
@@ -25,11 +28,13 @@ const Registration = () => {
     const buttonHandler = async () => {
         const data = { phone: "994" + number }
         setWait(true)
+        setError({ code: null, message: null })
         try {
             const req = await axios.post(REGISTER_API, data);
-            req.status == 200 ? setRegisterIndex(1) : console.log('---');
+            req.status == 200 ? setRegisterIndex(1) : setError({ code: 400, message: t('register:error') })
         } catch (error) {
-            console.log(Object.keys(error), error.message);
+            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('register:alreadyHave') });
+            else if (error.code == 400) setError({ code: 400, message: t('register:error') })
         }
         setWait(false);
     }
@@ -45,7 +50,8 @@ const Registration = () => {
                         setNumber={setNumber}
                         number={number}
                         label={t('singIn:numberLable')}
-                        errorLabel={t('singIn:wrongNumber')}
+                        errorLabel={error.message}
+                        error={error.code}
                     />
                 </View>
                 <View style={styles.button}>
