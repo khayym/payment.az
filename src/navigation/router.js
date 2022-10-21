@@ -21,7 +21,7 @@ const Router = () => {
         >
             <Stack.Navigator>
                 {
-                    !login ?
+                    login ?
                         <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CurtomHeader name={name} /> }} />
                         : <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
                 }

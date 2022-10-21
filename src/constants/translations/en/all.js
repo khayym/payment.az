@@ -47,4 +47,14 @@ export const home = {
     education: 'Education Payments',
     tv: 'TV Payments',
     other: 'Other payments',
+    continue: 'Continue',
+    wrongNumber: 'Wrong number',
+    pay: 'Pay',
+    congratulations: 'Congratulations!',
+    succesPay: 'Your payment has been processed successfully',
+    mobileNumber: 'Mobile number',
+    date: 'Date',
+    amount: 'Amount',
+    end: 'Done',
+    tryAgain: 'Try again'
 }

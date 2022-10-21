@@ -24,7 +24,10 @@ export const tabOptions = {
     tabBarInactiveTintColor: theme.colors.basic600,
     tabBarStyle: styles.tabbar,
     tabBarHideOnKeyboard: true,
-    headerShown: false
+    headerShown: false,
+    tabBarItemStyle: {
+        paddingVertical: 4,
+    }
 }
 
-export const drawerOptins = { drawerType: 'front', drawerStyle: { width: '75%' }, headerShown: false }
+export const drawerOptins = { drawerType: 'front', drawerStyle: { width: '75%' }, headerShown: false, }

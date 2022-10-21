@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import { setDrawerStatus } from "../reducers/drawerReducer";
 import { useEffect } from "react";
 const Tab = createBottomTabNavigator()
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 
 const TabNavigator = (props) => {
     const dispatch = useDispatch();

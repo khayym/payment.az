@@ -48,4 +48,14 @@ export const home = {
     education: 'Təhsil ödənişləri',
     tv: 'Tv ödənişləri',
     other: 'Digər ödənişlər',
+    continue: 'Davam et',
+    wrongNumber: 'Yanlış nömrə',
+    pay: 'Ödə',
+    congratulations: 'Təbriklər!',
+    succesPay: 'Ödənişiniz uğurla həyata keçdi',
+    mobileNumber: 'Mobil nömrə',
+    date: 'Tarix',
+    amount: 'Məbləğ',
+    end: 'Bitdi',
+    tryAgain: 'Yenidən cəhd elə'
 }

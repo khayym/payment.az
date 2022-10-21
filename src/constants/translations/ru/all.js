@@ -49,4 +49,14 @@ export const home = {
     education: 'Стоимость обучения',
     tv: 'Tелевизионные платежи',
     other: 'Другие сборы',
+    continue: 'Продолжать',
+    wrongNumber: 'Неправильный номер',
+    pay: 'Платить',
+    congratulations: 'Поздравляем!',
+    succesPay: 'Ваш платеж успешно обработан',
+    mobileNumber: 'Номер мобильного',
+    date: 'Cвидание',
+    amount: 'Количество',
+    end: 'Конец',
+    tryAgain: 'Попробуйте еще раз'
 }

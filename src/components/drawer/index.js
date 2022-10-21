@@ -10,11 +10,11 @@ const CustomDrawer = () => {
         <View style={styles.container}>
             <View>
                 <OptionComponent icon='light' text={t('drawer:light')} to='Payment' />
-                <OptionComponent icon='support' text={t('drawer:support')} />
-                <OptionComponent icon='setting' text={t('drawer:settings')} />
-                <OptionComponent icon='info' text={t('drawer:info')} />
-                <OptionComponent icon='warning' text={t('drawer:debts')} />
-                <OptionComponent icon='time' text={t('drawer:history')} />
+                <OptionComponent icon='support' text={t('drawer:support')} to='Payment' />
+                <OptionComponent icon='setting' text={t('drawer:settings')} to='Payment' />
+                <OptionComponent icon='info' text={t('drawer:info')} to='Payment' />
+                <OptionComponent icon='warning' text={t('drawer:debts')} to='Payment' />
+                <OptionComponent icon='time' text={t('drawer:history')} to='Payment' />
             </View>
             <View style={styles.langContainer}>
                 <Pressable onPress={() => setLanguage('az')} style={styles.langPressable} ><Text style={[styles.leng, i18n.language == 'az' && { color: '#000' }]}>AZ</Text></Pressable>

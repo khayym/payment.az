@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     controller: {
         container: {
             flex: 1,
+            paddingHorizontal: 18,
         }
     },
 
@@ -24,8 +25,8 @@ export const styles = StyleSheet.create({
 
     second: {
         container: {
-
             flex: 1,
+
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between'
@@ -43,8 +44,8 @@ export const styles = StyleSheet.create({
         container: {
             height: 56,
             backgroundColor: '#fff',
-            paddingHorizontal: 18,
-            // borderWidth: 1,
+            borderBottomColor: '#F1F1F1',
+            borderBottomWidth: 1,
         }
     }
 })

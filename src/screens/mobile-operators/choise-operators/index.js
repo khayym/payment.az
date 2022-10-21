@@ -1,23 +1,40 @@
-import { View, Text, Pressable, Modal, Dimensions } from 'react-native'
-
+import { View } from 'react-native'
+import { useDispatch } from 'react-redux';
+import FrontIcon from '../../../../assets/icons/front.svg';
+import Field from '../../../components/field';
+import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
 const ChoiseMobileOperator = ({ jumpTo }) => {
-    return (
-        <View style={{ flex: 1, }}>
-            {/* <Modal
-                style={{ borderWidth: 1, backgroundColor: 'red' }}
-                animationType="slide"
-                // transparent={true}
-                presentationStyle='fullScreen'
-                visible={true}
-                onRequestClose={() => {
-                    console.log('sdsdsd')
-                }}
-            >
-                <View style={{ backgroundColor: 'red', flex: 1, marginTop: 20, }}>
-                    <Text>modal</Text>
-                </View>
 
-            </Modal> */}
+    const dispatch = useDispatch();
+    const callback = (state) => dispatch(setMontionDeterminer({ screen: 'MobileOperators', value: 1, state: state }));
+
+    return (
+        <View style={{ flex: 1 }}>
+            <Field
+                type='image'
+                text='Azercell'
+                callback={() => callback('Azercell')}
+                left={require('../../../../assets/images/screens/operators/azercell.png')}
+                right={<FrontIcon />}
+                mv={10}
+            />
+            <Field
+                type='image'
+                text='Bakcell'
+                callback={() => callback('Bakcell')}
+                left={require('../../../../assets/images/screens/operators/bakcell.png')}
+                right={<FrontIcon />}
+                mv={10}
+            />
+
+            <Field
+                type='image'
+                text='Nar Mobile'
+                callback={() => callback('Nar Mobile')}
+                left={require('../../../../assets/images/screens/operators/nar.png')}
+                right={<FrontIcon />}
+                mv={10}
+            />
 
         </View >
     )

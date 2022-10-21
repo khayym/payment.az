@@ -1,15 +1,15 @@
 import { useCallback, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import { Box } from '../box'
 import { Search } from '../searchbar'
 import { DATA } from './items';
+import { styles } from './styles';
 
 
 
 const PaymentsBlock = () => {
     const [text, setText] = useState(null);
     const [search, setSearch] = useState(DATA);
-
 
     const filter = useCallback((data) => {
         setText(data);
@@ -31,7 +31,6 @@ const PaymentsBlock = () => {
         }))
     }
 
-
     return (
         <View style={styles.container}>
             <Search text={text} setText={filter} />
@@ -43,9 +42,10 @@ const PaymentsBlock = () => {
                     keyExtractor={item => item.id}
                     numColumns={3}
                     horizontal={false}
-                    columnWrapperStyle={{ justifyContent: 'space-between' }}
-                    contentContainerStyle={{ height: '100%' }}
-                    scrollEnabled={false}
+                    columnWrapperStyle={styles.columWrapperStyle}
+                    contentContainerStyle={styles.contentContainerStyle}
+                    scrollEnabled
+                    showsVerticalScrollIndicator={false}
                 />
             </View>
         </View>
@@ -54,15 +54,3 @@ const PaymentsBlock = () => {
 
 export default PaymentsBlock
 
-const styles = StyleSheet.create({
-    container: {
-
-        borderColor: 'red',
-        marginTop: 50,
-        flex: 1,
-        // backgroundColor: "red"
-    },
-    row: {
-        marginTop: 24,
-    }
-})

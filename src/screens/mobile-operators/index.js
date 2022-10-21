@@ -1,6 +1,8 @@
-import { memo, useState } from 'react'
+import { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { SceneMap, TabView } from 'react-native-tab-view'
+import { useDispatch, useSelector } from 'react-redux';
+import { setMontionDeterminer } from '../../reducers/headerDeterminerReducer';
 import ChoiseMobileOperator from './choise-operators';
 import ConfirmMobileOperaion from './confirm-operation';
 import SetMpbileOperators from './set-numbers';
@@ -13,7 +15,10 @@ const renderScene = SceneMap({
 
 
 const MobileOperators = () => {
-    const [mobileOperatonIndex, setMobileOperatonIndex] = useState(0);
+    // const [mobileOperatonIndex, setMobileOperatonIndex] = useState(0);
+    const dispatch = useDispatch();
+    const { index } = useSelector(state => state.headerMontionIndexes.MobileOperators)
+    const setMobileOperatonIndex = (i) => dispatch(setMontionDeterminer({ screen: 'MobileOperators', value: i }));
 
     const [routes] = useState([
         { key: 'choise_operator_step', title: 'step' },
@@ -22,10 +27,11 @@ const MobileOperators = () => {
     ]);
 
     return (
-        <View style={{ flex: 1, }}>
+        <View style={styles.container}>
             <TabView
-                navigationState={{ index: mobileOperatonIndex, routes }}
+                navigationState={{ index: index, routes }}
                 renderScene={renderScene}
+                sceneContainerStyle={styles.tabView}
                 onIndexChange={setMobileOperatonIndex}
                 renderTabBar={() => null}
                 swipeEnabled={false}
@@ -37,4 +43,15 @@ const MobileOperators = () => {
 
 export default MobileOperators
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    tabView: {
+        backgroundColor: '#b10000',
+        paddingHorizontal: 24,
+        flex: 1,
+        paddingVertical: 14,
+    },
+    container: {
+        flex: 1,
+
+    }
+})
