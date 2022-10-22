@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from "../../theme/theme";
 
 export const setNumbersStyles = StyleSheet.create({
     keyboard: { flex: 1 },
@@ -34,8 +35,46 @@ export const choiseStyle = StyleSheet.create({
 
 export const confirmStyles = StyleSheet.create({
     box: {
-        flex: 0.13,
+        flex: 0.20,
         paddingHorizontal: 24,
         paddingVertical: 14,
+    },
+    keyboard: {
+        flex: 1
+    },
+    container: {
+        flex: 1,
+    },
+    bottomBox: {
+        flex: 1,
+        paddingHorizontal: 24,
+        borderTopLeftRadius: 48,
+        borderTopRightRadius: 48,
+        backgroundColor: '#fff',
+        paddingTop: 5,
+        paddingBottom: 24,
+        justifyContent: 'space-between'
+    },
+    inputBox: {
+
+        alignItems: 'center',
+    },
+    text: {
+        fontFamily: theme.font[400],
+        fontSize: 14,
+    },
+    input: {
+        height: 50, fontSize: 34, fontWeight: '500'
+    },
+    inputContainer: {
+        flexDirection: 'row', alignItems: 'center',
+    },
+    balance: {
+        fontSize: 34, fontWeight: '500',
+    },
+    error: {
+        color: '#FF3D71',
+        fontFamily: theme.font[400],
+        height: 20
     }
 })

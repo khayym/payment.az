@@ -4,8 +4,7 @@ import { theme } from '../../theme/theme'
 export const styles = StyleSheet.create({
     container: {
         height: 48,
-        borderWidth: 1,
-        borderColor: 'red',
+
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -38,7 +37,6 @@ export const styles = StyleSheet.create({
         borderRadius: 800,
     },
     textContainer: {
-        borderWidth: 1,
         textAlign: 'center',
         marginHorizontal: 12,
     }
