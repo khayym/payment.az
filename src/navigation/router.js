@@ -6,7 +6,7 @@ import CurtomHeader from '../components/header';
 import { useContextApi } from '../store/context/ContextApi';
 import SignInScreenNavigator from './SingInNavigator';
 const Stack = createNativeStackNavigator();
-
+import CustomModal from '../components/modal';
 
 const Router = () => {
     const { login } = useContextApi();
@@ -26,6 +26,7 @@ const Router = () => {
                         : <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
                 }
             </Stack.Navigator>
+            <CustomModal />
         </NavigationContainer>
     )
 }

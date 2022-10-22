@@ -56,5 +56,7 @@ export const home = {
     date: 'Date',
     amount: 'Amount',
     end: 'Done',
-    tryAgain: 'Try again'
+    tryAgain: 'Try again',
+    fail: 'Operation failed!',
+    failPay: 'The operation failed, please try again',
 }

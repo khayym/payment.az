@@ -4,6 +4,8 @@ import FrontIcon from '../../../../assets/icons/front.svg';
 import Field from '../../../components/field';
 import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { choiseStyle as styles } from '../styles';
+
+
 const ChoiseMobileOperator = ({ jumpTo }) => {
 
     const dispatch = useDispatch();

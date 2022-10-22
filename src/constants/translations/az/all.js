@@ -53,6 +53,8 @@ export const home = {
     pay: 'Ödə',
     congratulations: 'Təbriklər!',
     succesPay: 'Ödənişiniz uğurla həyata keçdi',
+    fail: 'Uğursuz əməliyyat!',
+    failPay: 'Əməliyyat baş tuta bilmədi, zəhmət olmasa yenidən cəhd edin',
     mobileNumber: 'Mobil nömrə',
     date: 'Tarix',
     amount: 'Məbləğ',

@@ -1,11 +1,13 @@
 import { View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native'
 import Field from '../../../components/field'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { confirmStyles as styles } from '../styles';
 import Button from '../../../components/button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { t } from 'i18next';
+import { modalVisiblityController, setModalContent } from '../../../reducers/modalControllerReducer';
+
 const operators = {
     Azercell: require(`../../../../assets/images/screens/operators/azercell.png`),
     Bakcell: require(`../../../../assets/images/screens/operators/bakcell.png`),
@@ -14,6 +16,7 @@ const operators = {
 
 const ConfirmMobileOperaion = () => {
     const { number, state } = useSelector(state => state.headerMontionIndexes.MobileOperators)
+    const dispatch = useDispatch();
     const bottomOffset = useSafeAreaInsets().top + 40;
     const [value, setValue] = useState('');
     const [wait, setWait] = useState(false);
@@ -24,8 +27,19 @@ const ConfirmMobileOperaion = () => {
         setWait(true);
         if (value > balance) setError('* Kifayet qeder balance yoxdur')
         else {
-            console.log('succes')
-            setError(null)
+            setTimeout(() => {
+                setError(null)
+                dispatch(setModalContent({
+                    status: true,
+                    screen: 'MobileOperators',
+                    content: {
+                        code: t('home:mobileNumber'),
+                        value: `+994 ${number}`,
+                        amount: value
+                    }
+                }))
+                dispatch(modalVisiblityController())
+            }, 1000)
         }
         setTimeout(() => {
             setWait(false);
@@ -67,6 +81,7 @@ const ConfirmMobileOperaion = () => {
                     </View>
                 </View>
             </TouchableWithoutFeedback>
+
         </KeyboardAvoidingView>
     )
 }
