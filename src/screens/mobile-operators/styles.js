@@ -50,13 +50,12 @@ export const confirmStyles = StyleSheet.create({
         paddingHorizontal: 24,
         borderTopLeftRadius: 48,
         borderTopRightRadius: 48,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         paddingTop: 5,
         paddingBottom: 24,
         justifyContent: 'space-between'
     },
     inputBox: {
-
         alignItems: 'center',
     },
     text: {
@@ -64,7 +63,9 @@ export const confirmStyles = StyleSheet.create({
         fontSize: 14,
     },
     input: {
-        height: 50, fontSize: 34, fontWeight: '500'
+        fontSize: 34,
+        fontWeight: '500',
+        textAlign: 'right'
     },
     inputContainer: {
         flexDirection: 'row', alignItems: 'center',

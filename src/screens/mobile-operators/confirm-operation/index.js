@@ -1,4 +1,4 @@
-import { View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native'
 import Field from '../../../components/field'
 import { useSelector } from 'react-redux'
 import { confirmStyles as styles } from '../styles';
@@ -34,8 +34,8 @@ const ConfirmMobileOperaion = () => {
     }
 
     return (
-        <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={bottomOffset}>
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={Platform.OS === "ios" ? bottomOffset : -200}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={{ flex: 1 }}>
                 <View style={styles.container}>
                     <View style={styles.box}>
                         <Field
@@ -54,8 +54,9 @@ const ConfirmMobileOperaion = () => {
                                     onChangeText={setValue}
                                     placeholder='0₼'
                                     style={styles.input}
+                                    keyboardType='number-pad'
                                 />
-                                {value.length > 0 && <Text style={styles.balance}>₼</Text>}
+                                <Text style={styles.balance}>{value.length > 0 && '₼'}</Text>
                             </View>
                             <Text style={styles.text}>{t('home:balance')} {balance}₼</Text>
                         </View>
