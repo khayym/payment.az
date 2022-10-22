@@ -17,7 +17,7 @@ export const SecondHead = ({ routeName }) => {
     // const handledRouteIndex = routersIndexes[routeName]?.index;
 
     const backHandler = () => {
-        if (index > 0) dispatch(setMontionDeterminer({ screen: routeName, value: index - 1, state: null }))
+        if (index > 0) dispatch(setMontionDeterminer({ screen: routeName, value: index - 1, state: index == 2 ? customName : null }))
         else navigation.goBack()
     }
 

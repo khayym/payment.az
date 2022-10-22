@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     MobileOperators: {
         index: 0,
-        state: null
+        state: null,
+        number: null
     }
 }
 
@@ -14,6 +15,7 @@ export const headerMotionDeterminerReducer = createSlice({
         setMontionDeterminer: (state, action) => {
             state[action.payload.screen].index = action.payload.value < 0 ? 0 : action.payload.value
             state[action.payload.screen].state = action.payload.state
+            state[action.payload.screen].number = action.payload.number
         }
     }
 })

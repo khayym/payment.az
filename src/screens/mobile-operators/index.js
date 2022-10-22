@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import { SceneMap, TabView } from 'react-native-tab-view'
 import { useDispatch, useSelector } from 'react-redux';
 import { setMontionDeterminer } from '../../reducers/headerDeterminerReducer';
 import ChoiseMobileOperator from './choise-operators';
 import ConfirmMobileOperaion from './confirm-operation';
 import SetMpbileOperators from './set-numbers';
+import { styles } from './styles';
 
 const renderScene = SceneMap({
     choise_operator_step: ChoiseMobileOperator,
@@ -27,31 +27,19 @@ const MobileOperators = () => {
     ]);
 
     return (
-        <View style={styles.container}>
-            <TabView
-                navigationState={{ index: index, routes }}
-                renderScene={renderScene}
-                sceneContainerStyle={styles.tabView}
-                onIndexChange={setMobileOperatonIndex}
-                renderTabBar={() => null}
-                swipeEnabled={false}
-                lazy
-            />
-        </View>
+        // <View style={styles.container}>
+        <TabView
+            navigationState={{ index: index, routes }}
+            renderScene={renderScene}
+            sceneContainerStyle={styles.tabView}
+            onIndexChange={setMobileOperatonIndex}
+            renderTabBar={() => null}
+            swipeEnabled={false}
+            lazy
+        />
+        // </View>
     )
 }
 
 export default MobileOperators
 
-const styles = StyleSheet.create({
-    tabView: {
-        backgroundColor: '#b10000',
-        paddingHorizontal: 24,
-        flex: 1,
-        paddingVertical: 14,
-    },
-    container: {
-        flex: 1,
-
-    }
-})

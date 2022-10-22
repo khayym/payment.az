@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { View, Text, TextInput, Pressable, } from 'react-native'
 import DownIcon from '../../../assets/icons/input/arrowDown.svg'
 import EditIcon from '../../../assets/icons/input/edit.svg'
@@ -7,16 +7,21 @@ import { styles } from './styles'
 export const PhoneInput = ({ number, setNumber, label, errorLabel, error, edit }) => {
     const [editedNumber, setEditedNumber] = useState('');
     const [active, setActive] = useState(false);
+    const [backIsAction, setBackIsActiove] = useState(false);
     const ref = useRef(null);
 
-    const onChangeNumber = (num) => {
-        if (number.length == 2 && num.length > number.length && num[2] !== ' ') setEditedNumber(num?.replace(/\W/gi, '').replace(/(.{2})/g, '$1 '));
-        else if (number.length == 6 && num.length > number.length && num[6] !== ' ') setEditedNumber(num?.replace(/(.{6})/g, '$1 '));
-        else if (number.length == 8 && num.length > number.length && number[8] !== ' ') setEditedNumber(num?.replace(/(.{9})/g, '$1 '));
-        else setEditedNumber(num)
-
+    const onChangeNumber = useCallback((num) => {
+        if (backIsAction == false) {
+            if (num.length < 4) setEditedNumber(num?.replace(/(.{2})/g, '$1 '));
+            else if (num.length >= 4 && num.length <= 7) setEditedNumber(num?.replace(/(.{6})/g, '$1 '))
+            else if (num.length > 6 && num.length <= 10) setEditedNumber(num?.replace(/(.{9})/g, '$1 '));
+            else setEditedNumber(num)
+        } else {
+            setEditedNumber(num)
+        }
         setNumber(num?.replace(/\s/g, ''))
-    }
+    }, [backIsAction])
+
 
     return (
         <View style={styles.container}>
@@ -30,6 +35,7 @@ export const PhoneInput = ({ number, setNumber, label, errorLabel, error, edit }
                     ref={ref}
                     style={styles.input}
                     onChangeText={onChangeNumber}
+                    onKeyPress={({ nativeEvent }) => setBackIsActiove(nativeEvent.key === 'Backspace')}
                     value={editedNumber}
                     onFocus={() => setActive(true)}
                     onBlur={() => setActive(false)} //when you touch outside the textInput this will call

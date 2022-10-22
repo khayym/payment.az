@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     text: {
-        fontFamily: theme.font[600],
+        fontFamily: theme.font[500],
         fontSize: 16,
     },
     label: {

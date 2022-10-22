@@ -23,7 +23,7 @@ export const tabOptions = {
     tabBarActiveTintColor: theme.colors.black,
     tabBarInactiveTintColor: theme.colors.basic600,
     tabBarStyle: styles.tabbar,
-    tabBarHideOnKeyboard: true,
+    tabBarHideOnKeyboard: Platform.OS == 'ios' ? false : true,
     headerShown: false,
     tabBarItemStyle: {
         paddingVertical: 4,
