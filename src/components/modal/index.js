@@ -19,7 +19,7 @@ const CutomModal = () => {
             <Suspense>
                 <View style={[styles.container, { marginTop: useSafeAreaInsets().top, marginBottom: useSafeAreaInsets().bottom }]}>
                     {
-                        !status ? <Succses /> : <Fail />
+                        status ? <Succses /> : <Fail />
                     }
                 </View>
             </Suspense>
