@@ -5,6 +5,11 @@ const initialState = {
         index: 0,
         state: null,
         number: null
+    },
+    BalanceRouter: {
+        index: 0,
+        state: null,
+        number: null,
     }
 }
 

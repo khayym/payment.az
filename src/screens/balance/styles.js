@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingVertical: 24,
         justifyContent: 'space-between',
-
+    },
+    tabView: {
+        // borderWidth: 1,
+        // borderColor: 'red',
+        flex: 1,
     }
 })

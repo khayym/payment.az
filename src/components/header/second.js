@@ -18,7 +18,7 @@ export const SecondHead = ({ routeName }) => {
 
     const backHandler = () => {
         if (index > 0) dispatch(setMontionDeterminer({ screen: routeName, value: index - 1, state: index == 2 ? customName : null }))
-        else navigation.goBack()
+        else navigation.pop()
     }
 
     return (

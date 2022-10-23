@@ -22,7 +22,8 @@ export const tab = {
 
 export const secondsScreenName = {
     NotficationScreen: 'Notifications',
-    MobileOperators: 'Mobile operators'
+    MobileOperators: 'Mobile operators',
+    BalanceRouter: 'My balance'
 }
 
 export const drawerOptions = {
