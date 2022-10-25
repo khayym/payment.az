@@ -4,10 +4,11 @@ import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer'
 import { styles } from '../styles'
 import { BalanceAdd } from '../balance-add';
 import { useState } from 'react';
+import { CardInfo } from '../card-info';
 
 const renderScene = SceneMap({
     balance_add: BalanceAdd,
-    // confirm_mobile_operation: ConfirmMobileOperaion
+    card_info: CardInfo
 });
 
 
@@ -19,7 +20,7 @@ const BalanceRouter = (pp) => {
 
     const [routes] = useState([
         { key: 'balance_add', title: 'balance_add' },
-        // { key: 'confirm_mobile_operation', title: 'sdfsdfd' },
+        { key: 'card_info', title: 'card_info' },
     ]);
     return (
         <TabView

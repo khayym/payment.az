@@ -1,16 +1,55 @@
-import { View, Text } from 'react-native'
-import { useDispatch } from 'react-redux';
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { useState } from 'react';
+import { View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '../../../components/button';
+import { CreditCartInput } from '../../../components/credit-card';
+import { CvvInput } from '../../../components/credit-card/cvv';
+import { TimeInput } from '../../../components/credit-card/time';
+import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
+// import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { styles } from './styles'
+import { modalVisiblityController, setModalContent } from '../../../reducers/modalControllerReducer';
 
 export const CardInfo = () => {
-
     const dispatch = useDispatch();
-    const callback = () => dispatch(setMontionDeterminer({ screen: 'BalanceRouter', value: 2 }));
+    const [wait, setWait] = useState(false);
+    const mount = useSelector(state => state.headerMontionIndexes.BalanceRouter.number)
+
+    const callback = () => {
+        setWait(true);
+        setTimeout(() => {
+            dispatch(setModalContent({
+                status: true,
+                screen: 'BalanceRouter',
+                content: {
+                    code: 'Kartın nömrəsi',
+                    value: `${number.formated.slice(0, 9)} **** ****`,
+                    amount: mount
+                }
+            }))
+            setWait(false);
+            dispatch(modalVisiblityController())
+        }, 1000)
+    };
+
+    const [number, setNumber] = useState({ formated: null, original: null });
+    const [cvv, setCvv] = useState(null);
+    const [time, setTime] = useState(null);
 
     return (
-        <View>
-            <Text>CardInfo</Text>
-        </View>
+        <KeyboardAvoidWrapper viewStyle={{ flex: 1 }} keyboardStyle={styles.container}>
+            <View style={styles.view}>
+                <View>
+                    <CreditCartInput number={number} setNumber={setNumber} />
+                    <View style={styles.bottomInputs}>
+                        <TimeInput time={time} setTime={setTime} />
+                        <View style={styles.space} />
+                        <CvvInput cvv={cvv} setCvv={setCvv} />
+                    </View>
+                </View>
+                <Button text='Balansı artır' callBack={callback} wait={wait} disable={wait || !time || !cvv || !number} />
+            </View>
+        </KeyboardAvoidWrapper>
     )
 }
 
