@@ -64,3 +64,15 @@ export const home = {
     fail: 'Operation failed!',
     failPay: 'The operation failed, please try again',
 }
+
+
+export const balance = {
+    addBalance: 'Add balance',
+    addingBalance: 'Adding balance',
+    cardNumber: 'Card Number',
+    cardInfo: 'Card Info',
+    cardPleaceholder: 'Enter the card number',
+    incorrentCard: '*Invalid card number',
+    incorrectDate: "*Invalid date",
+    incorrectCvv: '*Invalid CVV'
+}

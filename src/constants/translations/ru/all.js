@@ -65,3 +65,14 @@ export const home = {
     fail: 'Операция не удалась!',
     failPay: 'Операция не удалась, попробуйте еще раз',
 }
+
+export const balance = {
+    addBalance: 'Баланс увеличивается',
+    addingBalance: 'Увеличение баланса',
+    cardNumber: 'Номер карты',
+    cardInfo: 'Информация о карте',
+    cardPleaceholder: 'Введите номер карты',
+    incorrentCard: '*Не верный номер карты',
+    incorrectDate: "*Неверная дата",
+    incorrectCvv: '*Недействительный код CVV'
+}

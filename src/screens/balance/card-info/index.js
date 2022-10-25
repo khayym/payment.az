@@ -9,6 +9,7 @@ import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
 // import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { styles } from './styles'
 import { modalVisiblityController, setModalContent } from '../../../reducers/modalControllerReducer';
+import { t } from 'i18next';
 
 export const CardInfo = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const CardInfo = () => {
                 status: true,
                 screen: 'BalanceRouter',
                 content: {
-                    code: 'Kartın nömrəsi',
+                    code: t("balance:cardNumber"),
                     value: `${number.formated.slice(0, 9)} **** ****`,
                     amount: mount
                 }
@@ -47,7 +48,7 @@ export const CardInfo = () => {
                         <CvvInput cvv={cvv} setCvv={setCvv} />
                     </View>
                 </View>
-                <Button text='Balansı artır' callBack={callback} wait={wait} disable={wait || !time || !cvv || !number} />
+                <Button text={t('balance:addBalance')} callBack={callback} wait={wait} disable={wait || !time || !cvv || !number} />
             </View>
         </KeyboardAvoidWrapper>
     )

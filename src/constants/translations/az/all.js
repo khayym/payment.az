@@ -65,3 +65,14 @@ export const home = {
     end: 'Bitdi',
     tryAgain: 'Yenidən cəhd elə'
 }
+
+export const balance = {
+    addBalance: 'Balansı artır',
+    addingBalance: 'Balansın artırılması',
+    cardNumber: 'Kartı nömrəsi',
+    cardInfo: 'Kart məlumatları',
+    cardPleaceholder: 'Kart nömrəsini daxil edin',
+    incorrentCard: '*Yanlış kart nömrəsi',
+    incorrectDate: "*Yanlış tarix",
+    incorrectCvv: '*Yanlış CVV'
+}

@@ -2,6 +2,7 @@ import { Text, TextInput, View } from 'react-native'
 import { styles } from '../styles';
 import { useState } from 'react'
 import CvvIcon from '../../../../assets/icons/input/cvv.svg';
+import { t } from 'i18next';
 
 export const CvvInput = ({ cvv, setCvv }) => {
     const [active, setActive] = useState(false);
@@ -32,7 +33,7 @@ export const CvvInput = ({ cvv, setCvv }) => {
                 />
                 <CvvIcon />
             </View>
-            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && '*Invalid cvv'}</Text>
+            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && t('balance:incorrectCvv')}</Text>
         </View>
     )
 }

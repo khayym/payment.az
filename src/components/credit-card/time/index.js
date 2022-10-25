@@ -3,6 +3,7 @@ import { styles } from '../styles';
 import { useRef, useState } from 'react'
 import { formatExpiry } from '../../../helpers/credit_card_forrmatter'
 import Calendar from '../../../../assets/icons/input/calendar.svg';
+import { t } from 'i18next';
 
 export const TimeInput = ({ time, setTime }) => {
 
@@ -18,8 +19,6 @@ export const TimeInput = ({ time, setTime }) => {
     const onChangeNumber = (val) => {
         const formated = formatExpiry(val);
         setTime(formated)
-        // const { formatedNumber, type, original } = formatCardNumber(val);
-        // setNumber({ formated: formatedNumber, original })
     }
 
 
@@ -40,7 +39,7 @@ export const TimeInput = ({ time, setTime }) => {
                 />
                 <Calendar />
             </View>
-            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && '*Invalid time'}</Text>
+            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && t('balance:incorrectDate')}</Text>
         </View>
     )
 }

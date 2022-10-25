@@ -17,13 +17,12 @@ export const BalanceAdd = () => {
 
 
     const dispatch = useDispatch();
-    const callback = (state) => dispatch(setMontionDeterminer({ screen: 'BalanceRouter', value: 1, state: 'Kart məlumatları', number: value }));
-
+    const callback = (state) => dispatch(setMontionDeterminer({ screen: 'BalanceRouter', value: 1, state: t('balance:cardInfo'), number: value }));
 
     return (
         <View style={styles.container}>
             <View style={styles.textWrapper}>
-                <Text style={styles.headerText}>Balansin artırılması</Text>
+                <Text style={styles.headerText}>{t('balance:addingBalance')}</Text>
             </View>
             <KeyboardAvoidWrapper viewStyle={styles.view} keyboardStyle={styles.view}>
                 <View style={styles.bottomBox}>

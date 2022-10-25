@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { useState } from 'react'
 import { formatCardNumber } from '../../helpers/credit_card_forrmatter'
 import { cardImage } from '../../constants/credit'
+import { t } from 'i18next';
 
 
 export const CreditCartInput = ({ number, setNumber }) => {
@@ -26,7 +27,7 @@ export const CreditCartInput = ({ number, setNumber }) => {
 
     return (
         <View style={styles.view}>
-            <Text style={styles.label}>Card Number</Text>
+            <Text style={styles.label}>{t('balance:cardNumber')}</Text>
             <View style={[styles.container, active && { borderColor: '#038BFF' }, error && { borderColor: '#FF3D71' }]}>
                 <TextInput
                     keyboardType='number-pad'
@@ -34,14 +35,14 @@ export const CreditCartInput = ({ number, setNumber }) => {
                     value={number.formated}
                     onFocus={() => setActive(true)}
                     onBlur={() => onBlur()} //when you touch outside the textInput this will call
-                    placeholder={'Enter Number'}
+                    placeholder={t('balance:cardPleaceholder')}
                     style={styles.input}
                     maxLength={19}
                     placeholderTextColor={'#8F9BB3'}
                 />
                 {iconType != undefined ? <Image source={cardImage[iconType]} /> : <CardIcon />}
             </View>
-            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && '*Invalid card'}</Text>
+            <Text style={[styles.label, { color: '#FF3D71' }]}>{error && t('balance:incorrentCard')}</Text>
         </View>
     )
 }
