@@ -44,7 +44,8 @@ export const PhoneInput = ({ number, setNumber, label, errorLabel, error, edit }
                     keyboardType='number-pad'
                 />
                 {edit && <Pressable style={styles.arrow} onPress={() => ref?.current?.focus()}>
-                    <EditIcon />
+                    <EditIcon color={error ? "#FF3D71" : active ? '#038BFF' : '#8F9BD3'} />
+                    {/* <EditIcon /> */}
                 </Pressable>}
             </View>
             {error && <Text style={styles.error}>{errorLabel}</Text>}
