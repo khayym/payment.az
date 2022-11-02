@@ -17,5 +17,7 @@ export default {
     secureWeeknes3: 'Strong',
     forgotPasswordScreenHeader: 'I forgot my password',
     forgotPasswordScreenText: 'Enter your number to reset your password',
-    forgotScreenSend: 'Send'
+    forgotScreenSend: 'Send',
+    wrongPasswordOrNumber: 'The password or number you entered is incorrect'
+
 }

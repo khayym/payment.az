@@ -17,5 +17,6 @@ export default {
     secureWeeknes3: 'Сильный',
     forgotPasswordScreenHeader: 'Я забыл мой пароль',
     forgotPasswordScreenText: 'Введите свой номер, чтобы сбросить пароль',
-    forgotScreenSend: 'Отправлять'
+    forgotScreenSend: 'Отправлять',
+    wrongPasswordOrNumber: 'Вы ввели неверный пароль или номер'
 }

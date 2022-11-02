@@ -6,6 +6,8 @@ export const colors = {
     basic700: '#2E3A59',
     basic800: '#222B45',
     basic900: '#192038',
-    background: '#F5F5F5',
-
+    background: '#f8f9fc',
+    blue: '#038BFF',
+    danger500: '#FF3D71',
+    warining500: '#FFAA00',
 }

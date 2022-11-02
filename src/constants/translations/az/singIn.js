@@ -17,5 +17,6 @@ export default {
     secureWeeknes3: 'Güclü',
     forgotPasswordScreenHeader: 'Şifrəmi unutdum',
     forgotPasswordScreenText: 'Şifrəni yeniləmək üçün nömrənizi daxil edin',
-    forgotScreenSend: 'Göndər'
+    forgotScreenSend: 'Göndər',
+    wrongPasswordOrNumber: 'Daxil etdiyiniz şifrə və ya nömrə yalnışdır'
 }
