@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { MainHead } from './main'
 import { SecondHead } from './second'
 import { styles as controllerStyles } from './styles';
@@ -9,7 +9,7 @@ const mainStack = [
     'PaymentScreen',
     'QrScreen',
     'BalanceScreen',
-    'PaymentScreen',
+    'AccountScreen',
 ]
 
 

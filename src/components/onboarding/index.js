@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { View, FlatList, Animated } from 'react-native'
 import { sliders } from '../../constants/constants'
+import { guideRegisterMMKV } from '../../utils/mmvk'
 import Button from '../button'
 import { SmallButton } from '../button/small'
 import { Indicator } from './indicator'
@@ -21,15 +22,23 @@ export const OnBoarding = () => {
         setActiveIndex(viewableItems[0].key);
     }).current
 
-    const nextButtonHandler = () => {
+    const nextButtonHandler = async () => {
         if (activeIndex == 1) slidersRef.current.scrollToIndex({ index: 1 })
-        else navigate('SignInUp')
+        else {
+            navigate('SignInUp')
+            return await guideRegisterMMKV()
+        }
+    }
+
+    const nextButton = async () => {
+        navigate('SignInUp')
+        return await guideRegisterMMKV()
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.buttonWrapper}>
-                {activeIndex < 2 && <SmallButton text={t('welcome:skip')} callBack={() => navigate('SignInUp')} variant='secondary' />}
+                {activeIndex < 2 && <SmallButton text={t('welcome:skip')} callBack={nextButton} variant='secondary' />}
             </View>
             <View style={styles.flatView}>
                 <FlatList

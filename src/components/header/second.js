@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import BackIcon from '../../../assets/icons/drawer/back.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMontionDeterminer } from '../../reducers/headerDeterminerReducer';
+import { useCallback } from 'react';
 
 const styles = secondStyles.second;
 
@@ -16,10 +17,12 @@ export const SecondHead = ({ routeName }) => {
     const customName = useSelector(state => state.headerMontionIndexes[routeName]?.state)
     // const handledRouteIndex = routersIndexes[routeName]?.index;
 
-    const backHandler = () => {
+    const backHandler = useCallback(() => {
         if (index > 0) dispatch(setMontionDeterminer({ screen: routeName, value: index - 1, state: index == 2 ? customName : null }))
-        else navigation.pop()
-    }
+        else {
+            routeName == 'NotficationScreen' ? navigation.goBack() : navigation.pop()
+        }
+    }, [])
 
     return (
         <View style={styles.container}>

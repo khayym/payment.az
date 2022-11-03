@@ -5,15 +5,19 @@ import { useLayoutEffect, useState } from 'react';
 import CurtomHeader from '../components/header';
 import { useContextApi } from '../store/context/ContextApi';
 import SignInScreenNavigator from './SingInNavigator';
-const Stack = createNativeStackNavigator();
 import CustomModal from '../components/modal';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../reducers/userReducer';
+const Stack = createNativeStackNavigator();
 
 const Router = ({ userData }) => {
     const { login, setLogin } = useContextApi();
     const [name, setName] = useState(null);
     const navigationRef = useNavigationContainerRef();
+    const dispatch = useDispatch();
 
     useLayoutEffect(() => {
+        dispatch(setUserData(userData));
         userData !== null ? setLogin(true) : setLogin(false);
     }, [userData])
 
