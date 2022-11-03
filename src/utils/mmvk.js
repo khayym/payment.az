@@ -10,6 +10,16 @@ export const getUserDataMMKV = async () => {
     return data;
 }
 
+export const getRefreshTokenMMKV = async () => {
+    const data = await MMKV.getMapAsync('userData');
+    return data.refresh;
+}
+
+export const getUserAccessTokenMMKV = async () => {
+    const data = await MMKV.getMapAsync('userData');
+    return data.access;
+}
+
 export const guideRegisterMMKV = async () => {
     await MMKV.setBoolAsync('guide', true);
 }
@@ -18,4 +28,15 @@ export const getGuideMMKV = async () => await MMKV.getBoolAsync('guide');
 
 export const cleanMMKV = async () => {
     await MMKV.setMapAsync("userData", null);
+}
+
+export const refreshTokenMMKV = async (access) => {
+    const data = await MMKV.getMapAsync('userData');
+    await MMKV.setMapAsync('userData', { ...data, ...access });
+}
+
+export const updateUserDataMMKV = async (obj) => {
+    const data = await MMKV.getMapAsync('userData');
+    await MMKV.setMapAsync('userData', { ...data, ...obj });
+    return await MMKV.getMapAsync('userData');
 }
