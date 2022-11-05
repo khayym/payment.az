@@ -1,12 +1,14 @@
-import { View, Text } from 'react-native'
-
+import { ScrollView } from 'react-native'
+import { Accordion } from '../../../components/accordion';
+import { faqs } from '../../../constants/faqs';
 
 const AppInfo = () => {
-    console.log('app info render')
     return (
-        <View>
-            <Text>AppInfo</Text>
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "#fff", paddingHorizontal: 16, }}>
+            {
+                faqs.map((item, index) => <Accordion number={`0${index + 1}`} text={item.text} header={item.header} key={index} />)
+            }
+        </ScrollView>
     )
 }
 
