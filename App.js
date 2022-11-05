@@ -2,13 +2,14 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import Router from './src/navigation/router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/constants/IMLocalize';
 import { ContextApiProvider } from './src/store/context/ContextApi';
 import { Provider } from 'react-redux';
 import { store } from './src/store/redux'
+import { getUserDataMMKV } from './src/utils/mmvk';
 SplashScreen.preventAutoHideAsync();
 
 // const headerHeight = useHeaderHeight();
@@ -20,8 +21,11 @@ export default function App() {
     // 'Euclid-semiBold': require('./assets/font/Euclid-Circular-A-SemiBold.ttf'),
     // 'Euclid-bold': require('./assets/font/Euclid-Circular-A-Bold.ttf'),
   });
+  const [userData, setUserData] = useState(null);
 
   const onLayoutRootView = useCallback(async () => {
+    const data = await getUserDataMMKV()
+    setUserData(data);
 
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -38,7 +42,7 @@ export default function App() {
       <Provider store={store}>
         <ContextApiProvider>
           <StatusBar style="auto" />
-          <Router />
+          <Router userData={userData} />
         </ContextApiProvider>
       </Provider>
     </SafeAreaProvider>

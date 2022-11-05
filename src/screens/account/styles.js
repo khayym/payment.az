@@ -66,5 +66,5 @@ export const styles = StyleSheet.create({
         fontFamily: theme.font[500],
         fontSize: 14,
         color: '#FF4B2B'
-    }
+    },
 })

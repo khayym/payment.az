@@ -1,9 +1,8 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
+import { View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useState } from 'react'
 import { passwordGenereateStyle as styles } from '../styles';
 import Texts from '../../../components/text/'
 import Button from '../../../components/button'
-import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
 import { PasswordInput } from '../../../components/password-input';
@@ -26,7 +25,7 @@ const PasswordGenerate = () => {
         }
         try {
             const request = await axios.post(CREATE_USER, data)
-            console.log(request)
+            setLogin(true)
         } catch (err) {
             console.log(err);
         }

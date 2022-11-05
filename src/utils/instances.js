@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH } from '@env';
+import { BASE_URL, TOKEN_REFRESH, UPDATE_USER_API } from '@env';
 import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
@@ -33,4 +33,23 @@ export const getUserInstance = async () => {
     } catch (e) {
         return store.getState().user.userData;
     }
+}
+
+export const updateUserInfoInstance = async (obj) => {
+    const token = await tokenRefreshInstance()
+    const instance = axios.create({
+        baseURL: BASE_URL,
+        timeout: 5000,
+        headers: { 'Authorization': 'Bearer ' + token },
+    });
+
+    try {
+        const res = await instance.put('update-user/', obj)
+        const data = await updateUserDataMMKV(res.data);
+        store.dispatch(setUserData(data));
+        return store.getState().user.userData;
+    } catch (e) {
+        return store.getState().user.userData;
+    }
+
 }

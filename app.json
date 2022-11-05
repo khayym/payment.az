@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.khayym.payment.az"
@@ -35,6 +33,14 @@
       "eas": {
         "projectId": "3e912134-d65b-4cfc-b8b1-789c082de8f8"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your app."
+        }
+      ]
+    ]
   }
 }

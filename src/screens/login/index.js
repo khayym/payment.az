@@ -10,6 +10,7 @@ import { styles } from './styles';
 import { useContextApi } from '../../store/context/ContextApi';
 import { LOGIN } from '@env';
 import axios from 'axios';
+import { registerUserDataMMKV } from '../../utils/mmvk';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
@@ -25,15 +26,12 @@ export const LogIn = () => {
         const data = { phone: "994" + number, password: text }
         try {
             const req = await axios.post(LOGIN, data);
-            req.status == 200 ? setLogin(true) : setError({ code: 400, message: t('register:error') })
+            req.status == 200 ? await registerUserDataMMKV(req.data) : setError({ code: 400, message: t('singIn:wrongPasswordOrNumber') })
+            setLogin(true);
         } catch (error) {
-            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('register:alreadyHave') });
-            else if (error.code == 400) setError({ code: 400, message: t('register:error') })
+            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('singIn:wrongPasswordOrNumber') });
+            else if (error.code == 400) setError({ code: 400, message: t('singIn:wrongPasswordOrNumber') })
         }
-
-        // setText('')
-        // setNumber('')
-        // console.log(data)
         setWait(false)
     }
 
@@ -63,7 +61,7 @@ export const LogIn = () => {
                         setReady={setReady}
                     // withSecure
                     />
-                    <Text>{error.message}</Text>
+                    <Text style={styles.error}>{error.message}</Text>
                     <View style={{ height: 48, marginTop: 48, }}>
                         <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
                     </View>

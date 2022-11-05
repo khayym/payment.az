@@ -1,10 +1,11 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { View, Text, TextInput, Pressable, } from 'react-native'
 import DownIcon from '../../../assets/icons/input/arrowDown.svg'
 import EditIcon from '../../../assets/icons/input/edit.svg'
 import { styles } from './styles'
 
 export const PhoneInput = ({ number, setNumber, label, errorLabel, error, edit }) => {
+
     const [editedNumber, setEditedNumber] = useState('');
     const [active, setActive] = useState(false);
     const [backIsAction, setBackIsActiove] = useState(false);
