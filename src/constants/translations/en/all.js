@@ -76,3 +76,25 @@ export const balance = {
     incorrectDate: "*Invalid date",
     incorrectCvv: '*Invalid CVV'
 }
+
+export const profile = {
+    userInfo: 'Personal Information',
+    security: 'Security',
+    infoApp: 'About App',
+    policy: 'Privacy Policy',
+    logOut: 'Log Out',
+    // -- user info section
+    name: 'Name',
+    surname: 'Surname',
+    number: 'Phone number',
+    email: "E-mail",
+    myAccount: 'My Account',
+    yourSurname: 'Surname',
+    yourName: 'Your Name',
+    // -- security
+    resetPassword: 'Reset Password',
+    currnetPassword: 'Current password',
+    newPassword: 'New password',
+    cunfirmNewPassword: 'Repeat new password',
+    ok: 'OK',
+}

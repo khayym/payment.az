@@ -4,6 +4,7 @@ import { PasswordInput } from '../../../components/password-input'
 import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
 import Button from '../../../components/button';
 import { styles } from './styles';
+import { t } from 'i18next';
 
 
 const UserSecurity = () => {
@@ -36,19 +37,25 @@ const UserSecurity = () => {
         }
     }
 
+    // resetPassword: 'Şifrəni yenilə',
+    // currnetPassword: 'Cari şifrə',
+    // newPassword: 'Yeni şifrə',
+    // cunfirmNewPassword: 'Yeni şifrənin təkrarı',
+    // ok: 'Təsdiq et',
+
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Şifrəni yenilə</Text>
+            <Text style={styles.text}>{t('profile:resetPassword')}</Text>
             <KeyboardAvoidWrapper keyboardStyle={styles.avoid} viewStyle={{ flex: 1 }}>
                 <PasswordInput
-                    label={'Cari şifrə'}
+                    label={t('profile:currnetPassword')}
                     text={oldPassword}
                     setText={setOldPassword}
                     ready={ready}
                     setReady={setReady}
                 />
                 <PasswordInput
-                    label={'Yeni şifrə'}
+                    label={t('profile:newPassword')}
                     text={newPassword}
                     setText={setNewPassword}
                     ready={ready}
@@ -57,7 +64,7 @@ const UserSecurity = () => {
                     withSecure={true}
                 />
                 <PasswordInput
-                    label={'Yeni şifrənin təkrarı'}
+                    label={t('profile:cunfirmNewPassword')}
                     text={confirmPassword}
                     setText={setConfirmPassword}
                     ready={ready}
@@ -65,7 +72,7 @@ const UserSecurity = () => {
                     setReady={setReady}
                     custom={{ marginTop: 32, marginBottom: 40, }}
                 />
-                <Button text={'OK'} callBack={handleButtonPress} />
+                <Button text={t('profile:ok')} callBack={handleButtonPress} />
             </KeyboardAvoidWrapper>
 
         </View>

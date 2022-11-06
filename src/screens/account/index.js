@@ -7,6 +7,7 @@ import { OPTIONS } from '../../constants/profile';
 import { cleanMMKV } from '../../utils/mmvk';
 import { useContextApi } from '../../store/context/ContextApi';
 import { useState } from 'react';
+import { t } from 'i18next';
 
 
 export const AccountScreen = () => {
@@ -32,7 +33,7 @@ export const AccountScreen = () => {
                 }
                 <TouchableOpacity style={styles.logout} onPress={handleLogOut}>
                     <LogoutIcon />
-                    <Text style={styles.logtext}>Log Out</Text>
+                    <Text style={styles.logtext}>{t('profile:logOut')}</Text>
                 </TouchableOpacity>
             </View>
 

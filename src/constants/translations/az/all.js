@@ -76,3 +76,25 @@ export const balance = {
     incorrectDate: "*Yanlış tarix",
     incorrectCvv: '*Yanlış CVV'
 }
+
+export const profile = {
+    userInfo: 'Şəxsi məlumatlar',
+    security: 'Təhlükəsizlik',
+    infoApp: 'Tətbiq haqqında',
+    policy: 'Privacy Policy',
+    logOut: 'Log Out',
+    // -- user info section
+    name: 'Ad',
+    surname: 'Soyad',
+    number: 'Telefon nömrəsi',
+    email: "E-mail",
+    myAccount: 'Hesabım',
+    yourSurname: 'Soyadın',
+    yourName: 'Adın',
+    // -- security
+    resetPassword: 'Şifrəni yenilə',
+    currnetPassword: 'Cari şifrə',
+    newPassword: 'Yeni şifrə',
+    cunfirmNewPassword: 'Yeni şifrənin təkrarı',
+    ok: 'Təsdiq et',
+}

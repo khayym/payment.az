@@ -1,15 +1,14 @@
-import { useState } from 'react'
 import { ActivityIndicator, Image, Pressable, View } from 'react-native'
 import { Input } from '../../../components/text-input'
 import AddIcon from '../../../../assets/icons/profile/add.svg';
-// import { PhoneInput } from '../../../components/phone-input';
 import { NumInput } from './number';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { styles } from './styles';
 import { getUserInstance, updateUserInfoInstance } from '../../../utils/instances';
 import * as ImagePicker from 'expo-image-picker';
 import { updateUserDataMMKV } from '../../../utils/mmvk';
 import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
+import { t } from 'i18next';
 
 const UserInfo = () => {
     // const { userData } = useSelector(state => state.user);
@@ -67,22 +66,22 @@ const UserInfo = () => {
                 value={userData?.first_name}
                 setValue={(val) => setUserData({ ...userData, first_name: val })}
                 onBlur={handleIputChanges}
-                label='Ad'
+                label={t('profile:name')}
                 customStyle={{ marginBottom: 32 }}
-                placeholder={'Your name'}
+                placeholder={t('profile:yourName')}
             />
             <Input
                 value={userData?.last_name}
                 onBlur={handleIputChanges}
                 setValue={(val) => setUserData({ ...userData, last_name: val })}
-                label='Soyad'
+                label={t('profile:surname')}
                 customStyle={{ marginBottom: 32 }}
-                placeholder={"Your surname"}
+                placeholder={t('profile:yourSurname')}
             />
             <NumInput
                 number={userData?.phone.slice(-9)}
                 setNumber={(val) => setUserData({ ...userData, phone: val })}
-                label='Number'
+                label={t('profile:number')}
                 onBlur={handleIputChanges}
                 customStyle={{ marginBottom: 32 }}
             />
@@ -90,7 +89,7 @@ const UserInfo = () => {
                 onBlur={handleIputChanges}
                 value={userData?.email}
                 setValue={(val) => setUserData({ ...userData, email: val })}
-                label='Email'
+                label={t('profile:email')}
                 customStyle={{ marginBottom: 32 }}
                 placeholder={'user@example.com'} />
 

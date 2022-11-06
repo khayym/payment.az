@@ -5,22 +5,22 @@ import PolicyIcon from '../../assets/icons/profile/policy.svg';
 
 export const OPTIONS = [
     {
-        name: 'Şəxsi məlumatlar',
+        name: 'profile:userInfo',
         href: 'UserInfoScreen',
         icon: <UserIcon />
     },
     {
-        name: 'Təhlükəsizlik',
+        name: 'profile:security',
         href: 'UserSecurityScreen',
         icon: <LockIcon />
     },
     {
-        name: 'Tətbiq haqqında',
+        name: 'profile:infoApp',
         href: 'AppInfoScreen',
         icon: <QuestionIcon />
     },
     {
-        name: 'Privacy Policy',
+        name: 'profile:policy',
         href: 'PolicyScreen',
         icon: <PolicyIcon />
     }

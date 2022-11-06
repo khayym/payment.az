@@ -76,3 +76,25 @@ export const balance = {
     incorrectDate: "*Неверная дата",
     incorrectCvv: '*Недействительный код CVV'
 }
+
+export const profile = {
+    userInfo: 'Личная информация',
+    security: 'Безопасность',
+    infoApp: 'О приложении',
+    policy: 'Политика конфиденциальности',
+    logOut: 'Выход',
+    // -- user info section
+    name: 'Имя',
+    surname: 'Фамилия',
+    number: 'Номер телефона',
+    email: "Электронная почта",
+    myAccount: 'Мой аккаунт',
+    yourSurname: 'Фамилия',
+    yourName: 'Ваше имя',
+    // -- security
+    resetPassword: 'Сбросить пароль',
+    currnetPassword: 'Текущий пароль',
+    newPassword: 'Новый пароль',
+    cunfirmNewPassword: 'Повторите новый пароль',
+    ok: 'Подтвердить',
+}
