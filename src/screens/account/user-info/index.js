@@ -63,7 +63,6 @@ const UserInfo = () => {
                     </Pressable>
                 </View>
             </View>
-            {/* <Pressable style={{ borderWidth: 1, width: 50, height: 50 }} onPress={() => instance.put('update-user/').then(tt => console.log({ tt }))} /> */}
             <Input
                 value={userData?.first_name}
                 setValue={(val) => setUserData({ ...userData, first_name: val })}

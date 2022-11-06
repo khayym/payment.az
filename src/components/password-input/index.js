@@ -6,7 +6,7 @@ import { styles } from './styles'
 import { useTogglePasswordVisibility } from '../../hooks/useTogglePasswordVisibility';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const PasswordInput = ({ label, custom, rightLabel, rightLabelText, rightLabelCallback, withSecure, ready, setReady, setText, text }) => {
+export const PasswordInput = ({ label, custom, rightLabel, rightLabelText, rightLabelCallback, withSecure, ready, setReady, setText, text, error, errorMessage }) => {
     const { passwordVisibility, rightIcon, handlePasswordVisibility } = useTogglePasswordVisibility();
     const [active, setActive] = useState(false);
     const ref = useRef(null);
@@ -16,16 +16,16 @@ export const PasswordInput = ({ label, custom, rightLabel, rightLabelText, right
     return (
         <View style={[styles.container, custom && custom]}>
             <View style={styles.lableView}>
-                <Text style={styles.lable}>{label}</Text>
+                <Text style={[styles.lable, errorMessage && { color: '#FF3D71' }]}>{errorMessage ? errorMessage : label}</Text>
                 {rightLabel && <TouchableOpacity onPress={() => rightLabelCallback()}>
                     <Text style={styles.endLabel}>{rightLabelText}</Text>
                 </TouchableOpacity>
                 }
             </View>
-            <View style={[styles.inputContainer, active && { borderColor: '#038BFF' }]}>
+            <View style={[styles.inputContainer, active && { borderColor: '#038BFF' }, error && { borderColor: '#FF3D71' }]}>
                 <TextInput
                     ref={ref}
-                    style={[styles.input]}
+                    style={[styles.input, error && { color: '#FF3D71' }]}
                     onChangeText={setText}
                     placeholderTextColor='#8F9BB3'
                     value={text}

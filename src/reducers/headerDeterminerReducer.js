@@ -10,6 +10,26 @@ const initialState = {
         index: 0,
         state: null,
         number: null,
+    },
+    UserInfoScreen: {
+        index: 0,
+        state: null,
+        number: null
+    },
+    UserSecurityScreen: {
+        index: 0,
+        state: null,
+        number: null
+    },
+    AppInfoScreen: {
+        index: 0,
+        state: null,
+        number: null
+    },
+    PolicyScreen: {
+        index: 0,
+        state: null,
+        number: null
     }
 }
 

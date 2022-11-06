@@ -10,7 +10,6 @@ import { useCallback } from 'react';
 const styles = secondStyles.second;
 
 export const SecondHead = ({ routeName }) => {
-
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const index = useSelector(state => state.headerMontionIndexes[routeName]?.index)

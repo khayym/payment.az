@@ -1,5 +1,4 @@
 import { View, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native'
-import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const KeyboardAvoidWrapper = ({ children, keyboardStyle, viewStyle }) => {

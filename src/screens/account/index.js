@@ -15,7 +15,6 @@ export const AccountScreen = () => {
     const { setLogin } = useContextApi();
     const [image, setImage] = useState(null);
 
-
     const handleLogOut = async () => {
         await cleanMMKV();
         setLogin(false);
