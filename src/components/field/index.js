@@ -4,7 +4,7 @@ import { styles } from './styles'
 
 const Field = ({ left, right, text, label, callback, mv, type = 'icon' }) => {
     return (
-        <TouchableOpacity style={[styles.container, { marginVertical: mv }]} onPress={callback} activeOpacity={0.6}>
+        <TouchableOpacity style={[styles.container, { marginVertical: mv, }]} onPress={callback} activeOpacity={0.6}>
             <View style={styles.left}>
                 <View style={styles.leftImgContainer}>
                     {

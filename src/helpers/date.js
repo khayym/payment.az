@@ -10,3 +10,15 @@ export const date = () => {
         minut: date.getMinutes(),
     }
 }
+const currentDate = new Date().toLocaleDateString();
+const splitedNewDate = currentDate?.split('/');
+
+export const dateFixer = (date) => {
+    const splitedOldDate = date?.split('/');
+
+    if (currentDate === date) {
+        return 'Today'
+    } else if (splitedNewDate[0] == splitedOldDate[0] && splitedNewDate[1] == parseInt(splitedOldDate[1]) + 1 && splitedOldDate[2] == splitedOldDate[2]) {
+        return 'Yesteday';
+    } else return date;
+}

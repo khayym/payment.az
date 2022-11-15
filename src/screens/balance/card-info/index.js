@@ -25,7 +25,10 @@ export const CardInfo = () => {
                 content: {
                     code: t("balance:cardNumber"),
                     value: `${number.formated.slice(0, 9)} **** ****`,
-                    amount: mount
+                    amount: mount,
+                    organization: 'Balanca artirilmasi',
+                    group: "Other",
+                    image: 'balance',
                 }
             }))
             setWait(false);

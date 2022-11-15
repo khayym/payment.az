@@ -8,9 +8,11 @@ import SignInScreenNavigator from './SingInNavigator';
 import CustomModal from '../components/modal';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../reducers/userReducer';
+import { addHistory } from '../reducers/modalControllerReducer';
+
 const Stack = createNativeStackNavigator();
 
-const Router = ({ userData }) => {
+const Router = ({ userData, paymentsHistory }) => {
     const { login, setLogin } = useContextApi();
     const [name, setName] = useState(null);
     const navigationRef = useNavigationContainerRef();
@@ -18,6 +20,7 @@ const Router = ({ userData }) => {
 
     useLayoutEffect(() => {
         dispatch(setUserData(userData));
+        dispatch(addHistory(paymentsHistory))
         userData !== null ? setLogin(true) : setLogin(false);
     }, [userData])
 

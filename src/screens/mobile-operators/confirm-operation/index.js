@@ -9,10 +9,11 @@ import { t } from 'i18next';
 import { modalVisiblityController, setModalContent } from '../../../reducers/modalControllerReducer';
 
 const operators = {
-    Azercell: require(`../../../../assets/images/screens/operators/azercell.png`),
-    Bakcell: require(`../../../../assets/images/screens/operators/bakcell.png`),
+    "Azercell": require(`../../../../assets/images/screens/operators/azercell.png`),
+    "Bakcell": require(`../../../../assets/images/screens/operators/bakcell.png`),
     'Nar Mobile': require(`../../../../assets/images/screens/operators/nar.png`),
 }
+
 
 const ConfirmMobileOperaion = () => {
     const { number, state } = useSelector(state => state.headerMontionIndexes.MobileOperators)
@@ -35,7 +36,10 @@ const ConfirmMobileOperaion = () => {
                     content: {
                         code: t('home:mobileNumber'),
                         value: `+994 ${number}`,
-                        amount: value
+                        amount: value,
+                        organization: state,
+                        group: 'MobileOperators',
+                        image: state
                     }
                 }))
                 dispatch(modalVisiblityController())

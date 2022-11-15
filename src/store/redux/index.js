@@ -11,6 +11,6 @@ export const store = configureStore({
         headerMontionIndexes: headerMotionDeterminerReducer,
         modalController: modalControllerReducer,
         categories: categoriesReducer,
-        user: userReducer
+        user: userReducer,
     },
 })

@@ -8,16 +8,19 @@ import { cleanMMKV } from '../../utils/mmvk';
 import { useContextApi } from '../../store/context/ContextApi';
 import { useState } from 'react';
 import { t } from 'i18next';
-
+import { useDispatch } from 'react-redux';
+import { clearHistory } from '../../reducers/modalControllerReducer';
 
 export const AccountScreen = () => {
     const position = Dimensions.get('window').height / 1.45 - useSafeAreaInsets().bottom - 20
     const martgin = (position * 14) / 100
     const { setLogin } = useContextApi();
     const [image, setImage] = useState(null);
+    const dispatch = useDispatch();
 
     const handleLogOut = async () => {
         await cleanMMKV();
+        dispatch(clearHistory())
         setLogin(false);
     }
 

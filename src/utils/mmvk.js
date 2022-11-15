@@ -28,6 +28,7 @@ export const getGuideMMKV = async () => await MMKV.getBoolAsync('guide');
 
 export const cleanMMKV = async () => {
     await MMKV.setMapAsync("userData", null);
+    await MMKV.setArrayAsync('payments', []);;
 }
 
 export const refreshTokenMMKV = async (access) => {
@@ -40,3 +41,11 @@ export const updateUserDataMMKV = async (obj) => {
     await MMKV.setMapAsync('userData', { ...data, ...obj });
     return await MMKV.getMapAsync('userData');
 }
+
+export const registerPaymentsLogsMMKV = async (obj) => {
+    const data = await MMKV.getArrayAsync('payments');
+    const itrabel = data ?? [];
+    await MMKV.setArrayAsync('payments', [obj, ...itrabel]);
+}
+
+export const getUserPaymentHistoryMMKV = async () => await MMKV.getArrayAsync('payments');

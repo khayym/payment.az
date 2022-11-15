@@ -9,7 +9,7 @@ import './src/constants/IMLocalize';
 import { ContextApiProvider } from './src/store/context/ContextApi';
 import { Provider } from 'react-redux';
 import { store } from './src/store/redux'
-import { getUserDataMMKV } from './src/utils/mmvk';
+import { getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmvk';
 SplashScreen.preventAutoHideAsync();
 
 // const headerHeight = useHeaderHeight();
@@ -22,10 +22,13 @@ export default function App() {
     // 'Euclid-bold': require('./assets/font/Euclid-Circular-A-Bold.ttf'),
   });
   const [userData, setUserData] = useState(null);
+  const [paymentsHistory, setPaymentsHistory] = useState([]);
 
   const onLayoutRootView = useCallback(async () => {
     const data = await getUserDataMMKV()
+    const payments = await getUserPaymentHistoryMMKV();
     setUserData(data);
+    setPaymentsHistory(payments);
 
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -42,7 +45,7 @@ export default function App() {
       <Provider store={store}>
         <ContextApiProvider>
           <StatusBar style="auto" />
-          <Router userData={userData} />
+          <Router userData={userData} paymentsHistory={paymentsHistory} />
         </ContextApiProvider>
       </Provider>
     </SafeAreaProvider>

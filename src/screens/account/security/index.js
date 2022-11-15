@@ -28,12 +28,6 @@ const UserSecurity = () => {
         else {
             setError(false);
             setErrorMessage(null);
-            console.log({
-                oldPassword,
-                newPassword,
-                confirmPassword,
-                ready
-            })
         }
     }
 
