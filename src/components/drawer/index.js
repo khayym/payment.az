@@ -11,8 +11,8 @@ const CustomDrawer = () => {
             <View>
                 <OptionComponent icon='light' text={t('drawer:light')} to='Payment' />
                 <OptionComponent icon='support' text={t('drawer:support')} to='Payment' />
-                <OptionComponent icon='setting' text={t('drawer:settings')} to='Payment' />
-                <OptionComponent icon='info' text={t('drawer:info')} to='Payment' />
+                <OptionComponent icon='setting' text={t('drawer:settings')} to='Account' />
+                <OptionComponent icon='info' text={t('drawer:info')} to='Account' />
                 <OptionComponent icon='warning' text={t('drawer:debts')} to='Payment' />
                 <OptionComponent icon='time' text={t('drawer:history')} to='Payment' />
             </View>
