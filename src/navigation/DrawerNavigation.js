@@ -1,9 +1,11 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from '../components/drawer'
-import { Notfication } from "../screens/notfication";
+import { Notification } from "../screens/notfication";
 import { drawerOptins } from "./styles";
 import TabNavigator from "./TabNavigation";
 import NewsExplorer from '../screens/news/NewsExplorer';
+import Support from "../screens/support";
+import Chat from "../screens/chat";
 
 const Drawer = createDrawerNavigator();
 
@@ -12,8 +14,10 @@ const DrawerNavigation = () => {
     return (
         <Drawer.Navigator drawerContent={CustomDrawer} screenOptions={drawerOptins}>
             <Drawer.Screen name="Feed" component={TabNavigator} options={{ sceneContainerStyle: { backgroundColor: '#fff' } }} />
-            <Drawer.Screen name="NotficationScreen" component={Notfication} />
+            <Drawer.Screen name="NotficationScreen" component={Notification} />
             <Drawer.Screen name="NewsExplorer" component={NewsExplorer} />
+            <Drawer.Screen name="Support" component={Support} />
+            <Drawer.Screen name="Chat" component={Chat} />
         </Drawer.Navigator>
     );
 }

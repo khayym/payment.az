@@ -6,7 +6,7 @@ import Button from '../../../components/button'
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
 import { PasswordInput } from '../../../components/password-input';
-import { CREATE_USER } from '@env';
+import { CREATE_USER } from '../../../constants/api';
 import axios from 'axios';
 
 const PasswordGenerate = () => {

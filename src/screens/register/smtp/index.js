@@ -9,7 +9,7 @@ import {
 } from 'react-native-confirmation-code-field';
 import Button from '../../../components/button';
 import Texts from '../../../components/text/'
-import { VERIFY_OTP } from '@env';
+import { VERIFY_OTP } from '../../../constants/api';
 import axios from 'axios';
 import { useContextApi } from '../../../store/context/ContextApi';
 import { theme } from '../../../theme/theme';

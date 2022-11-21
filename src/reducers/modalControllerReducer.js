@@ -62,7 +62,7 @@ export const modalControllerReducer = createSlice({
             }
         },
         addHistory: (state, action) => {
-            state.history = [...action.payload, ...state.history];
+            state.history = [...action?.payload, ...state?.history];
         },
         clearHistory: (state) => {
             state.history = [];

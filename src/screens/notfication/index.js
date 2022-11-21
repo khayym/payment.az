@@ -3,7 +3,7 @@ import Filed from './filed'
 import { styles } from './styles'
 import Navbar from './navbar'
 
-export const Notfication = () => {
+export const Notification = () => {
     return (
         <View style={styles.container}>
             <Navbar />

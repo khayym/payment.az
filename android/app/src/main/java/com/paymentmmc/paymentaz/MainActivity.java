@@ -1,4 +1,4 @@
-package com.khayym.payment.az;
+package com.paymentmmc.paymentaz;
 
 import android.os.Build;
 import android.os.Bundle;

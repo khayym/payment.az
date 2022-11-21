@@ -26,7 +26,7 @@ export default function App() {
 
   const onLayoutRootView = useCallback(async () => {
     const data = await getUserDataMMKV()
-    const payments = await getUserPaymentHistoryMMKV();
+    const payments = await getUserPaymentHistoryMMKV() ?? [];
     setUserData(data);
     setPaymentsHistory(payments);
 

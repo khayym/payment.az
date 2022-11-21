@@ -19,7 +19,7 @@ export const SecondHead = ({ routeName }) => {
     const backHandler = useCallback(() => {
         if (index > 0) dispatch(setMontionDeterminer({ screen: routeName, value: index - 1, state: index == 2 ? customName : null }))
         else {
-            routeName == 'NotficationScreen' ? navigation.goBack() : navigation.pop()
+            routeName == 'NotficationScreen' || 'Chat' ? navigation.goBack() : navigation.pop()
         }
     }, [])
 

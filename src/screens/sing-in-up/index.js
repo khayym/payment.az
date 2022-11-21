@@ -11,7 +11,7 @@ const SignInUp = ({ navigation }) => {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
                 <View style={styles.view} >
-                    <Image source={require('../../../assets/splash.png')} style={styles.img} resizeMode='contain' />
+                    <Image source={require('../../../assets/paymentaz-logo.png')} style={styles.img} resizeMode='contain' />
                     <Text style={styles.title}>{t('welcome:singInHeadText')}</Text>
                     <Text style={styles.text}>{t('welcome:singInContent')}</Text>
                 </View>

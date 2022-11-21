@@ -6,8 +6,8 @@ import Button from '../../../components/button'
 import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
-import { REGISTER_API } from '@env';
 import axios from 'axios';
+import { REGISTER_API } from '../../../constants/api';
 
 const Registration = () => {
     const { t } = useTranslation()

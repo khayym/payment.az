@@ -23,7 +23,7 @@ export const Box = ({ item, index }) => {
     const { navigate } = useNavigation();
     // console.log(item.category_link, '---> ', navHrefs[item.category_link])
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.5} onPress={() => navigate(navHrefs[item.category_link])}>
+        <TouchableOpacity style={styles.container} activeOpacity={0.5} onPress={() => navigate(navHrefs[item.category_link])} disabled={navHrefs[item.category_link] !== 'MobileOperators'}>
             <View style={styles.iconBox}>
                 {icons[item.title]}
             </View>

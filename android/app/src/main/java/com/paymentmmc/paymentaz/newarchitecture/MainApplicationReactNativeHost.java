@@ -1,4 +1,4 @@
-package com.khayym.payment.az.newarchitecture;
+package com.paymentmmc.paymentaz.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.khayym.payment.az.BuildConfig;
-import com.khayym.payment.az.newarchitecture.components.MainComponentsRegistry;
-import com.khayym.payment.az.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.paymentmmc.paymentaz.BuildConfig;
+import com.paymentmmc.paymentaz.newarchitecture.components.MainComponentsRegistry;
+import com.paymentmmc.paymentaz.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -10,7 +10,7 @@ const CustomDrawer = () => {
         <View style={styles.container}>
             <View>
                 <OptionComponent icon='light' text={t('drawer:light')} to='Payment' />
-                <OptionComponent icon='support' text={t('drawer:support')} to='Payment' />
+                <OptionComponent icon='support' text={t('drawer:support')} to='Support' />
                 <OptionComponent icon='setting' text={t('drawer:settings')} to='Account' />
                 <OptionComponent icon='info' text={t('drawer:info')} to='Account' />
                 <OptionComponent icon='warning' text={t('drawer:debts')} to='Payment' />

@@ -1,4 +1,4 @@
-package com.khayym.payment.az.newarchitecture.modules;
+package com.paymentmmc.paymentaz.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

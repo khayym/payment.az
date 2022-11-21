@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, UPDATE_USER_API } from '@env';
+import { BASE_URL, TOKEN_REFRESH, UPDATE_USER_API } from '../constants/api';
 import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
