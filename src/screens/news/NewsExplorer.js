@@ -5,13 +5,14 @@ import ReadNews from "./news-read";
 
 const Stack = createNativeStackNavigator();
 
-const NewsExplorer = () => {
+const NewsExplorer = ({ route }) => {
 
     return (
         <Stack.Navigator>
             <Stack.Screen
                 name="NewsScreen"
                 component={News}
+                initialParams={route.params}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
