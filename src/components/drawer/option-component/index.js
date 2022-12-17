@@ -6,11 +6,13 @@ import Setting from '../../../../assets/icons/drawer/setting.svg';
 import Support from '../../../../assets/icons/drawer/support.svg';
 import Time from '../../../../assets/icons/drawer/time.svg';
 import Warning from '../../../../assets/icons/drawer/warning.svg';
+import Home from '../../../../assets/icons/drawer/home.svg';
 import { styles } from './styles';
 
 const icons = {
     info: <Info />,
     light: <Light />,
+    home: <Home />,
     setting: <Setting />,
     support: <Support />,
     time: <Time />,

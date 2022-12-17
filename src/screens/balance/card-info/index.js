@@ -6,7 +6,7 @@ import { CreditCartInput } from '../../../components/credit-card';
 import { CvvInput } from '../../../components/credit-card/cvv';
 import { TimeInput } from '../../../components/credit-card/time';
 import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
-// import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+// import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { styles } from './styles'
 import { modalVisiblityController, setModalContent } from '../../../reducers/modalControllerReducer';
 import { t } from 'i18next';
@@ -14,7 +14,7 @@ import { t } from 'i18next';
 export const CardInfo = () => {
     const dispatch = useDispatch();
     const [wait, setWait] = useState(false);
-    const mount = useSelector(state => state.headerMontionIndexes.BalanceRouter.number)
+    const mount = useSelector(state => state.headerMonitionIndexes.BalanceRouter.number)
 
     const callback = () => {
         setWait(true);

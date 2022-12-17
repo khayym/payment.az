@@ -30,23 +30,23 @@ const UserInfo = () => {
         }
     };
 
-    const handleIputChanges = async () => {
+    const handleInputChanges = async () => {
         const userObject = {
             first_name: userData.first_name,
             last_name: userData.last_name,
             phone: userData.phone,
             email: userData.email
         }
-        const resoponce = await updateUserInfoInstance(userObject);
-        setUserData(resoponce);
+        const response = await updateUserInfoInstance(userObject);
+        setUserData(response);
     }
 
 
     useEffect(() => {
         setWait(true);
-        getUserInstance().then(datas => {
-            setUserData(datas)
-            setImage(datas.user_uri);
+        getUserInstance().then(data => {
+            setUserData(data)
+            setImage(data.user_uri);
             setWait(false)
         });
     }, [])
@@ -65,14 +65,14 @@ const UserInfo = () => {
             <Input
                 value={userData?.first_name}
                 setValue={(val) => setUserData({ ...userData, first_name: val })}
-                onBlur={handleIputChanges}
+                onBlur={handleInputChanges}
                 label={t('profile:name')}
                 customStyle={{ marginBottom: 32 }}
                 placeholder={t('profile:yourName')}
             />
             <Input
                 value={userData?.last_name}
-                onBlur={handleIputChanges}
+                onBlur={handleInputChanges}
                 setValue={(val) => setUserData({ ...userData, last_name: val })}
                 label={t('profile:surname')}
                 customStyle={{ marginBottom: 32 }}
@@ -82,11 +82,11 @@ const UserInfo = () => {
                 number={userData?.phone.slice(-9)}
                 setNumber={(val) => setUserData({ ...userData, phone: val })}
                 label={t('profile:number')}
-                onBlur={handleIputChanges}
+                onBlur={handleInputChanges}
                 customStyle={{ marginBottom: 32 }}
             />
             <Input
-                onBlur={handleIputChanges}
+                onBlur={handleInputChanges}
                 value={userData?.email}
                 setValue={(val) => setUserData({ ...userData, email: val })}
                 label={t('profile:email')}

@@ -11,7 +11,7 @@ import ViewShot from 'react-native-view-shot';
 import { useRef } from 'react';
 import { captureRef } from "react-native-view-shot";
 import { useNavigation } from '@react-navigation/native';
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { t } from 'i18next';
 var RNFS = require('react-native-fs');
 
@@ -24,7 +24,7 @@ const Succses = () => {
     const okHanler = () => {
         dispatch(modalVisiblityController())
         goBack()
-        dispatch(setMontionDeterminer({ screen, value: 0 }))
+        dispatch(setMonitionDeterminer({ screen, value: 0 }))
     }
 
     const shareHanle = () => {

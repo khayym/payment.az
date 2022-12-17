@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, UPDATE_USER_API } from '../constants/api';
+import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA } from '@env';
 import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
@@ -24,7 +24,6 @@ export const getUserInstance = async () => {
         timeout: 5000,
         headers: { 'Authorization': 'Bearer ' + token }
     });
-
     try {
         const res = await instance.get('update-user/')
         const data = await updateUserDataMMKV(res.data);
@@ -52,4 +51,44 @@ export const updateUserInfoInstance = async (obj) => {
         return store.getState().user.userData;
     }
 
+}
+
+export const getUserAddressInstance = async () => {
+    const token = await tokenRefreshInstance()
+    let config = {
+        method: 'get',
+        url: GET_USER_HOME_DATA,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    };
+
+    return axios(config).then(res => res.data.results)
+}
+
+export const setNewHomeInstance = async () => {
+    const token = await tokenRefreshInstance();
+    let { address_title, full_address, subscriber_code, category_id, child_category_id } = store.getState().tabControllerReducer.AddApartment.state;
+    let data = JSON.stringify({
+        address_title,
+        full_address,
+        subscriber_code,
+        category_id,
+        child_category_id
+    });
+
+    let config = {
+        method: 'post',
+        url: GET_USER_HOME_DATA,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        data
+    }
+
+
+    return axios(config)
+        .then(res => res.data)
+        .catch(err => console.log('--EEE>> ', err));
 }

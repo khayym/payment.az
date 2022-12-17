@@ -36,7 +36,8 @@ export const styles = StyleSheet.create({
         height: '100%',
         borderRadius: 800,
         borderWidth: 0.1,
-        borderColor: '#0000004d'
+        borderColor: '#0000004d',
+        resizeMode: 'contain'
     },
     textContainer: {
         textAlign: 'center',

@@ -24,12 +24,16 @@ export const tab = {
 export const secondsScreenName = {
     NotficationScreen: 'Bildirişlər',
     MobileOperators: 'Mobil operatorlar',
-    BalanceRouter: 'Balansım'
+    BalanceRouter: 'Balansım',
+    AddApartment: 'Ünvanlarım',
+    LightConsumption: 'İşıq sərfiyyatı',
+    Support: 'Texniki dəstək',
 }
 
 export const drawerOptions = {
     light: 'İşıq sərfiyyatı',
     support: 'Texniki dəstək',
+    addHome: 'Mənzil əlavə et',
     settings: 'Parametrlər',
     info: 'Tətbiq məlumatı',
     debts: 'Borclar',

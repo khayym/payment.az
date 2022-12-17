@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import { styles } from './styles';
 import EditIcon from '../../../assets/icons/input/edit.svg';
 
-export const Input = ({ value, setValue, label, error, customStyle, placeholder, onBlur }) => {
+export const Input = ({ value, setValue, label, error, customStyle, placeholder, onBlur, pressable = true, keyboardType }) => {
 
     const [active, setActive] = useState(false);
     const ref = useRef(null);
@@ -20,6 +20,7 @@ export const Input = ({ value, setValue, label, error, customStyle, placeholder,
                 <TextInput
                     onChangeText={setValue}
                     value={value}
+                    keyboardType={keyboardType}
                     ref={ref}
                     onFocus={() => setActive(true)}
                     onBlur={onBlurHandler} //when you touch outside the textInput this will call
@@ -29,9 +30,9 @@ export const Input = ({ value, setValue, label, error, customStyle, placeholder,
                     autoCapitalize={false}
                     autoCorrect={false}
                 />
-                <Pressable onPress={() => ref?.current?.focus()}>
+                {pressable ? <Pressable onPress={() => ref?.current?.focus()}>
                     <EditIcon color={error ? "#FF3D71" : active ? '#038BFF' : '#8F9BD3'} />
-                </Pressable>
+                </Pressable> : null}
             </View>
             {error ? <Text style={styles.errorText}>Please enter correctly</Text> : null}
         </View>

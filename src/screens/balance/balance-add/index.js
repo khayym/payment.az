@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import BalanceInput from '../../../components/balance-input';
 import Button from '../../../components/button';
 import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view'
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { styles } from './styles';
 
 export const BalanceAdd = () => {
@@ -17,7 +17,7 @@ export const BalanceAdd = () => {
 
 
     const dispatch = useDispatch();
-    const callback = (state) => dispatch(setMontionDeterminer({ screen: 'BalanceRouter', value: 1, state: t('balance:cardInfo'), number: value }));
+    const callback = (state) => dispatch(setMonitionDeterminer({ screen: 'BalanceRouter', value: 1, state: t('balance:cardInfo'), number: value }));
 
     return (
         <View style={styles.container}>

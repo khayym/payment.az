@@ -44,8 +44,8 @@ export const updateUserDataMMKV = async (obj) => {
 
 export const registerPaymentsLogsMMKV = async (obj) => {
     const data = await MMKV.getArrayAsync('payments');
-    const itrabel = data ?? [];
-    await MMKV.setArrayAsync('payments', [obj, ...itrabel]);
+    const iterable = data ?? [];
+    await MMKV.setArrayAsync('payments', [obj, ...iterable]);
 }
 
 export const getUserPaymentHistoryMMKV = async () => await MMKV.getArrayAsync('payments');

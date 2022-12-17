@@ -2,9 +2,9 @@ import { memo } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from './styles'
 
-const Field = ({ left, right, text, label, callback, mv, type = 'icon' }) => {
+const Field = ({ left, right, text, label, callback, mv, type = 'icon', disabled }) => {
     return (
-        <TouchableOpacity style={[styles.container, { marginVertical: mv, }]} onPress={callback} activeOpacity={0.6}>
+        <TouchableOpacity style={[styles.container, { marginVertical: mv }]} onPress={callback} activeOpacity={0.6} disabled={disabled}>
             <View style={styles.left}>
                 <View style={styles.leftImgContainer}>
                     {

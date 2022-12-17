@@ -24,13 +24,17 @@ export const tab = {
 export const secondsScreenName = {
     NotficationScreen: 'Уведомления',
     MobileOperators: 'Мобильные операторы',
-    BalanceRouter: 'My Мой баланс'
+    BalanceRouter: 'Мой баланс',
+    AddApartment: 'Мои адреса',
+    LightConsumption: 'Потребление света',
+    Support: 'Техническая поддержка',
 }
 
 export const drawerOptions = {
     light: 'Потребление света',
     support: 'Техническая поддержка',
     info: 'Информация о приложении',
+    addHome: 'Добавить квартиру',
     debts: 'Долги',
     history: 'История платежей',
     settings: 'Настройки',

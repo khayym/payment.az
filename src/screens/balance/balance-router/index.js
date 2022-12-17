@@ -1,6 +1,6 @@
 import { SceneMap, TabView } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux'
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer'
+import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer'
 import { styles } from '../styles'
 import { BalanceAdd } from '../balance-add';
 import { useState } from 'react';
@@ -15,8 +15,8 @@ const renderScene = SceneMap({
 
 const BalanceRouter = (pp) => {
     const dispatch = useDispatch();
-    const { index } = useSelector(state => state.headerMontionIndexes.BalanceRouter)
-    const setMobileOperatonIndex = (i) => dispatch(setMontionDeterminer({ screen: 'BalanceRouter', value: i }));
+    const { index } = useSelector(state => state.headerMonitionIndexes.BalanceRouter)
+    const setMobileOperatonIndex = (i) => dispatch(setMonitionDeterminer({ screen: 'BalanceRouter', value: i }));
 
     const [routes] = useState([
         { key: 'balance_add', title: 'balance_add' },

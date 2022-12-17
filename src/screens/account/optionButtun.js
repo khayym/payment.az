@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useDispatch } from 'react-redux';
 import Right from '../../../assets/icons/right.svg';
-import { setMontionDeterminer } from '../../reducers/headerDeterminerReducer';
+import { setMonitionDeterminer } from '../../reducers/headerDeterminerReducer';
 import { optionButtonStyles as styles } from './styles';
 
 const OptionButton = ({ name, href, icon }) => {
@@ -12,7 +12,7 @@ const OptionButton = ({ name, href, icon }) => {
 
     const navigationHanler = () => {
         navigate(href)
-        dispatch(setMontionDeterminer({ screen: href, state: t(name) }))
+        dispatch(setMonitionDeterminer({ screen: href, state: t(name) }))
     }
 
     return (

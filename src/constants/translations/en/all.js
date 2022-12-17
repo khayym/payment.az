@@ -23,12 +23,16 @@ export const tab = {
 export const secondsScreenName = {
     NotficationScreen: 'Notifications',
     MobileOperators: 'Mobile operators',
-    BalanceRouter: 'My balance'
+    BalanceRouter: 'My balance',
+    AddApartment: 'My addresses',
+    LightConsumption: 'Light consumption',
+    Support: 'Support',
 }
 
 export const drawerOptions = {
     light: 'Light consumption',
     support: 'Technical support',
+    addHome: 'Add apartment',
     info: 'App info',
     debts: 'Debts',
     history: 'Payment history',

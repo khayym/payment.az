@@ -4,7 +4,7 @@ import { View, Text, Pressable } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from '../../../../assets/icons/modal/fail.svg';
 import X from '../../../../assets/icons/x.svg';
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer';
 import { modalVisiblityController } from '../../../reducers/modalControllerReducer';
 import Button from '../../button';
 import { styles } from './styles';
@@ -15,13 +15,13 @@ const Fail = () => {
     const dispatch = useDispatch();
     const { goBack } = useNavigation()
     const okButtonHandler = () => {
-        dispatch(setMontionDeterminer({ screen, value: 0 }))
+        dispatch(setMonitionDeterminer({ screen, value: 0 }))
         dispatch(modalVisiblityController());
         goBack()
     }
 
     const tryAgainHandler = () => {
-        dispatch(setMontionDeterminer({ screen, value: 1, state: null }))
+        dispatch(setMonitionDeterminer({ screen, value: 1, state: null }))
         dispatch(modalVisiblityController());
     }
 

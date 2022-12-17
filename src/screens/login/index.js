@@ -8,7 +8,7 @@ import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
 import { useContextApi } from '../../store/context/ContextApi';
-import { LOGIN } from '../../constants/api';
+import { LOGIN } from '@env';
 import axios from 'axios';
 import { registerUserDataMMKV } from '../../utils/mmvk';
 

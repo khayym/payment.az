@@ -16,7 +16,7 @@ const operators = {
 
 
 const ConfirmMobileOperaion = () => {
-    const { number, state } = useSelector(state => state.headerMontionIndexes.MobileOperators)
+    const { number, state } = useSelector(state => state.headerMonitionIndexes.MobileOperators)
     const dispatch = useDispatch();
     const bottomOffset = useSafeAreaInsets().top + 40;
     const [value, setValue] = useState('');

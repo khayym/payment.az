@@ -30,14 +30,19 @@ const initialState = {
         index: 0,
         state: null,
         number: null
+    },
+    ConsumerPayments: {
+        index: 0,
+        state: null,
+        number: null
     }
 }
 
 export const headerMotionDeterminerReducer = createSlice({
     initialState,
-    name: 'headerMontionDeterminer',
+    name: 'headerMotionDeterminerReducer',
     reducers: {
-        setMontionDeterminer: (state, action) => {
+        setMonitionDeterminer: (state, action) => {
             state[action.payload.screen].index = action.payload.value < 0 ? 0 : action.payload.value
             state[action.payload.screen].state = action.payload.state
             state[action.payload.screen].number = action.payload.number
@@ -45,5 +50,5 @@ export const headerMotionDeterminerReducer = createSlice({
     }
 })
 
-export const { setMontionDeterminer } = headerMotionDeterminerReducer.actions
+export const { setMonitionDeterminer } = headerMotionDeterminerReducer.actions
 export default headerMotionDeterminerReducer.reducer 

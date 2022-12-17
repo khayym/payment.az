@@ -6,7 +6,7 @@ import { PhoneInput } from '../../../components/phone-input';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { setNumbersStyles as styles } from '../styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMontionDeterminer } from '../../../reducers/headerDeterminerReducer';
+import { setMonitionDeterminer } from '../../../reducers/headerDeterminerReducer';
 
 const SetMpbileOperators = () => {
     const { t } = useTranslation()
@@ -17,8 +17,8 @@ const SetMpbileOperators = () => {
         message: null
     });
     const bottomOffset = useSafeAreaInsets().top + 60
-    const { state } = useSelector(state => state.headerMontionIndexes.MobileOperators)
-    const callback = () => dispatch(setMontionDeterminer({ screen: 'MobileOperators', value: 2, state, number }));
+    const { state } = useSelector(state => state.headerMonitionIndexes.MobileOperators)
+    const callback = () => dispatch(setMonitionDeterminer({ screen: 'MobileOperators', value: 2, state, number }));
 
     return (
         <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={bottomOffset}>

@@ -6,7 +6,7 @@ import { DATA } from './items';
 import { styles } from './styles';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategoriest } from '../../reducers/categoriesReducer';
+import { fetchCategories } from '../../reducers/categoriesReducer';
 
 
 
@@ -18,7 +18,7 @@ const PaymentsBlock = () => {
 
 
     useEffect(() => {
-        dispatch(fetchCategoriest());
+        dispatch(fetchCategories());
     }, [])
 
     const filter = useCallback((data) => {

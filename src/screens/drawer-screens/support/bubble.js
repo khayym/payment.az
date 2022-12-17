@@ -2,9 +2,9 @@ import { View, Text, Image, Pressable } from 'react-native'
 import { bubbleStyle as styles } from './styles'
 
 const images = {
-    chat: require('../../../assets/icons/drawer/bubbleChat.png'),
-    call: require('../../../assets/icons/drawer/callCenter.png'),
-    network: require('../../../assets/icons/drawer/globalNetwork.png'),
+    chat: require('../../../../assets/icons/drawer/bubbleChat.png'),
+    call: require('../../../../assets/icons/drawer/callCenter.png'),
+    network: require('../../../../assets/icons/drawer/globalNetwork.png'),
 }
 
 export const Bubble = ({ press, title, name, label }) => {
