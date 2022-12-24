@@ -6,10 +6,10 @@
     "development": {
       "distribution": "internal",
       "android": {
-        "gradleCommand": ":app:assembleDebug"
+        "gradleCommand": ":app:assembleRelease"
       },
       "ios": {
-        "buildConfiguration": "Debug"
+        "simulator": true
       }
     },
     "preview": {

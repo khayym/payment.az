@@ -3,28 +3,31 @@ import { useNavigation } from '@react-navigation/native'
 import BackIcon from '../../../assets/icons/back.svg'
 import { styles } from './styles';
 import { SceneMap, TabView } from 'react-native-tab-view';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LogIn } from '../../screens/login';
 import Register from '../../screens/register';
-import FotgotPassword from '../../screens/forgot-password';
-import { useContextApi } from '../../store/context/ContextApi';
+import ForgotPassword from '../../screens/forgot-password';
+import { useDispatch, useSelector } from 'react-redux';
+import { firstOpenIndex, tabViewBackController } from '../../reducers/tabControllerReducer';
 
 
 const renderScene = SceneMap({
     login: LogIn,
     register: Register,
-    forgotPassword: FotgotPassword,
+    forgotPassword: ForgotPassword,
 });
 
 
-const SingInLayout = ({ route: { params } }) => {
+const SingInLayout = ({ route: { params, name } }) => {
     const { pop } = useNavigation();
-
-    const { index, setIndex } = useContextApi();
+    let { index } = useSelector(state => state.tabControllerReducer.SingRegisterRouter);
+    let registerIndex = useSelector(state => state.tabControllerReducer.Register.index);
+    let forgotPasswordIndex = useSelector(state => state.tabControllerReducer.ForgotPassword.index);
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        setIndex(params?.index)
-    }, [])
+        dispatch(firstOpenIndex({ screen: 'SingRegisterRouter', index: params.index }));
+    }, [params])
 
     const [routes] = useState([
         { key: 'login', title: 'login' },
@@ -32,16 +35,52 @@ const SingInLayout = ({ route: { params } }) => {
         { key: 'forgotPassword', title: 'forgotPassword' }
     ]);
 
-    const backHandler = useCallback((i) => {
-        if (i === 0) return pop()
-        else if (i === 1) return pop()
-        else if (i === 2) return setIndex(0);
-    }, [])
+
+    const registerController = () => {
+        if (registerIndex.length === 1) {
+            pop()
+            dispatch(firstOpenIndex({ screen: 'Register', index: 0 }));
+            dispatch(firstOpenIndex({ screen: 'SingRegisterRouter', index: 1 }));
+            return
+        };
+        dispatch(tabViewBackController({ screen: 'Register', state: {} }))
+    }
+
+    const loginController = () => {
+        if (forgotPasswordIndex.length !== 1) {
+            dispatch(tabViewBackController({ screen: 'ForgotPassword', state: {} }))
+            return
+        }
+
+        if (index.length === 1) {
+            pop();
+            dispatch(firstOpenIndex({ screen: 'Register', index: 0 }));
+            dispatch(firstOpenIndex({ screen: 'SingRegisterRouter', index: 1 }));
+            return
+        }
+        dispatch(tabViewBackController({ screen: 'SingRegisterRouter', state: {} }))
+    }
+
+
+    const backHandler = () => {
+        switch (params.index) {
+            case 0:
+                loginController()
+                break;
+
+            case 1:
+                registerController();
+                break;
+            default:
+                loginController()
+                break;
+        }
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.head}>
-                <TouchableOpacity onPress={() => backHandler(index)} style={styles.iconContainer}>
+                <TouchableOpacity onPress={backHandler} style={styles.iconContainer}>
                     <BackIcon />
                 </TouchableOpacity>
             </View>
@@ -50,9 +89,8 @@ const SingInLayout = ({ route: { params } }) => {
                     renderTabBar={() => null}
                     lazy
                     swipeEnabled={false}
-                    navigationState={{ index, routes, params }}
+                    navigationState={{ index: index[index.length - 1], routes }}
                     renderScene={renderScene}
-                    onIndexChange={setIndex}
                 />
             </View>
         </View >

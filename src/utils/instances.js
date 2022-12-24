@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA } from '@env';
+import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD } from '@env';
 import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
@@ -91,4 +91,30 @@ export const setNewHomeInstance = async () => {
     return axios(config)
         .then(res => res.data)
         .catch(err => console.log('--EEE>> ', err));
+}
+
+export const forgetPasswordInstance = async (phone) => {
+    // const res = await axios.post(FORGET_PASSWORD, { phone });
+    // return res.data;
+    let data = JSON.stringify({ phone });
+
+    let config = {
+        method: 'post',
+        url: FORGET_PASSWORD,
+        headers: { 'Content-Type': 'application/json' },
+        data
+    }
+
+    try {
+        const res = await axios(config);
+        return {
+            data: res.data,
+            status: res.status
+        };
+    } catch (err) {
+        return {
+            data: err.response.data.message,
+            status: err.response.data.status
+        };
+    }
 }

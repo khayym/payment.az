@@ -3,7 +3,7 @@ import { memo, useState } from 'react'
 import Registration from './registration';
 import SMTP from './smtp';
 import PasswordGenerate from './password-generate';
-import { useContextApi } from '../../store/context/ContextApi';
+import { useSelector } from 'react-redux';
 
 const renderScene = SceneMap({
     registration_step: Registration,
@@ -11,10 +11,9 @@ const renderScene = SceneMap({
     password_step: PasswordGenerate
 });
 
-const Register = () => {
-    const { registerIndex, setRegisterIndex } = useContextApi();
+const Register = ({ route }) => {
+    let { index } = useSelector(state => state.tabControllerReducer.Register);
 
-    // const [index, setIndex] = useState(0);
     const [routes] = useState([
         { key: 'registration_step', title: 'Registration' },
         { key: 'smtp_step', title: 'SMTP' },
@@ -25,9 +24,9 @@ const Register = () => {
 
     return (
         <TabView
-            navigationState={{ index: registerIndex, routes }}
+            navigationState={{ index: index[index.length - 1], routes }}
             renderScene={renderScene}
-            onIndexChange={setRegisterIndex}
+            // onIndexChange={setRegisterIndex}
             renderTabBar={() => null}
             swipeEnabled={false}
             lazy

@@ -5,12 +5,14 @@ import Texts from '../../../components/text/'
 import Button from '../../../components/button'
 import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
-import { useContextApi } from '../../../store/context/ContextApi';
 import axios from 'axios';
 import { REGISTER_API } from '@env';
+import { useDispatch } from 'react-redux';
+import { controlTabView } from '../../../reducers/tabControllerReducer';
 
 const Registration = () => {
     const { t } = useTranslation()
+    const dispatch = useDispatch();
     const [number, setNumber] = useState('');
     const [error, setError] = useState({
         code: null,
@@ -18,20 +20,17 @@ const Registration = () => {
     });
     const [wait, setWait] = useState(false);
 
-    const headers = {
-        'Content-Type': 'application/json',
-        "accept": "application/json",
 
-    }
+    const callback = (index, state) => dispatch(controlTabView({ screen: 'Register', index, state }));
+    // const { setRegisterIndex } = useContextApi()
 
-    const { setRegisterIndex } = useContextApi()
     const buttonHandler = async () => {
         const data = { phone: "994" + number }
         setWait(true)
         setError({ code: null, message: null })
         try {
             const req = await axios.post(REGISTER_API, data);
-            req.status == 200 ? setRegisterIndex(1) : setError({ code: 400, message: t('register:error') })
+            req.status == 200 ? callback(1, { number, code: null, errorMessage: null }) : setError({ code: 400, message: t('register:error') })
         } catch (error) {
             if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('register:alreadyHave') });
             else if (error.code == 400) setError({ code: 400, message: t('register:error') })
