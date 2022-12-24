@@ -7,10 +7,12 @@ import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
-import { useContextApi } from '../../store/context/ContextApi';
 import { LOGIN } from '@env';
 import axios from 'axios';
 import { registerUserDataMMKV } from '../../utils/mmvk';
+import { useDispatch } from 'react-redux';
+import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
+import { useContextApi } from '../../store/context/ContextApi';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
@@ -19,7 +21,14 @@ export const LogIn = () => {
     const [wait, setWait] = useState(false)
     const [error, setError] = useState({ code: null, message: null });
     const { t } = useTranslation()
-    const { setIndex, setLogin } = useContextApi();
+    const { setLogin } = useContextApi();
+    const dispatch = useDispatch();
+    const callback = (index) => dispatch(controlTabView({ screen: 'SingRegisterRouter', index }));
+
+    const forgotPassword = () => {
+        dispatch(firstOpenIndex({ screen: 'ForgotPassword', index: 0, state: { number: null, error: null } }));
+        callback(2)
+    }
 
     const loginHandler = async () => {
         setWait(true)
@@ -47,7 +56,6 @@ export const LogIn = () => {
                         number={number}
                         label={t('singIn:numberLable')}
                         errorLabel={t('singIn:wrongNumber')}
-                    // error
                     />
                     <PasswordInput
                         text={text}
@@ -56,10 +64,9 @@ export const LogIn = () => {
                         label={t('singIn:password')}
                         rightLabel
                         rightLabelText={t('singIn:forgotPassword')}
-                        rightLabelCallback={() => setIndex(2)}
+                        rightLabelCallback={forgotPassword}
                         ready={ready}
                         setReady={setReady}
-                    // withSecure
                     />
                     <Text style={styles.error}>{error.message}</Text>
                     <View style={{ height: 48, marginTop: 48, }}>
@@ -67,7 +74,7 @@ export const LogIn = () => {
                     </View>
                 </View>
                 <FooterText
-                    callback={() => setIndex(1)}
+                    callback={() => callback(1)}
                     text={t('singIn:help')}
                     blur={t('singIn:helpButton')}
                 />

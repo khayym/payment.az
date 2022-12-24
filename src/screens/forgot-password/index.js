@@ -1,45 +1,41 @@
 import { memo, useState } from 'react'
-import { useTranslation } from 'react-i18next';
-import { View, TouchableWithoutFeedback, Keyboard, Platform, KeyboardAvoidingView } from 'react-native'
-import Icon from '../../../assets/icons/forgotPassword.svg';
-import { PhoneInput } from '../../components/phone-input';
-import Texts from '../../components/text/'
-import Button from '../../components/button'
-import { styles } from './styles'
+import EnterNumber from './enter-number';
+import VerifyForgotPasswordOtp from './otp';
+import SetNewPassword from './set-new-password';
+import { useDispatch, useSelector } from 'react-redux';
+import { SceneMap, TabView } from 'react-native-tab-view';
+import { useEffect } from 'react';
+import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
 
-const FotgotPassword = () => {
-    const { t } = useTranslation()
-    const [number, setNumber] = useState('');
-    // const { setIndex } = useContextApi();
-    const buttonHandler = () => {
 
-    }
+const renderScene = SceneMap({
+    enter_number_step: EnterNumber,
+    verify_otp_step: VerifyForgotPasswordOtp,
+    set_new_password_step: SetNewPassword
+});
 
+
+const ForgotPassword = () => {
+    let state = useSelector(state => state.tabControllerReducer.ForgotPassword);
+    let index = state.index
+    const dispatch = useDispatch()
+
+    const [routes] = useState([
+        { key: 'enter_number_step', title: 'EnterNumber', dispatch, state },
+        { key: 'verify_otp_step', title: 'VerifyForgotPasswordOtp', dispatch, state },
+        { key: 'set_new_password_step', title: 'SetNewPassword', dispatch, state },
+    ]);
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={styles.container}>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-                <View style={styles.container}>
-                    <Icon />
-                    <Texts child={t('singIn:forgotPasswordScreenText')} custom={{ marginTop: 48 }}>{t('singIn:forgotPasswordScreenHeader')}</Texts>
-                    <View style={styles.number}>
-                        <PhoneInput
-                            setNumber={setNumber}
-                            number={number}
-                            label={t('singIn:numberLable')}
-                            errorLabel={t('singIn:wrongNumber')}
-                        />
-                    </View>
-                    <View style={styles.button}>
-                        <Button text={t('singIn:forgotScreenSend')} disable={number.length < 9} />
-                    </View>
-                </View>
-            </TouchableWithoutFeedback >
-        </KeyboardAvoidingView>
+        <TabView
+            navigationState={{ index: index[index.length - 1], routes }}
+            renderScene={renderScene}
+            renderTabBar={() => null}
+            swipeEnabled={false}
+            lazy
+        />
     )
 }
 
-export default memo(FotgotPassword)
+export default memo(ForgotPassword)
 

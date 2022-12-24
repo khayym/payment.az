@@ -10,6 +10,28 @@ const initialState = {
         index: [0],
         state: {},
         header: [],
+    },
+    SingRegisterRouter: {
+        index: [0],
+        state: {},
+        header: [],
+    },
+
+    //----> auth
+    Register: {
+        index: [0],
+        state: {},
+        header: [],
+    },
+    Login: {
+        index: [0],
+        state: {},
+        header: [],
+    },
+    ForgotPassword: {
+        index: [0],
+        state: {},
+        header: [],
     }
 }
 
@@ -19,12 +41,22 @@ export const tabControllerReducer = createSlice({
     reducers: {
         controlTabView: (state, action) => {
             state[action.payload.screen].index.push(action.payload.index);
-            state[action.payload.screen].header.push(action.payload.header);
+            if (action.payload.header) {
+                state[action.payload.screen].header.push(action.payload.header);
+            }
+
             state[action.payload.screen].state = action.payload.state;
         },
         tabViewBackController: (state, action) => {
             state[action.payload.screen].index.pop();
             state[action.payload.screen].header.pop();
+            state[action.payload.screen].state = action.payload.state;
+        },
+        firstOpenIndex: (state, action) => {
+            state[action.payload.screen].index = [action.payload.index];
+            if (action.payload.header) {
+                state[action.payload.screen].header.push(action.payload.header);
+            }
             state[action.payload.screen].state = action.payload.state;
         },
         cleanTabViewState: (state, action) => {
@@ -39,5 +71,5 @@ export const tabControllerReducer = createSlice({
     }
 })
 
-export const { controlTabView, tabViewBackController, cleanTabViewState, addTabViewState, updateTabViewState } = tabControllerReducer.actions
+export const { controlTabView, tabViewBackController, firstOpenIndex, cleanTabViewState, addTabViewState, updateTabViewState } = tabControllerReducer.actions
 export default tabControllerReducer.reducer
