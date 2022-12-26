@@ -12,6 +12,23 @@ export const register = {
     error: 'Something went wrong. Please try again',
     wrongOpt: 'The verification code you entered is invalid.',
 }
+
+
+export const forgotPassword = {
+    forgotPassword: 'I forgot my password',
+    enterNumber: 'Enter your number to reset your password',
+    number: 'Mobile number',
+    send: 'Send',
+    confirmCode: 'Verification code',
+    confirmText: 'enter the code received on your mobile number',
+    notSendCode: 'Code not received?',
+    senAgain: 'Send again',
+    confirm: 'Confirm',
+    newPassword: 'New password',
+    createNewPassword: 'Create a new password',
+}
+
+
 export const tab = {
     main: 'Main',
     payment: 'Payments',

@@ -1,8 +1,9 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD } from '@env';
-import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
+import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD, REGISTER_DEVICE_TOKEN, VERIFY_OTP, REGISTER_API } from '../utils/api';
+import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV, fcmTokenRegisterMMKV, getFcmTokenMMKV } from "./mmvk";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
+import { Platform } from "react-native";
 
 export const tokenRefreshInstance = async () => {
     const token = await getRefreshTokenMMKV()
@@ -14,6 +15,37 @@ export const tokenRefreshInstance = async () => {
         const access = await getUserAccessTokenMMKV()
         return access
     }
+}
+
+export const registerFcmTokenInstance = () => {
+    let random = Math.random();
+    let date = Date.now();
+    let token = Math.ceil(random + date);
+
+    let requested_device_type = Platform.select({
+        ios: "3",
+        android: "2",
+    });
+
+    var config = {
+        method: 'post',
+        url: REGISTER_DEVICE_TOKEN,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: {
+            token,
+            requested_device_type
+        }
+    };
+    axios(config)
+        .then(res => {
+            if (res.data.message == 'Success') {
+                fcmTokenRegisterMMKV(token.toString());
+                return
+            }
+        })
+        .catch(err => console.log('error message ', err))
 }
 
 
@@ -93,15 +125,17 @@ export const setNewHomeInstance = async () => {
         .catch(err => console.log('--EEE>> ', err));
 }
 
-export const forgetPasswordInstance = async (phone) => {
-    // const res = await axios.post(FORGET_PASSWORD, { phone });
-    // return res.data;
-    let data = JSON.stringify({ phone });
+export const VERIFY_OTP_INSTANCE = async (otp) => {
+    let data = { 'otp': otp }
+    let deviceToken = await getFcmTokenMMKV();
 
     let config = {
         method: 'post',
-        url: FORGET_PASSWORD,
-        headers: { 'Content-Type': 'application/json' },
+        url: VERIFY_OTP,
+        headers: {
+            'Content-Type': 'application/json',
+            'device-token': deviceToken
+        },
         data
     }
 
@@ -117,4 +151,79 @@ export const forgetPasswordInstance = async (phone) => {
             status: err.response.data.status
         };
     }
+
+}
+
+export const forgetPasswordInstance = async (phone) => {
+    let data = { 'phone': phone }
+    let deviceToken = await getFcmTokenMMKV();
+    let config = {
+        method: 'post',
+        url: FORGET_PASSWORD,
+        headers: {
+            'Content-Type': 'application/json',
+            'device-token': deviceToken
+        },
+        data
+    }
+
+    try {
+        const res = await axios(config);
+        return {
+            data: res.data,
+            status: res.status
+        };
+    } catch (err) {
+        return {
+            data: err.response.data.message,
+            status: err.response.data.status
+        };
+    }
+}
+
+
+export const REGISTER_USER_INSTANCE = async (value, blocker) => {
+    blocker(true);
+    const data = { phone: "994" + value };
+    let deviceToken = await getFcmTokenMMKV();
+    let config = {
+        method: 'post',
+        url: REGISTER_API,
+        headers: {
+            'Content-Type': 'application/json',
+            'device-token': deviceToken
+        },
+        data
+    }
+
+    try {
+        const res = await axios(config);
+        return {
+            data: res.data,
+            status: res.status,
+        };
+    }
+
+    catch (err) {
+        return {
+            data: err.response.data.message,
+            status: err.response.data.status
+        };
+    }
+    finally {
+        blocker(false);
+    }
+
+
+
+    // return axios(config)
+    //     .then(res => {
+    //         errorHandler(null);
+    //         return {
+    //             data: res.data,
+    //             status: res.status
+    //         }
+    //     })
+    //     .catch(err => {data:})
+    //     .finally(() => blocker(false));
 }

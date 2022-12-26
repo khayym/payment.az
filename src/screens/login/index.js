@@ -1,4 +1,4 @@
-import { View, Keyboard, TouchableWithoutFeedback, Text } from 'react-native'
+import { View, Keyboard, TouchableWithoutFeedback, Text, KeyboardAvoidingView } from 'react-native'
 import Texts from '../../components/text/'
 import { PhoneInput } from '../../components/phone-input'
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
-import { LOGIN } from '@env';
+import { LOGIN } from '../../utils/api';
 import axios from 'axios';
 import { registerUserDataMMKV } from '../../utils/mmvk';
 import { useDispatch } from 'react-redux';
@@ -45,41 +45,46 @@ export const LogIn = () => {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.layout} >
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
-                </View>
-                <View style={styles.inputs}>
-                    <PhoneInput
-                        setNumber={setNumber}
-                        number={number}
-                        label={t('singIn:numberLable')}
-                        errorLabel={t('singIn:wrongNumber')}
-                    />
-                    <PasswordInput
-                        text={text}
-                        setText={setText}
-                        custom={{ marginTop: 24 }}
-                        label={t('singIn:password')}
-                        rightLabel
-                        rightLabelText={t('singIn:forgotPassword')}
-                        rightLabelCallback={forgotPassword}
-                        ready={ready}
-                        setReady={setReady}
-                    />
-                    <Text style={styles.error}>{error.message}</Text>
-                    <View style={{ height: 48, marginTop: 48, }}>
-                        <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
+
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.layout}>
+            <View style={{ flex: 1 }}>
+                <KeyboardAvoidingView style={styles.container} behavior='position'>
+                    <View style={styles.header}>
+                        <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
                     </View>
-                </View>
+                    <View style={styles.inputs}>
+                        <PhoneInput
+                            setNumber={setNumber}
+                            number={number}
+                            label={t('singIn:numberLable')}
+                            errorLabel={t('singIn:wrongNumber')}
+                        />
+                        <PasswordInput
+                            text={text}
+                            setText={setText}
+                            custom={{ marginTop: 24 }}
+                            label={t('singIn:password')}
+                            rightLabel
+                            rightLabelText={t('singIn:forgotPassword')}
+                            rightLabelCallback={forgotPassword}
+                            ready={ready}
+                            setReady={setReady}
+                        />
+                        <Text style={styles.error}>{error.message}</Text>
+                        <View style={{ height: 48, marginTop: 48, }}>
+                            <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
+                        </View>
+                    </View>
+
+                </KeyboardAvoidingView>
                 <FooterText
                     callback={() => callback(1)}
                     text={t('singIn:help')}
                     blur={t('singIn:helpButton')}
                 />
             </View>
-        </TouchableWithoutFeedback >
+        </TouchableWithoutFeedback>
+
     )
 }
 

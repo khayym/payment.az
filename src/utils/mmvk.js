@@ -49,3 +49,26 @@ export const registerPaymentsLogsMMKV = async (obj) => {
 }
 
 export const getUserPaymentHistoryMMKV = async () => await MMKV.getArrayAsync('payments');
+
+export const setUserLangMMKV = async (lang) => await MMKV.setStringAsync('user-language', lang);
+
+export const getUserLangMMKV = async () => await MMKV.getStringAsync('user-language');
+
+
+export const fcmTokenRegisterMMKV = async (token) => {
+    console.log('--> fcm_token register', token);
+    return await MMKV.setStringAsync('fcm_token', token);
+}
+
+let fcm_token = null;
+
+export const getFcmTokenMMKV = async () => {
+    if (fcm_token) {
+        console.log('return from variables');
+        return fcm_token;
+    }
+    console.log('return from mmkv');
+    let token = await MMKV.getStringAsync('fcm_token');
+    fcm_token = token;
+    return token
+}

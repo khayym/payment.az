@@ -1,4 +1,4 @@
-import { VERIFY_OTP } from '@env';
+import { VERIFY_OTP } from '../../../utils/api';
 import axios from 'axios';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,6 @@ import {
 } from 'react-native-confirmation-code-field';
 import Button from '../../../components/button';
 import Texts from '../../../components/text/'
-// import { useContextApi } from '../../../store/context/ContextApi';
 import { styles } from './styles';
 import { addTabViewState, controlTabView } from '../../../reducers/tabControllerReducer';
 import { useDispatch, useSelector } from 'react-redux';

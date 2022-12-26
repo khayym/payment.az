@@ -2,7 +2,7 @@ import { View, ScrollView } from 'react-native'
 import Filed from './filed'
 import { styles } from './styles'
 import Navbar from './navbar'
-import { GET_NEWS } from '@env';
+import { GET_NEWS } from '../../utils/api';
 import { useLayoutEffect, useState } from 'react';
 import axios from 'axios';
 

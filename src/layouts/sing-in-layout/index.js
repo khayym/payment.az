@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, KeyboardAvoidingView, TextInput, Text, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import BackIcon from '../../../assets/icons/back.svg'
 import { styles } from './styles';

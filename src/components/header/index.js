@@ -4,7 +4,7 @@ import { Controller } from './controller';
 import { styles as indexStyle } from './styles';
 const styles = indexStyle.header;
 
-const CurtomHeader = ({ name }) => {
+const CustomHeader = ({ name }) => {
     const insets = useSafeAreaInsets();
 
     return (
@@ -14,5 +14,5 @@ const CurtomHeader = ({ name }) => {
     )
 }
 
-export default CurtomHeader
+export default CustomHeader
 

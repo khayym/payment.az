@@ -31,17 +31,14 @@ export const styles = StyleSheet.create({
         marginTop: 8,
     },
     input: {
-        // height: 40,
+        height: '100%',
         marginLeft: 12,
         flex: 1,
-        // padding: 10,
         fontSize: 12,
         color: '#000',
         fontFamily: theme.font[400]
     },
     arrow: {
-        // width: 24,
-        // height: 24,
         flexDirection: 'row',
         alignItems: 'center'
     }

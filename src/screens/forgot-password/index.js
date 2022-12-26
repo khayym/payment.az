@@ -4,8 +4,6 @@ import VerifyForgotPasswordOtp from './otp';
 import SetNewPassword from './set-new-password';
 import { useDispatch, useSelector } from 'react-redux';
 import { SceneMap, TabView } from 'react-native-tab-view';
-import { useEffect } from 'react';
-import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
 
 
 const renderScene = SceneMap({

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { SceneMap, TabView } from 'react-native-tab-view'
-import { useDispatch, useSelector } from 'react-redux';
-import { setMonitionDeterminer } from '../../reducers/headerDeterminerReducer';
+import { useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { setMonitionDeterminer } from '../../reducers/headerDeterminerReducer';
 import ChoiseMobileOperator from './choise-operators';
 import ConfirmMobileOperaion from './confirm-operation';
 import SetMpbileOperators from './set-numbers';
@@ -16,9 +17,9 @@ const renderScene = SceneMap({
 
 const MobileOperators = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { index } = useSelector(state => state.headerMonitionIndexes.MobileOperators)
-    const setMobileOperatonIndex = (i) => dispatch(setMonitionDeterminer({ screen: 'MobileOperators', value: i }));
+    // const setMobileOperatonIndex = (i) => dispatch(setMonitionDeterminer({ screen: 'MobileOperators', value: i }));
 
     const [routes] = useState([
         { key: 'choise_operator_step', title: 'step' },
@@ -31,7 +32,7 @@ const MobileOperators = () => {
             navigationState={{ index: index, routes }}
             renderScene={renderScene}
             sceneContainerStyle={styles.tabView}
-            onIndexChange={setMobileOperatonIndex}
+            // onIndexChange={setMobileOperatonIndex}
             renderTabBar={() => null}
             swipeEnabled={false}
             lazy

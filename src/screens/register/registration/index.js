@@ -5,39 +5,26 @@ import Texts from '../../../components/text/'
 import Button from '../../../components/button'
 import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
-import { REGISTER_API } from '@env';
-import { useDispatch } from 'react-redux';
-import { controlTabView } from '../../../reducers/tabControllerReducer';
+import { REGISTER_USER_INSTANCE } from '../../../utils/instances';
+import { tabSupervisor } from '../../../utils/tab-view-util';
+
 
 const Registration = () => {
     const { t } = useTranslation()
-    const dispatch = useDispatch();
     const [number, setNumber] = useState('');
-    const [error, setError] = useState({
-        code: null,
-        message: null
-    });
+    const [error, setError] = useState(null);
     const [wait, setWait] = useState(false);
 
 
-    const callback = (index, state) => dispatch(controlTabView({ screen: 'Register', index, state }));
-    // const { setRegisterIndex } = useContextApi()
-
     const buttonHandler = async () => {
-        const data = { phone: "994" + number }
-        setWait(true)
-        setError({ code: null, message: null })
-        try {
-            const req = await axios.post(REGISTER_API, data);
-            req.status == 200 ? callback(1, { number, code: null, errorMessage: null }) : setError({ code: 400, message: t('register:error') })
-        } catch (error) {
-            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('register:alreadyHave') });
-            else if (error.code == 400) setError({ code: 400, message: t('register:error') })
+        setError(null);
+        const { data, status } = await REGISTER_USER_INSTANCE(number, setWait);
+        if (status == 200 || status == true) {
+            tabSupervisor('control', { screen: 'Register', index: 1, state: { number: '994' + number } })
+            return;
         }
-        setWait(false);
+        return setError(data)
     }
-
 
 
     return (
@@ -49,8 +36,8 @@ const Registration = () => {
                         setNumber={setNumber}
                         number={number}
                         label={t('singIn:numberLable')}
-                        errorLabel={error.message}
-                        error={error.code}
+                        errorLabel={error}
+                        error={error}
                     />
                 </View>
                 <View style={styles.button}>

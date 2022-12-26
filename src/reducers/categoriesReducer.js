@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GET_CATEGORIES } from '@env';
+import { GET_CATEGORIES } from '../utils/api';
+import { getFcmTokenMMKV } from "../utils/mmvk";
 
 const initialState = {
     loading: false,
@@ -9,8 +10,11 @@ const initialState = {
 }
 
 export const fetchCategories = createAsyncThunk('categories/fetch', async () => {
+    const deviceToken = getFcmTokenMMKV();
     return axios
-        .get(GET_CATEGORIES)
+        .get(GET_CATEGORIES, {
+            headers: { 'device-token': deviceToken }
+        })
         .then(res => res.data.results);
 })
 
