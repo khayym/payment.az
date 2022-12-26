@@ -74,5 +74,5 @@ dist/
 
 #apis
 /src/utils/api.js
-
+/src/utils/instances.js
 # @end expo-cli
