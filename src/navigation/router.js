@@ -2,7 +2,7 @@ import DrawerNavigation from './DrawerNavigation';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useLayoutEffect, useState } from 'react';
-import CurtomHeader from '../components/header';
+import CustomHeader from '../components/header';
 import { useContextApi } from '../store/context/ContextApi';
 import SignInScreenNavigator from './SingInNavigator';
 import CustomModal from '../components/modal';
@@ -33,7 +33,7 @@ const Router = ({ userData, paymentsHistory }) => {
             <Stack.Navigator >
                 {
                     login ?
-                        <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CurtomHeader name={name} /> }} />
+                        <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CustomHeader name={name} /> }} />
                         : <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
                 }
             </Stack.Navigator>

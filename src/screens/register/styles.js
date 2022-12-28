@@ -23,7 +23,7 @@ export const registerStyles = StyleSheet.create({
     }
 })
 
-export const passwordGenereateStyle = StyleSheet.create({
+export const passwordGenerateStyle = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',

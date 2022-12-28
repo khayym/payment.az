@@ -1,8 +1,10 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD } from '@env';
-import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV } from "./mmvk";
+import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD, REGISTER_DEVICE_TOKEN, VERIFY_OTP, REGISTER_API, CREATE_USER, LOGIN } from '../utils/api';
+import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV, fcmTokenRegisterMMKV, getFcmTokenMMKV } from "./mmkv";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
+import { Platform } from "react-native";
+
 
 export const tokenRefreshInstance = async () => {
     const token = await getRefreshTokenMMKV()
@@ -13,6 +15,75 @@ export const tokenRefreshInstance = async () => {
     } catch {
         const access = await getUserAccessTokenMMKV()
         return access
+    }
+}
+
+const axiosConfigFactory = async (method, url, data) => {
+    const deviceToken = await getFcmTokenMMKV();
+
+    let headers = {
+        'Content-Type': 'application/json',
+        'device-token': deviceToken
+    }
+
+    if (method === 'get') {
+        const token = await tokenRefreshInstance();
+        headers = { ...headers, 'Authorization': 'Bearer ' + token }
+    }
+
+    let configs = {
+        method: method,
+        url: url,
+        headers
+    }
+
+    if (method === 'post') {
+        configs = { ...configs, data }
+    }
+
+    return configs
+}
+
+
+const responseFactory = async (config) => {
+    try {
+        const res = await axios(config);
+        return {
+            data: res.data,
+            status: res.status,
+        };
+    }
+    catch (err) {
+        console.log('--->', err.response.data);
+        return {
+            data: err.response.data.message,
+            status: err.response.data.status
+        };
+    }
+}
+
+
+export const registerFcmTokenInstance = async () => {
+    let random = Math.random();
+    let date = Date.now();
+    let token = Math.ceil(random + date);
+
+    let requested_device_type = Platform.select({
+        ios: "3",
+        android: "2",
+    });
+
+    let config = await axiosConfigFactory('post', REGISTER_DEVICE_TOKEN, { token, requested_device_type })
+
+    try {
+        const res = await axios(config);
+        if (res.data.message === 'Success') {
+            fcmTokenRegisterMMKV(token.toString());
+        }
+    }
+
+    catch (err) {
+        console.log('error', err);
     }
 }
 
@@ -80,11 +151,12 @@ export const setNewHomeInstance = async () => {
     let config = {
         method: 'post',
         url: GET_USER_HOME_DATA,
+        data,
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        data
+
     }
 
 
@@ -93,28 +165,56 @@ export const setNewHomeInstance = async () => {
         .catch(err => console.log('--EEE>> ', err));
 }
 
-export const forgetPasswordInstance = async (phone) => {
-    // const res = await axios.post(FORGET_PASSWORD, { phone });
-    // return res.data;
-    let data = JSON.stringify({ phone });
+export const VERIFY_OTP_INSTANCE = async (value, blocker) => {
+    blocker(true);
+    let data = { 'otp': value }
+    let config = await axiosConfigFactory('post', VERIFY_OTP, data);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
 
-    let config = {
-        method: 'post',
-        url: FORGET_PASSWORD,
-        headers: { 'Content-Type': 'application/json' },
-        data
-    }
+}
 
-    try {
-        const res = await axios(config);
-        return {
-            data: res.data,
-            status: res.status
-        };
-    } catch (err) {
-        return {
-            data: err.response.data.message,
-            status: err.response.data.status
-        };
-    }
+export const FORGET_PASSWORD_INSTANCE = async (phone, blocker) => {
+    blocker(true)
+    let data = { 'phone': phone }
+    let config = await axiosConfigFactory('post', FORGET_PASSWORD, data);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
+}
+
+
+export const REGISTER_USER_INSTANCE = async (value, blocker) => {
+    blocker(true);
+    const data = { phone: "994" + value };
+    let config = await axiosConfigFactory('post', REGISTER_API, data);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
+}
+
+export const SEND_OTP_AGAIN_INSTANCE = async (blocker) => {
+    blocker(true);
+    let config = await axiosConfigFactory('get', VERIFY_OTP);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
+}
+
+export const CREATE_USER_INSTANCE = async (value, blocker) => {
+    blocker(true);
+    let data = { password: value, password_confirm: value };
+    let config = await axiosConfigFactory('post', CREATE_USER, data);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
+}
+
+export const LOGIN_INSTANCE = async (value, blocker) => {
+    blocker(true);
+    let config = await axiosConfigFactory('post', LOGIN, { ...value });
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
 }

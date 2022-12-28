@@ -27,7 +27,7 @@ const BalanceRouter = (pp) => {
             navigationState={{ index: index, routes }}
             renderScene={renderScene}
             sceneContainerStyle={styles.tabView}
-            onIndexChange={setMobileOperatonIndex}
+            onIndexChange={() => null}
             renderTabBar={() => null}
             // swipeEnabled={false}
             swipeEnabled

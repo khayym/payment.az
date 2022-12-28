@@ -41,7 +41,7 @@ export const PhoneInput = ({ number, setNumber, label, errorLabel, error, edit }
                     onFocus={() => setActive(true)}
                     onBlur={() => setActive(false)} //when you touch outside the textInput this will call
                     maxLength={12}
-                    placeholder="00 000 00 00"
+                    placeholder="55 844 77 55"
                     keyboardType='number-pad'
                 />
                 {edit && <Pressable style={styles.arrow} onPress={() => ref?.current?.focus()}>

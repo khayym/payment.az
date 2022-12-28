@@ -1,6 +1,4 @@
-import { VERIFY_OTP } from '@env';
-import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Pressable } from 'react-native'
 import {
@@ -11,47 +9,49 @@ import {
 } from 'react-native-confirmation-code-field';
 import Button from '../../../components/button';
 import Texts from '../../../components/text/'
-// import { useContextApi } from '../../../store/context/ContextApi';
 import { styles } from './styles';
-import { addTabViewState, controlTabView } from '../../../reducers/tabControllerReducer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { SEND_OTP_AGAIN_INSTANCE, VERIFY_OTP_INSTANCE } from '../../../utils/instances';
+import { useTimer } from '../../../hooks/useTimer';
+import { tabSupervisor } from '../../../utils/tab-view-util';
 
 const SMTP = () => {
-    const CELL_COUNT = 4;
-    const dispatch = useDispatch()
+
     const { t } = useTranslation()
     const [value, setValue] = useState('');
+    const [error, setError] = useState(null);
     const [wait, setWait] = useState(false);
-    const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+    const ref = useBlurOnFulfill({ value, cellCount: 4 });
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
     });
-    let { number, code, message } = useSelector(state => state.tabControllerReducer.Register.state);
+    let { number } = useSelector(state => state.tabControllerReducer.Register.state);
+    const { time, access, reset } = useTimer(number, number);
 
-    const sendOtpAgain = () => {
+    useEffect(() => {
+        setValue('');
+    }, [number])
+
+    const sendAgain = async () => {
         setValue("")
-        setWait(true)
-        dispatch(addTabViewState({ screen: "Register", state: { number, code: null, message: null } }))
-        axios.get(VERIFY_OTP)
-            .catch(() => {
-                dispatch(addTabViewState({ screen: "Register", state: { number, code: 401, message: "Something went wrong" } }))
-            })
-            .finally(() => setWait(false));
+        setError(null);
+        const { data, status } = await SEND_OTP_AGAIN_INSTANCE(setWait);
+        if (status == 200 || status == true) {
+            reset();
+            return
+        }
+        return setError(data)
     }
 
-    const sendOtp = () => {
-        dispatch(addTabViewState({ screen: "Register", state: { number, code: null, message: null } }))
-        setWait(true)
-
-        axios.post(VERIFY_OTP, { otp: value })
-            .then(() => dispatch(controlTabView({ screen: 'Register', index })))
-            .catch(error => {
-                dispatch(addTabViewState({ screen: "Register", state: { number, code: 401, message: "The code you wrote is incorrect! or The code has expired!" } }))
-            })
-            .finally(() => {
-                setWait(false)
-            })
+    const verify = async () => {
+        setError(null);
+        const { data, status } = await VERIFY_OTP_INSTANCE(value, setWait);
+        if (status == 200 || status == true) {
+            tabSupervisor('control', { screen: 'Register', index: 2, state: { number } })
+            return;
+        }
+        return setError(data)
     }
 
 
@@ -63,28 +63,28 @@ const SMTP = () => {
                 {...props}
                 value={value}
                 onChangeText={setValue}
-                cellCount={CELL_COUNT}
+                cellCount={4}
                 rootStyle={styles.codeFieldRoot}
                 keyboardType="number-pad"
                 textContentType="oneTimeCode"
                 renderCell={({ index, symbol, isFocused }) => (
                     <Text
                         key={index}
-                        style={[styles.cell, isFocused && styles.focusCell, code !== null && { borderColor: 'red', color: 'red' }]}
+                        style={[styles.cell, isFocused && styles.focusCell, error !== null && { borderColor: 'red', color: 'red' }]}
                         onLayout={getCellOnLayoutHandler(index)}>
                         {symbol || (isFocused ? <Cursor /> : null)}
                     </Text>
                 )}
             />
-            {message && <Text style={styles.wrongOpt}>{message}</Text>}
+            {error && <Text style={styles.wrongOpt}>{error}</Text>}
             <View style={styles.textRoot}>
-                <Text style={styles.text}>{t('register:smtpNotSendMessage')}</Text>
-                <Pressable onPress={sendOtpAgain}>
-                    <Text style={styles.blueText}>{t('register:tryAgain')}</Text>
+                <Text style={styles.text}>{time} {t('register:smtpNotSendMessage')}</Text>
+                <Pressable onPress={sendAgain} disabled={access}>
+                    <Text style={[styles.blueText, access && styles.textDisable]}>{t('register:tryAgain')}</Text>
                 </Pressable>
             </View>
             <View style={styles.buttonView}>
-                <Button text={t('register:admit')} callBack={sendOtp} disable={value.length !== 4 || wait} wait={wait} />
+                <Button text={t('register:admit')} callBack={() => verify()} disable={value.length !== 4 || wait} wait={wait} />
             </View>
         </View >
     )

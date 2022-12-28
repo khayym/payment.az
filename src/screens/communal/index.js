@@ -33,7 +33,7 @@ const CommunalPayments = () => {
             navigationState={{ index: index[index.length - 1], routes }}
             renderScene={renderScene}
             sceneContainerStyle={styles.tabView}
-            // onIndexChange={setConsumerIndex}
+            onIndexChange={() => null}
             renderTabBar={() => null}
             swipeEnabled={false}
             lazy

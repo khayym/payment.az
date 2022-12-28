@@ -72,4 +72,7 @@ buck-out/
 web-build/
 dist/
 
+#apis
+/src/utils/api.js
+
 # @end expo-cli
