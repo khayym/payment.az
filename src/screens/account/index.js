@@ -4,7 +4,7 @@ import OptionButton from './optionButtun';
 import LogoutIcon from '../../../assets/icons/profile/logout.svg'
 import { styles } from './styles';
 import { OPTIONS } from '../../constants/profile';
-import { cleanMMKV } from '../../utils/mmvk';
+import { cleanMMKV } from '../../utils/mmkv';
 import { useContextApi } from '../../store/context/ContextApi';
 import { useState } from 'react';
 import { t } from 'i18next';

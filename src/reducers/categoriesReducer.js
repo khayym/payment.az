@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { GET_CATEGORIES } from '../utils/api';
-import { getFcmTokenMMKV } from "../utils/mmvk";
+import { getFcmTokenMMKV } from "../utils/mmkv";
 
 const initialState = {
     loading: false,

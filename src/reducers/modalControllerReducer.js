@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { date } from "../helpers/date";
-import { registerPaymentsLogsMMKV } from "../utils/mmvk";
+import { registerPaymentsLogsMMKV } from "../utils/mmkv";
 
 const initialState = {
     visiblitiy: false,

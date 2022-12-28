@@ -1,43 +1,32 @@
 import { View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { useState } from 'react'
-import { passwordGenereateStyle as styles } from '../styles';
+import { passwordGenerateStyle as styles } from '../styles';
 import Texts from '../../../components/text/'
 import Button from '../../../components/button'
 import { useTranslation } from 'react-i18next';
 import { useContextApi } from '../../../store/context/ContextApi';
 import { PasswordInput } from '../../../components/password-input';
-import { CREATE_USER } from '../../../utils/api';
-import axios from 'axios';
+import { CREATE_USER_INSTANCE, LOGIN_INSTANCE, VERIFY_OTP_INSTANCE } from '../../../utils/instances';
+import { registerUserDataMMKV } from '../../../utils/mmkv';
 
 const PasswordGenerate = () => {
     const { t } = useTranslation()
     const [text, setText] = useState('');
     const [ready, setReady] = useState(false);
     const [wait, setWait] = useState(false)
-
+    const [error, setError] = useState(null);
     const { setLogin } = useContextApi();
 
     const buttonHandler = async () => {
-        setWait(true)
-        const data = {
-            password: text,
-            password_confirm: text
-        }
-        try {
-            const request = await axios.post(CREATE_USER, data)
+
+        const { status, data } = await CREATE_USER_INSTANCE(text, setWait);
+        if (status == 201 || status == true) {
             setLogin(true)
-        } catch (err) {
-            console.log(err);
+
+            return;
         }
-        // request.status ? setLogin(true) : console.log('not olgin')
-        // Keyboard.dismiss()
-        // setTimeout(() => {
-        //     // setSend(true)
-        setWait(false);
-        setLogin(true)
-        //     Keyboard.dismiss
-        // setLogin(true)
-        // }, 1500)
+        setError(data);
+
     }
 
     return (
@@ -50,12 +39,11 @@ const PasswordGenerate = () => {
                         setText={setText}
                         custom={{ marginTop: 24 }}
                         label={t('singIn:password')}
-                        // rightLabel
-                        // rightLabelText={t('singIn:forgotPassword')}
-                        // rightLabelCallback={() => setIndex(2)}
                         ready={ready}
                         setReady={setReady}
                         withSecure
+                        error={error}
+                        errorMessage={error}
                     />
                 </View>
                 <View style={{ width: '100%', height: 48, marginTop: 137 }}>

@@ -7,19 +7,18 @@ import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
-import { LOGIN } from '../../utils/api';
-import axios from 'axios';
-import { registerUserDataMMKV } from '../../utils/mmvk';
+import { registerUserDataMMKV } from '../../utils/mmkv';
 import { useDispatch } from 'react-redux';
 import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
 import { useContextApi } from '../../store/context/ContextApi';
+import { LOGIN_INSTANCE } from '../../utils/instances';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
     const [number, setNumber] = useState('');
     const [ready, setReady] = useState(false);
     const [wait, setWait] = useState(false)
-    const [error, setError] = useState({ code: null, message: null });
+    const [error, setError] = useState(null);
     const { t } = useTranslation()
     const { setLogin } = useContextApi();
     const dispatch = useDispatch();
@@ -31,17 +30,14 @@ export const LogIn = () => {
     }
 
     const loginHandler = async () => {
-        setWait(true)
-        const data = { phone: "994" + number, password: text }
-        try {
-            const req = await axios.post(LOGIN, data);
-            req.status == 200 ? await registerUserDataMMKV(req.data) : setError({ code: 400, message: t('singIn:wrongPasswordOrNumber') })
+        setError(null)
+        const { data, status } = await LOGIN_INSTANCE({ phone: "994" + number, password: text }, setWait);
+        if (status == 200 || status == true) {
+            await registerUserDataMMKV(data);
             setLogin(true);
-        } catch (error) {
-            if (error.code == 'ERR_BAD_REQUEST') setError({ code: 401, message: t('singIn:wrongPasswordOrNumber') });
-            else if (error.code == 400) setError({ code: 400, message: t('singIn:wrongPasswordOrNumber') })
+            return;
         }
-        setWait(false)
+        return setError(data)
     }
 
     return (
@@ -57,7 +53,7 @@ export const LogIn = () => {
                             setNumber={setNumber}
                             number={number}
                             label={t('singIn:numberLable')}
-                            errorLabel={t('singIn:wrongNumber')}
+                            error={error}
                         />
                         <PasswordInput
                             text={text}
@@ -68,9 +64,10 @@ export const LogIn = () => {
                             rightLabelText={t('singIn:forgotPassword')}
                             rightLabelCallback={forgotPassword}
                             ready={ready}
+                            error={error}
                             setReady={setReady}
                         />
-                        <Text style={styles.error}>{error.message}</Text>
+                        <Text style={styles.error}>{error}</Text>
                         <View style={{ height: 48, marginTop: 48, }}>
                             <Button text={t('singIn:logIn')} disable={!(ready && number.length > 8 && !wait)} callBack={loginHandler} wait={wait} />
                         </View>

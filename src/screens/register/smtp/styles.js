@@ -56,6 +56,12 @@ export const styles = StyleSheet.create({
         marginLeft: 7,
     },
     wrongOpt: {
-        alignSelf: 'center', marginTop: 10, color: 'red'
-    }
+        alignSelf: 'center',
+        marginTop: 10,
+        color: 'red',
+        textAlign: 'center'
+    },
+    textDisable: {
+        color: theme.colors.basic600
+    },
 });

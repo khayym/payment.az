@@ -7,6 +7,7 @@ import { PhoneInput } from '../../../components/phone-input';
 import { useTranslation } from 'react-i18next';
 import { REGISTER_USER_INSTANCE } from '../../../utils/instances';
 import { tabSupervisor } from '../../../utils/tab-view-util';
+import { validatePhone } from '../../../helpers/phone_validator';
 
 
 const Registration = () => {
@@ -17,6 +18,10 @@ const Registration = () => {
 
 
     const buttonHandler = async () => {
+        if (validatePhone(number) === false) {
+            setError('Write correct number');
+            return;
+        }
         setError(null);
         const { data, status } = await REGISTER_USER_INSTANCE(number, setWait);
         if (status == 200 || status == true) {

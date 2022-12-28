@@ -9,7 +9,7 @@ import './src/constants/IMLocalize';
 import { ContextApiProvider } from './src/store/context/ContextApi';
 import { Provider } from 'react-redux';
 import { store } from './src/store/redux'
-import { getFcmTokenMMKV, getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmvk';
+import { getFcmTokenMMKV, getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmkv';
 import { registerFcmTokenInstance } from './src/utils/instances';
 SplashScreen.preventAutoHideAsync();
 

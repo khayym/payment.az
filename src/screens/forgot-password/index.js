@@ -29,6 +29,7 @@ const ForgotPassword = () => {
             navigationState={{ index: index[index.length - 1], routes }}
             renderScene={renderScene}
             renderTabBar={() => null}
+            onIndexChange={() => null}
             swipeEnabled={false}
             lazy
         />

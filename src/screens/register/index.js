@@ -26,7 +26,7 @@ const Register = ({ route }) => {
         <TabView
             navigationState={{ index: index[index.length - 1], routes }}
             renderScene={renderScene}
-            // onIndexChange={setRegisterIndex}
+            onIndexChange={() => null}
             renderTabBar={() => null}
             swipeEnabled={false}
             lazy

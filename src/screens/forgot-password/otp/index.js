@@ -10,7 +10,7 @@ import { useTimer } from '../../../hooks/useTimer';
 import Button from '../../../components/button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styles } from './styles';
-import { forgetPasswordInstance, VERIFY_OTP_INSTANCE } from '../../../utils/instances';
+import { VERIFY_OTP_INSTANCE } from '../../../utils/instances';
 
 
 const VerifyForgotPasswordOtp = ({ route: { dispatch } }) => {
@@ -29,10 +29,10 @@ const VerifyForgotPasswordOtp = ({ route: { dispatch } }) => {
 
     const verifyButtonHandler = () => {
         console.log('trigger otp button', value);
-        setWait(true);
-        VERIFY_OTP_INSTANCE(value)
-            .then(res => console.log(res))
-            .finally(() => setWait(false));
+        // setWait(true);
+        // VERIFY_OTP_INSTANCE(value)
+        //     .then(res => console.log(res))
+        //     .finally(() => setWait(false));
     }
 
     return (

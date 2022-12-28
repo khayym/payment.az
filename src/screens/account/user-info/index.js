@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { styles } from './styles';
 import { getUserInstance, updateUserInfoInstance } from '../../../utils/instances';
 import * as ImagePicker from 'expo-image-picker';
-import { updateUserDataMMKV } from '../../../utils/mmvk';
+import { updateUserDataMMKV } from '../../../utils/mmkv';
 import KeyboardAvoidWrapper from '../../../components/keyboard-awoid-view';
 import { t } from 'i18next';
 

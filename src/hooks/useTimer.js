@@ -6,8 +6,8 @@ function fmtMSS(s) { return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s }
 
 
 export const useTimer = (start, restart) => {
-    const [count, setCount] = useState(10);
-    const resetTimer = () => setCount(10);
+    const [count, setCount] = useState(120);
+    const resetTimer = () => setCount(120);
 
     useEffect(() => {
         if (start) {

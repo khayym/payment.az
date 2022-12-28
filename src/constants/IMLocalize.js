@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import en from './translations/en';
 import az from './translations/az';
 import ru from './translations/ru'
-import { getUserLangMMKV, setUserLangMMKV } from '../utils/mmvk';
+import { getUserLangMMKV, setUserLangMMKV } from '../utils/mmkv';
 
 
 const LANGUAGES = {
