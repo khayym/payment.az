@@ -10,8 +10,8 @@ import { styles } from './styles';
 import { registerUserDataMMKV } from '../../utils/mmkv';
 import { useDispatch } from 'react-redux';
 import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
-import { useContextApi } from '../../store/context/ContextApi';
 import { LOGIN_INSTANCE } from '../../utils/instances';
+import { setLogin } from '../../reducers/userReducer';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
@@ -20,7 +20,6 @@ export const LogIn = () => {
     const [wait, setWait] = useState(false)
     const [error, setError] = useState(null);
     const { t } = useTranslation()
-    const { setLogin } = useContextApi();
     const dispatch = useDispatch();
     const callback = (index) => dispatch(controlTabView({ screen: 'SingRegisterRouter', index }));
 
@@ -34,7 +33,7 @@ export const LogIn = () => {
         const { data, status } = await LOGIN_INSTANCE({ phone: "994" + number, password: text }, setWait);
         if (status == 200 || status == true) {
             await registerUserDataMMKV(data);
-            setLogin(true);
+            dispatch(setLogin(true));
             return;
         }
         return setError(data)

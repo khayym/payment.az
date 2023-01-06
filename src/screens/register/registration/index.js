@@ -18,17 +18,17 @@ const Registration = () => {
 
 
     const buttonHandler = async () => {
-        if (validatePhone(number) === false) {
-            setError('Write correct number');
-            return;
-        }
-        setError(null);
-        const { data, status } = await REGISTER_USER_INSTANCE(number, setWait);
-        if (status == 200 || status == true) {
-            tabSupervisor('control', { screen: 'Register', index: 1, state: { number: '994' + number } })
-            return;
-        }
-        return setError(data)
+        // if (validatePhone(number) === false) {
+        //     setError('Write correct number');
+        //     return;
+        // }
+        // setError(null);
+        // const { data, status } = await REGISTER_USER_INSTANCE(number, setWait);
+        // if (status == 200 || status == true) {
+        tabSupervisor('control', { screen: 'Register', index: 1, state: { number: '994' + number } })
+        //     return;
+        // }
+        // return setError(data)
     }
 
 
