@@ -13,6 +13,20 @@ export const register = {
     wrongOpt: 'Daxil etdiyiniz təsdiq kodu yalnışdır.',
 }
 
+export const forgotPassword = {
+    forgotPassword: 'Şifrəmi unutdum',
+    enterNumber: 'Şifrəni yeniləmək üçün nömrənizi daxil edin',
+    number: 'Telefon nömrəsi',
+    send: 'Göndər',
+    confirmCode: 'Təsdiqləmə kodu',
+    confirmText: 'mobil nömrəsinə gələn kodu daxil edin',
+    notSendCode: 'Kod gəlməyib?',
+    senAgain: 'Yenidən göndər',
+    confirm: 'Təsdiq et',
+    newPassword: 'Yeni şifrə',
+    createNewPassword: 'Yeni şifrə yaradın',
+}
+
 export const tab = {
     main: 'Əsas',
     payment: 'Ödənişlər',

@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import SingInLayout from "../layouts/sing-in-layout";
 import SignInUp from "../screens/sing-in-up";
 import Welcome from "../screens/welcome";
-import { getGuideMMKV } from "../utils/mmvk";
+import { getGuideMMKV } from "../utils/mmkv";
 const Stack = createNativeStackNavigator();
 
 const SignInScreenNavigator = () => {

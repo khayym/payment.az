@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 16,
         fontFamily: theme.font[500],
+        textAlign: 'center'
     },
     buttons: {
         borderColor: 'blue',

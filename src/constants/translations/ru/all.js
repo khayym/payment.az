@@ -13,6 +13,21 @@ export const register = {
     wrongOpt: 'Введенный код подтверждения недействителен.',
 }
 
+
+export const forgotPassword = {
+    forgotPassword: 'Я забыл свой пароль',
+    enterNumber: 'Введите свой номер, чтобы сбросить пароль',
+    number: 'Мобильный номер',
+    send: 'Отправить',
+    confirmCode: 'Код подтверждения',
+    confirmText: 'введите код, полученный на ваш мобильный номер',
+    notSendCode: 'Код не получен?',
+    senAgain: 'Отправь еще раз',
+    confirm: 'Подтвердить',
+    newPassword: 'Новый пароль',
+    createNewPassword: 'Создать новый пароль',
+}
+
 export const tab = {
     main: 'Главный',
     payment: 'Платежи',

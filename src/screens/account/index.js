@@ -4,24 +4,23 @@ import OptionButton from './optionButtun';
 import LogoutIcon from '../../../assets/icons/profile/logout.svg'
 import { styles } from './styles';
 import { OPTIONS } from '../../constants/profile';
-import { cleanMMKV } from '../../utils/mmvk';
-import { useContextApi } from '../../store/context/ContextApi';
+import { cleanMMKV } from '../../utils/mmkv';
 import { useState } from 'react';
 import { t } from 'i18next';
 import { useDispatch } from 'react-redux';
 import { clearHistory } from '../../reducers/modalControllerReducer';
+import { setLogin } from '../../reducers/userReducer';
 
 export const AccountScreen = () => {
     const position = Dimensions.get('window').height / 1.45 - useSafeAreaInsets().bottom - 20
     const margin = (position * 14) / 100
-    const { setLogin } = useContextApi();
     const [image, setImage] = useState(null);
     const dispatch = useDispatch();
 
     const handleLogOut = async () => {
         await cleanMMKV();
         dispatch(clearHistory())
-        setLogin(false);
+        dispatch(setLogin(false));
     }
 
     return (
@@ -35,7 +34,7 @@ export const AccountScreen = () => {
                     OPTIONS.map((item, i) => <OptionButton {...item} key={i} />)
                 }
                 <TouchableOpacity style={styles.logout} onPress={handleLogOut}>
-                    <LogoutIcon />
+                    <LogoutIcon color="#FF4B2B" />
                     <Text style={styles.logtext}>{t('profile:logOut')}</Text>
                 </TouchableOpacity>
             </View>

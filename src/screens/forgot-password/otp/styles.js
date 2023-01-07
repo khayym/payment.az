@@ -1,33 +1,36 @@
-import { StyleSheet } from "react-native";
-import { theme } from "../../../theme/theme";
+import { StyleSheet } from 'react-native'
+import { theme } from '../../../theme/theme'
 
 export const styles = StyleSheet.create({
-    container: {
+    inner: {
         flex: 1,
+        alignItems: 'center',
     },
-    buttonView: {
-        height: 48,
-        marginTop: 48,
+    textContainer: {
+        borderColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 49,
+        marginBottom: 56,
     },
-    root: {
+    buttonGroup: {
+        width: '100%',
         flex: 1,
-        padding: 20,
+        justifyContent: 'space-between'
     },
-    title: {
-        textAlign: 'center',
-        fontSize: 20,
-    },
-    codeFieldRoot: {
-        marginTop: 56,
-        paddingHorizontal: 24,
+    sendAgainTextRoot: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 32,
+        marginBottom: 10,
     },
     cell: {
         width: 40,
         height: 48,
         lineHeight: 45,
         fontSize: 20,
-        borderWidth: 1,
         color: '#038BFF',
+        borderWidth: 1,
         borderRadius: 8,
         backgroundColor: '#F7F9FC',
         borderColor: '#E4E9F2',
@@ -36,6 +39,9 @@ export const styles = StyleSheet.create({
     },
     focusCell: {
         borderColor: '#038BFF'
+    },
+    wrongOpt: {
+        alignSelf: 'center', marginTop: 10, color: 'red'
     },
     textRoot: {
 
@@ -48,6 +54,10 @@ export const styles = StyleSheet.create({
         color: '#2E3A59',
         fontFamily: theme.font[400],
         fontSize: 14,
+        marginLeft: 5,
+    },
+    textDisable: {
+        color: theme.colors.basic600
     },
     blueText: {
         color: '#0095FF',
@@ -55,13 +65,11 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         marginLeft: 7,
     },
-    wrongOpt: {
-        alignSelf: 'center',
-        marginTop: 10,
-        color: 'red',
-        textAlign: 'center'
+    buttonView: {
+        height: 48,
+        width: '100%',
     },
-    textDisable: {
-        color: theme.colors.basic600
-    },
-});
+    flex: {
+        flex: 1,
+    }
+})

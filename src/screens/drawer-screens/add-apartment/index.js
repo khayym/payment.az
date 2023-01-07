@@ -33,6 +33,7 @@ const AddApartmentScreen = () => {
             renderScene={renderScene}
             sceneContainerStyle={styles.tabView}
             renderTabBar={() => null}
+            onIndexChange={() => null}
             swipeEnabled={false}
             lazy
         />

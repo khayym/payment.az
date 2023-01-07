@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         color: '#767676',
         fontSize: 14,
         fontFamily: theme.font[400],
-        textAlign: 'center'
+        textAlign: 'center',
     },
     footer: {
         position: 'absolute',

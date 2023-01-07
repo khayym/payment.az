@@ -6,13 +6,13 @@ import { useCallback, useState } from 'react';
 import Router from './src/navigation/router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/constants/IMLocalize';
-import { ContextApiProvider } from './src/store/context/ContextApi';
 import { Provider } from 'react-redux';
 import { store } from './src/store/redux'
-import { getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmvk';
+import { getFcmTokenMMKV, getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmkv';
+import { registerFcmTokenInstance } from './src/utils/instances';
 SplashScreen.preventAutoHideAsync();
 
-// const headerHeight = useHeaderHeight();
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     'Euclid-light': require('./assets/font/Euclid-Circular-A-Light.ttf'),
@@ -27,8 +27,13 @@ export default function App() {
   const onLayoutRootView = useCallback(async () => {
     const data = await getUserDataMMKV()
     const payments = await getUserPaymentHistoryMMKV() ?? [];
+    const fcm = await getFcmTokenMMKV();
     setUserData(data);
     setPaymentsHistory(payments);
+
+    if (fcm === null || fcm === undefined) {
+      registerFcmTokenInstance();
+    }
 
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -43,10 +48,8 @@ export default function App() {
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <Provider store={store}>
-        <ContextApiProvider>
-          <StatusBar style="auto" />
-          <Router userData={userData} paymentsHistory={paymentsHistory} />
-        </ContextApiProvider>
+        <StatusBar style="auto" />
+        <Router userData={userData} paymentsHistory={paymentsHistory} />
       </Provider>
     </SafeAreaProvider>
   );
