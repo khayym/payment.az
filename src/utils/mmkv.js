@@ -88,3 +88,19 @@ export const getFcmTokenMMKV = async () => {
     fcm_token = token;
     return token
 }
+
+export const registerPasscodeMMKV = async (number) => {
+    console.log('register passcode mmkv -> ', number);
+    return await MMKV.setStringAsync('passcode', number)
+}
+
+export const isPasscodeRegisterMMKV = async () => {
+    const passcode = await MMKV.getStringAsync('passcode');
+    return passcode
+}
+
+export const verifyPasscode = async (number) => {
+    const value = await MMKV.getStringAsync('passcode');
+    console.log('verify pin -> ', value == number);
+    return value == number;
+} 

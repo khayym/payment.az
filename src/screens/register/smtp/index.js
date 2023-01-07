@@ -45,13 +45,13 @@ const SMTP = () => {
     }
 
     const verify = async () => {
-        setError(null);
-        const { data, status } = await VERIFY_OTP_INSTANCE(value, setWait);
-        if (status == 200 || status == true) {
-            tabSupervisor('control', { screen: 'Register', index: 2, state: { number } })
-            return;
-        }
-        return setError(data)
+        // setError(null);
+        // const { data, status } = await VERIFY_OTP_INSTANCE(value, setWait);
+        // if (status == 200 || status == true) {
+        tabSupervisor('control', { screen: 'Register', index: 2, state: { number } })
+        //     return;
+        // }
+        // return setError(data)
     }
 
 

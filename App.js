@@ -6,7 +6,6 @@ import { useCallback, useState } from 'react';
 import Router from './src/navigation/router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/constants/IMLocalize';
-import { ContextApiProvider } from './src/store/context/ContextApi';
 import { Provider } from 'react-redux';
 import { store } from './src/store/redux'
 import { getFcmTokenMMKV, getUserDataMMKV, getUserPaymentHistoryMMKV } from './src/utils/mmkv';
@@ -49,10 +48,8 @@ export default function App() {
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <Provider store={store}>
-        <ContextApiProvider>
-          <StatusBar style="auto" />
-          <Router userData={userData} paymentsHistory={paymentsHistory} />
-        </ContextApiProvider>
+        <StatusBar style="auto" />
+        <Router userData={userData} paymentsHistory={paymentsHistory} />
       </Provider>
     </SafeAreaProvider>
   );
