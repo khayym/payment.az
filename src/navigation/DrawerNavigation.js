@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from '../components/drawer'
 import { Notification } from "../screens/notfication";
-import { drawerOptins } from "./styles";
+import { drawerOptions } from "./styles";
 import TabNavigator from "./TabNavigation";
 import NewsExplorer from '../screens/news/NewsExplorer';
 import Support from "../screens/drawer-screens/support";
@@ -14,9 +14,9 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
     return (
-        <Drawer.Navigator drawerContent={CustomDrawer} screenOptions={drawerOptins}>
+        <Drawer.Navigator drawerContent={CustomDrawer} screenOptions={drawerOptions}>
             <Drawer.Screen name="Feed" component={TabNavigator} options={{ sceneContainerStyle: { backgroundColor: '#fff' } }} />
-            <Drawer.Screen name="NotficationScreen" component={Notification} />
+            <Drawer.Screen name="NotificationScreen" component={Notification} />
             <Drawer.Screen name="LightConsumption" component={LightConsumption} />
             <Drawer.Screen name="AddApartment" component={AddApartmentScreen} />
             <Drawer.Screen name="NewsExplorer" component={NewsExplorer} />

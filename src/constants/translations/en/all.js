@@ -5,7 +5,7 @@ export const register = {
     createPassword: 'Create Password',
     admit: 'Confirm',
     admitCode: 'Verification code',
-    smtpmessage: 'enter the code received on your mobile number',
+    smtpMessage: 'enter the code received on your mobile number',
     smtpNotSendMessage: 'Code not received?',
     tryAgain: 'Send again',
     alreadyHave: 'This number is already registered',
@@ -38,7 +38,7 @@ export const tab = {
 }
 
 export const secondsScreenName = {
-    NotficationScreen: 'Notifications',
+    NotificationScreen: 'Notifications',
     MobileOperators: 'Mobile operators',
     BalanceRouter: 'My balance',
     AddApartment: 'My addresses',

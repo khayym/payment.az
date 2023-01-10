@@ -7,6 +7,7 @@ let user_data = {};
 
 
 export const registerUserDataMMKV = async (data) => {
+    console.log('register data mmkv: ', data);
     await MMKV.setMapAsync("userData", data);
 }
 
@@ -46,6 +47,7 @@ export const getGuideMMKV = async () => await MMKV.getBoolAsync('guide');
 export const cleanMMKV = async () => {
     await MMKV.setMapAsync("userData", null);
     await MMKV.setArrayAsync('payments', []);;
+    MMKV.removeItem('passcode')
 }
 
 export const refreshTokenMMKV = async (access) => {
@@ -89,18 +91,15 @@ export const getFcmTokenMMKV = async () => {
     return token
 }
 
+
 export const registerPasscodeMMKV = async (number) => {
-    console.log('register passcode mmkv -> ', number);
     return await MMKV.setStringAsync('passcode', number)
 }
 
-export const isPasscodeRegisterMMKV = async () => {
-    const passcode = await MMKV.getStringAsync('passcode');
-    return passcode
-}
+
 
 export const verifyPasscode = async (number) => {
     const value = await MMKV.getStringAsync('passcode');
-    console.log('verify pin -> ', value == number);
+    console.log('correct pin: ', value);
     return value == number;
 } 

@@ -2,7 +2,7 @@ import { Platform, StyleSheet } from "react-native";
 import { theme } from "../theme/theme";
 
 export const styles = StyleSheet.create({
-    tabbar: {
+    tabBar: {
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         ...Platform.select({
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
 export const tabOptions = {
     tabBarActiveTintColor: theme.colors.black,
     tabBarInactiveTintColor: theme.colors.basic600,
-    tabBarStyle: styles.tabbar,
+    tabBarStyle: styles.tabBar,
     tabBarHideOnKeyboard: Platform.OS == 'ios' ? false : true,
     headerShown: false,
     tabBarItemStyle: {
@@ -30,4 +30,4 @@ export const tabOptions = {
     }
 }
 
-export const drawerOptins = { drawerType: 'front', drawerStyle: { width: '75%' }, headerShown: false, }
+export const drawerOptions = { drawerType: 'front', drawerStyle: { width: '75%' }, headerShown: false, }

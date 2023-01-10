@@ -47,7 +47,7 @@ export const MainHead = () => {
                 {drawer ? <CancelIcon /> : <Burger />}
             </AnimatedPressable>
             <Image source={require('../../../assets/images/paymentaz-logo.png')} />
-            <Pressable onPress={() => navigation.navigate('NotficationScreen')}>
+            <Pressable onPress={() => navigation.navigate('NotificationScreen')}>
                 <RingIcon active={toggled} />
             </Pressable>
         </View>

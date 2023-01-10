@@ -1,4 +1,4 @@
-import { View, Keyboard, TouchableWithoutFeedback, Text, KeyboardAvoidingView } from 'react-native'
+import { View, Keyboard, TouchableWithoutFeedback, Text, KeyboardAvoidingView, Dimensions } from 'react-native'
 import Texts from '../../components/text/'
 import { PhoneInput } from '../../components/phone-input'
 import { useState } from 'react';
@@ -7,11 +7,10 @@ import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
-import { registerUserDataMMKV } from '../../utils/mmkv';
 import { useDispatch } from 'react-redux';
 import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
 import { LOGIN_INSTANCE } from '../../utils/instances';
-import { setLogin } from '../../reducers/userReducer';
+import { useNavigation } from '@react-navigation/native';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
@@ -22,6 +21,7 @@ export const LogIn = () => {
     const { t } = useTranslation()
     const dispatch = useDispatch();
     const callback = (index) => dispatch(controlTabView({ screen: 'SingRegisterRouter', index }));
+    const { navigate } = useNavigation();
 
     const forgotPassword = () => {
         dispatch(firstOpenIndex({ screen: 'ForgotPassword', index: 0, state: { number: null, error: null } }));
@@ -31,9 +31,9 @@ export const LogIn = () => {
     const loginHandler = async () => {
         setError(null)
         const { data, status } = await LOGIN_INSTANCE({ phone: "994" + number, password: text }, setWait);
+
         if (status == 200 || status == true) {
-            await registerUserDataMMKV(data);
-            dispatch(setLogin(true));
+            navigate('SetPasscodeScreen', { ...data })
             return;
         }
         return setError(data)
@@ -43,7 +43,7 @@ export const LogIn = () => {
 
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.layout}>
             <View style={{ flex: 1 }}>
-                <KeyboardAvoidingView style={styles.container} behavior='position'>
+                <KeyboardAvoidingView style={styles.container} behavior='position' keyboardVerticalOffset={Dimensions.get('window').width * 0.15}>
                     <View style={styles.header}>
                         <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
                     </View>

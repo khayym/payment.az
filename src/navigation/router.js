@@ -8,28 +8,19 @@ import CustomModal from '../components/modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin, setUserData } from '../reducers/userReducer';
 import { addHistory } from '../reducers/modalControllerReducer';
-import { isPasscodeRegisterMMKV } from '../utils/mmkv';
 import PasscodeScreen from '../screens/passcode-screen';
 
 const Stack = createNativeStackNavigator();
 
 const Router = ({ userData, paymentsHistory }) => {
     const [name, setName] = useState(null);
-    // const [havePass, setHavePass] = useState(false);
     const navigationRef = useNavigationContainerRef();
     const { verify, login } = useSelector(state => state.user);
     const dispatch = useDispatch();
 
-    // const checkPasscode = async () => {
-    //     // const isVerify = await verifyPasscode();
-    //     const pass = await isPasscodeRegisterMMKV();
-    //     setHavePass(pass);
-    //     // if()
-    // }
 
     useLayoutEffect(() => {
-        // checkPasscode();
-        dispatch(setUserData(userData));
+        dispatch(setUserData(userData));;
         dispatch(addHistory(paymentsHistory))
         if (userData !== null) {
             dispatch(setLogin(true))
@@ -37,22 +28,6 @@ const Router = ({ userData, paymentsHistory }) => {
             dispatch(setLogin(false))
         }
     }, [userData])
-
-    const controlLogin = () => {
-        if (verify) {
-            return <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CustomHeader name={name} /> }} />
-        }
-        else {
-            return <Stack.Screen name="PasscodeNavigator" component={PasscodeScreen} options={{ headerShown: false }} />
-        }
-    }
-
-    const screenRouting = () => {
-        console.log({ login });
-        if (login) return controlLogin()
-        return <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
-    }
-
 
 
     return (
@@ -62,7 +37,13 @@ const Router = ({ userData, paymentsHistory }) => {
             onStateChange={() => setName(navigationRef.getCurrentRoute().name)}
         >
             <Stack.Navigator >
-                {screenRouting()}
+                {
+                    !login
+                        ? <Stack.Screen name="SignInNavigator" component={SignInScreenNavigator} options={{ headerShown: false }} />
+                        : verify
+                            ? <Stack.Screen name="TabNavigator" component={DrawerNavigation} options={{ header: () => <CustomHeader name={name} /> }} />
+                            : <Stack.Screen name="PasscodeNavigator" component={PasscodeScreen} options={{ headerShown: false }} />
+                }
             </Stack.Navigator>
             <CustomModal />
         </NavigationContainer>
