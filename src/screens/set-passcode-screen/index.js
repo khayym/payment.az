@@ -23,6 +23,7 @@ const SetPasscodeScreen = ({ route: { params } }) => {
             if (state.length != 4) {
                 return state += num
             }
+
             return state;
         });
     }
