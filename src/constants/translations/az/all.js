@@ -5,7 +5,7 @@ export const register = {
     createPassword: 'Şifrə yaradın',
     admit: 'Təsdiq et',
     admitCode: 'Təsdiqləmə kodu',
-    smtpmessage: 'mobil nömrəsinə gələn kodu daxil edin',
+    smtpMessage: 'mobil nömrəsinə gələn kodu daxil edin',
     smtpNotSendMessage: 'Kod gəlməyib?',
     tryAgain: 'Yenidən göndər',
     alreadyHave: 'Bu nömrə artıq qeydiyatdan keçmişdir',
@@ -36,7 +36,7 @@ export const tab = {
 }
 
 export const secondsScreenName = {
-    NotficationScreen: 'Bildirişlər',
+    NotificationScreen: 'Bildirişlər',
     MobileOperators: 'Mobil operatorlar',
     BalanceRouter: 'Balansım',
     AddApartment: 'Ünvanlarım',

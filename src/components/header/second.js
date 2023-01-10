@@ -24,7 +24,7 @@ export const SecondHead = ({ routeName }) => {
             dispatch(tabViewBackController({ screen: routeName, header: null, state: state }))
             return
         }
-        routeName == 'NotficationScreen' || 'Chat' ? navigation.goBack() : navigation.pop()
+        routeName == 'NotificationScreen' || 'Chat' ? navigation.goBack() : navigation.pop()
 
     }
 

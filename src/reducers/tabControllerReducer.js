@@ -68,8 +68,14 @@ export const tabControllerReducer = createSlice({
         updateTabViewState: (state, action) => {
             state[action.payload.screen].state = { ...state[action.payload.screen].state, ...action.payload.state };
         },
+        resetTabView: (state, action) => {
+            console.log('reset name:', action.payload.screen);
+            state[action.payload.screen].index = [0];
+            state[action.payload.screen].state = {};
+            state[action.payload.screen].header = [];
+        }
     }
 })
 
-export const { controlTabView, tabViewBackController, firstOpenIndex, cleanTabViewState, addTabViewState, updateTabViewState } = tabControllerReducer.actions
+export const { controlTabView, tabViewBackController, firstOpenIndex, cleanTabViewState, resetTabView, addTabViewState, updateTabViewState } = tabControllerReducer.actions
 export default tabControllerReducer.reducer

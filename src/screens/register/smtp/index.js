@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, Pressable } from 'react-native'
+import { useSelector } from 'react-redux';
 import {
     CodeField,
     Cursor,
@@ -10,7 +11,6 @@ import {
 import Button from '../../../components/button';
 import Texts from '../../../components/text/'
 import { styles } from './styles';
-import { useSelector } from 'react-redux';
 import { SEND_OTP_AGAIN_INSTANCE, VERIFY_OTP_INSTANCE } from '../../../utils/instances';
 import { useTimer } from '../../../hooks/useTimer';
 import { tabSupervisor } from '../../../utils/tab-view-util';
@@ -45,19 +45,19 @@ const SMTP = () => {
     }
 
     const verify = async () => {
-        // setError(null);
-        // const { data, status } = await VERIFY_OTP_INSTANCE(value, setWait);
-        // if (status == 200 || status == true) {
-        tabSupervisor('control', { screen: 'Register', index: 2, state: { number } })
-        //     return;
-        // }
-        // return setError(data)
+        setError(null);
+        const { data, status } = await VERIFY_OTP_INSTANCE(value, setWait);
+        if (status == 200 || status == true) {
+            tabSupervisor('control', { screen: 'Register', index: 2, state: { number } })
+            return;
+        }
+        return setError(data)
     }
 
 
     return (
         <View style={styles.container}>
-            <Texts Texts child={`${number} ${t('register:smtpmessage')}`}> {t('register:admitCode')}</Texts >
+            <Texts Texts child={`${number} ${t('register:smtpMessage')}`}> {t('register:admitCode')}</Texts >
             <CodeField
                 ref={ref}
                 {...props}

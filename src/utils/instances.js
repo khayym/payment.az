@@ -20,7 +20,6 @@ export const tokenRefreshInstance = async () => {
 
 const axiosConfigFactory = async (method, url, data) => {
     const deviceToken = await getFcmTokenMMKV();
-
     let headers = {
         'Content-Type': 'application/json',
         'device-token': deviceToken
