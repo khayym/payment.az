@@ -24,6 +24,7 @@ export const LogIn = () => {
     const { navigate } = useNavigation();
 
     const forgotPassword = () => {
+        // update hear
         dispatch(firstOpenIndex({ screen: 'ForgotPassword', index: 0, state: { number: null, error: null } }));
         callback(2)
     }
