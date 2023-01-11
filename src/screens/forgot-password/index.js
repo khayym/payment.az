@@ -36,4 +36,3 @@ const ForgotPassword = () => {
 }
 
 export default memo(ForgotPassword)
-

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD, REGISTER_DEVICE_TOKEN, VERIFY_OTP, REGISTER_API, CREATE_USER, LOGIN } from '../utils/api';
+import { BASE_URL, TOKEN_REFRESH, GET_USER_HOME_DATA, FORGET_PASSWORD, REGISTER_DEVICE_TOKEN, VERIFY_OTP, REGISTER_API, CREATE_USER, LOGIN, RESET_PASSWORD } from '../utils/api';
 import { getRefreshTokenMMKV, getUserAccessTokenMMKV, refreshTokenMMKV, updateUserDataMMKV, fcmTokenRegisterMMKV, getFcmTokenMMKV } from "./mmkv";
 import { store } from '../store/redux';
 import { setUserData } from "../reducers/userReducer";
@@ -36,7 +36,7 @@ const axiosConfigFactory = async (method, url, data) => {
         headers
     }
 
-    if (method === 'post') {
+    if (method === 'post' || method === 'patch') {
         configs = { ...configs, data }
     }
 
@@ -53,7 +53,7 @@ const responseFactory = async (config) => {
         };
     }
     catch (err) {
-        console.log(err.response.data);
+        console.log('-->', err.response);
         return {
             data: err.response.data.message,
             status: err.response.data.status
@@ -183,6 +183,14 @@ export const FORGET_PASSWORD_INSTANCE = async (phone, blocker) => {
     return response;
 }
 
+export const RESET_PASSWORD_INSTANCE = async (password, blocker) => {
+    blocker(true)
+    let data = { 'password': password, 'password_confirm': password }
+    let config = await axiosConfigFactory('patch', RESET_PASSWORD, data);
+    let response = await responseFactory(config);
+    blocker(false);
+    return response;
+}
 
 export const REGISTER_USER_INSTANCE = async (value, blocker) => {
     blocker(true);

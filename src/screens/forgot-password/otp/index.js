@@ -18,7 +18,7 @@ const VerifyForgotPasswordOtp = () => {
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({ value, cellCount: 4 });
     const [wait, setWait] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
