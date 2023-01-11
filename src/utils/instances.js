@@ -53,7 +53,6 @@ const responseFactory = async (config) => {
         };
     }
     catch (err) {
-        console.log('-->', err.response);
         return {
             data: err.response.data.message,
             status: err.response.data.status

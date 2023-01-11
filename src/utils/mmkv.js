@@ -7,7 +7,7 @@ let user_data = {};
 
 
 export const registerUserDataMMKV = async (data) => {
-    console.log('register data mmkv: ', data);
+    console.log('register data mmkv: ');
     await MMKV.setMapAsync("userData", data);
 }
 
