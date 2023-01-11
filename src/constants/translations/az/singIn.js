@@ -1,7 +1,7 @@
 export default {
     logIn: 'Daxil ol',
-    logBottomLable: 'Sizi yenidən görməyə çox şadıq!',
-    numberLable: 'Telefon nömrəsi',
+    logBottomLabel: 'Sizi yenidən görməyə çox şadıq!',
+    numberLabel: 'Telefon nömrəsi',
     wrongNumber: 'Yanlış nömrə',
     password: 'Şifrə',
     passwordInputPleaceholder: 'Şifrəni daxil edin',

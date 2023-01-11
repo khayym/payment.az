@@ -1,7 +1,7 @@
 export default {
     logIn: 'Войти',
-    logBottomLable: 'Мы очень рады видеть вас снова!',
-    numberLable: 'Номер телефона',
+    logBottomLabel: 'Мы очень рады видеть вас снова!',
+    numberLabel: 'Номер телефона',
     password: 'Пароль',
     wrongNumber: 'Неправильный номер',
     passwordInputPleaceholder: 'Введите пароль',

@@ -53,7 +53,7 @@ const EnterNumber = () => {
                         <PhoneInput
                             setNumber={setNumber}
                             number={number}
-                            label={t('singIn:numberLable')}
+                            label={t('singIn:numberLabel')}
                             errorLabel={error}
                             error={error}
                         />

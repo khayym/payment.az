@@ -40,9 +40,6 @@ export const styles = StyleSheet.create({
     focusCell: {
         borderColor: '#038BFF'
     },
-    wrongOpt: {
-        alignSelf: 'center', marginTop: 10, color: 'red'
-    },
     textRoot: {
 
         flexDirection: 'row',
@@ -71,5 +68,11 @@ export const styles = StyleSheet.create({
     },
     flex: {
         flex: 1,
-    }
+    },
+    wrongOpt: {
+        alignSelf: 'center',
+        marginTop: 10,
+        color: 'red',
+        textAlign: 'center'
+    },
 })

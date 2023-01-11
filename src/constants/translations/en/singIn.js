@@ -1,7 +1,7 @@
 export default {
     logIn: 'Sign in',
-    logBottomLable: 'We are very happy to see you again!',
-    numberLable: 'Phone number',
+    logBottomLabel: 'We are very happy to see you again!',
+    numberLabel: 'Phone number',
     wrongNumber: 'Wrong number',
     password: 'Password',
     passwordInputPleaceholder: 'Enter the password',

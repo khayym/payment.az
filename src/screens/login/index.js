@@ -7,10 +7,9 @@ import { PasswordInput } from '../../components/password-input';
 import Button from '../../components/button';
 import FooterText from '../../components/text/footer-text';
 import { styles } from './styles';
-import { useDispatch } from 'react-redux';
-import { controlTabView, firstOpenIndex } from '../../reducers/tabControllerReducer';
 import { LOGIN_INSTANCE } from '../../utils/instances';
 import { useNavigation } from '@react-navigation/native';
+import { tabSupervisor } from '../../utils/tab-view-util';
 
 export const LogIn = () => {
     const [text, setText] = useState('');
@@ -19,13 +18,11 @@ export const LogIn = () => {
     const [wait, setWait] = useState(false)
     const [error, setError] = useState(null);
     const { t } = useTranslation()
-    const dispatch = useDispatch();
-    const callback = (index) => dispatch(controlTabView({ screen: 'SingRegisterRouter', index }));
+    const callback = (index) => tabSupervisor('control', { screen: 'SingRegisterRouter', index });
     const { navigate } = useNavigation();
 
     const forgotPassword = () => {
-        // update hear
-        dispatch(firstOpenIndex({ screen: 'ForgotPassword', index: 0, state: { number: null, error: null } }));
+        tabSupervisor('firstOpenIndex', { screen: 'ForgotPassword', index: 0, state: { number: null, error: null } })
         callback(2)
     }
 
@@ -46,13 +43,13 @@ export const LogIn = () => {
             <View style={{ flex: 1 }}>
                 <KeyboardAvoidingView style={styles.container} behavior='position' keyboardVerticalOffset={Dimensions.get('window').width * 0.15}>
                     <View style={styles.header}>
-                        <Texts child={t('singIn:logBottomLable')}>{t('singIn:logIn')}</Texts>
+                        <Texts child={t('singIn:logBottomLabel')}>{t('singIn:logIn')}</Texts>
                     </View>
                     <View style={styles.inputs}>
                         <PhoneInput
                             setNumber={setNumber}
                             number={number}
-                            label={t('singIn:numberLable')}
+                            label={t('singIn:numberLabel')}
                             error={error}
                         />
                         <PasswordInput
